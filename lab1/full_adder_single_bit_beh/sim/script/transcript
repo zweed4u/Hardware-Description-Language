@@ -14,39 +14,39 @@
 # do sim.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 11:58:39 on Sep 01,2016
+# Start time: 12:27:00 on Sep 01,2016
 # vcom -reportprogress 300 -93 -work work ../../src/full_adder_single_bit_beh.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity full_adder_single_bit_beh
 # -- Compiling architecture arch of full_adder_single_bit_beh
-# End time: 11:58:39 on Sep 01,2016, Elapsed time: 0:00:00
+# End time: 12:27:01 on Sep 01,2016, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 11:58:39 on Sep 01,2016
+# Start time: 12:27:01 on Sep 01,2016
 # vcom -reportprogress 300 -93 -work work ../src/full_adder_single_bit_beh_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity full_adder_single_bit_beh_tb
 # -- Compiling architecture arch of full_adder_single_bit_beh_tb
-# End time: 11:58:39 on Sep 01,2016, Elapsed time: 0:00:00
+# End time: 12:27:01 on Sep 01,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -novopt full_adder_single_bit_beh_tb 
-# Start time: 11:58:39 on Sep 01,2016
+# Start time: 12:27:01 on Sep 01,2016
 # ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
 # Loading std.standard
-# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_beh/sim/script/work.full_adder_single_bit_beh_tb(arch)
+# Refreshing S:/Hardware-Description-Language/lab1/full_adder_single_bit_beh/sim/script/work.full_adder_single_bit_beh_tb(arch)
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading work.full_adder_single_bit_beh_tb(arch)
-# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_beh/sim/script/work.full_adder_single_bit_beh(arch)
+# Refreshing S:/Hardware-Description-Language/lab1/full_adder_single_bit_beh/sim/script/work.full_adder_single_bit_beh(arch)
 # Loading work.full_adder_single_bit_beh(arch)
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: zdw7287  Hostname: ECTET-1360-09  ProcessID: 74896
-#           Attempting to use alternate WLF file "./wlftcerk04".
+#           Attempting to use alternate WLF file "./wlft6tjt4w".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftcerk04
-# End time: 11:59:16 on Sep 01,2016, Elapsed time: 0:00:37
+#           Using alternate file: ./wlft6tjt4w
+# End time: 12:27:06 on Sep 01,2016, Elapsed time: 0:00:05
 # Errors: 0, Warnings: 3

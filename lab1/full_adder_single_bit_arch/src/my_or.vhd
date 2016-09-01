@@ -1,3 +1,7 @@
+-------------------------------------------------------------------------------
+-- Zachary Weeden
+-- or component
+-------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;      -- gives you the std_logic type
 ENTITY my_or IS
