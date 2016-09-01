@@ -4,20 +4,20 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 --USE work.components.all;
 
-ENTITY full_adder_structural IS
+ENTITY full_adder_single_bit_arc IS
     PORT( 
         a    : IN STD_LOGIC;
         b    : IN STD_LOGIC;
         cin  : IN STD_LOGIC;
         sum  : OUT STD_LOGIC;
-        cout : OUT STD_LOGIC;
+        cout : OUT STD_LOGIC
     );
-END full_adder_structural;
+END full_adder_single_bit_arc;
 
 
 
 
-ARCHITECTURE behavioral OF full_adder_structural IS
+ARCHITECTURE behavioral OF full_adder_single_bit_arc IS
 	SIGNAL and1_out : STD_LOGIC;
 	SIGNAL and2_out : STD_LOGIC;
 	SIGNAL and3_out : STD_LOGIC;
