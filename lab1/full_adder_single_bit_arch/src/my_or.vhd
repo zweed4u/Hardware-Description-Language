@@ -1,5 +1,5 @@
 LIBRARY ieee;
-USE ieee.std_logic_1164.all;
+USE ieee.std_logic_1164.all;      -- gives you the std_logic type
 ENTITY my_or IS
     PORT( a,b,c : IN STD_LOGIC;
         out1 : OUT STD_LOGIC);
