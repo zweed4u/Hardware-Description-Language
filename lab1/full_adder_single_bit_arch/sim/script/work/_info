@@ -12,101 +12,101 @@ Efull_adder_single_bit_arc
 Z1 w1472744781
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-R0
-Z4 8../../src/full_adder_single_bit_arc.vhd
-Z5 F../../src/full_adder_single_bit_arc.vhd
+Z4 dC:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_arch/sim/script
+Z5 8../../src/full_adder_single_bit_arc.vhd
+Z6 F../../src/full_adder_single_bit_arc.vhd
 l0
 L7
 ViNCZ2@3bTB97O7RkTzENI0
 !s100 nB00HbS`:l2fI_45CaEDf3
-Z6 OL;C;10.5b;63
+Z7 OL;C;10.5b;63
 31
-Z7 !s110 1472744799
+Z8 !s110 1472745570
 !i10b 1
-Z8 !s108 1472744798.000000
-Z9 !s90 -reportprogress|300|-93|-work|work|../../src/full_adder_single_bit_arc.vhd|
-Z10 !s107 ../../src/full_adder_single_bit_arc.vhd|
+Z9 !s108 1472745570.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|../../src/full_adder_single_bit_arc.vhd|
+Z11 !s107 ../../src/full_adder_single_bit_arc.vhd|
 !i113 0
-Z11 o-93 -work work
-Z12 tExplicit 1 CvgOpt 0
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
 Abehavioral
 R2
 R3
 DEx4 work 25 full_adder_single_bit_arc 0 22 iNCZ2@3bTB97O7RkTzENI0
 31
-R7
+R8
 l50
 L20
 V0NhH04]POX[IP?om0W7@63
 !s100 PFiR>aQlWKHWg=]c8lzBi0
-R6
+R7
 !i10b 1
-R8
 R9
 R10
-!i113 0
 R11
+!i113 0
 R12
+R13
 Efull_adder_single_bit_arc_tb
-Z13 w1472743057
+Z14 w1472743057
 R2
 R3
-R0
-Z14 8../src/full_adder_single_bit_arc_tb.vhd
-Z15 F../src/full_adder_single_bit_arc_tb.vhd
+R4
+Z15 8../src/full_adder_single_bit_arc_tb.vhd
+Z16 F../src/full_adder_single_bit_arc_tb.vhd
 l0
 L8
 VF7`fXJePDmBfFe8lbcFW:0
 !s100 S9HV<Bkac25M1j0VdBM291
-R6
+R7
 31
-Z16 !s110 1472744801
+Z17 !s110 1472745571
 !i10b 1
-Z17 !s108 1472744800.000000
-Z18 !s90 -reportprogress|300|-93|-work|work|../src/full_adder_single_bit_arc_tb.vhd|
-Z19 !s107 ../src/full_adder_single_bit_arc_tb.vhd|
+Z18 !s108 1472745571.000000
+Z19 !s90 -reportprogress|300|-93|-work|work|../src/full_adder_single_bit_arc_tb.vhd|
+Z20 !s107 ../src/full_adder_single_bit_arc_tb.vhd|
 !i113 0
-R11
 R12
+R13
 Aarch
 R2
 R3
 DEx4 work 28 full_adder_single_bit_arc_tb 0 22 F7`fXJePDmBfFe8lbcFW:0
 31
-R16
+R17
 l29
 L11
 VO[MTIUG`ziigWj<cbMBlP0
 !s100 QPaZB;:iGhnCSUdADnalK0
-R6
+R7
 !i10b 1
-R17
 R18
 R19
+R20
 !i113 0
-R11
 R12
+R13
 Efull_adder_structural
-Z20 w1472744514
+Z21 w1472744514
 R2
 R3
 R0
-R4
 R5
+R6
 l0
 L7
 VgBA091WP:n_n?U7iSRSJe2
 !s100 21>NEn6V7hMfA<NmI:mh`3
-R6
+R7
 31
-Z21 !s110 1472744596
+Z22 !s110 1472744596
 !i10b 1
-Z22 !s108 1472744596.000000
-R9
+Z23 !s108 1472744596.000000
 R10
-!i113 0
 R11
+!i113 0
 R12
+R13
 Abehavioral
 R2
 R3
@@ -115,130 +115,130 @@ l50
 L20
 VId0G7]3Rn_JP1W2]DDBg_2
 !s100 4HS_;7>>nH;GYejhDVk;d2
-R6
+R7
 31
-R21
-!i10b 1
 R22
-R9
+!i10b 1
+R23
 R10
-!i113 0
 R11
+!i113 0
 R12
+R13
 Emy_and
-Z23 w1472742930
+Z24 w1472742930
 R2
 R3
-R0
-Z24 8../../src/my_and.vhd
-Z25 F../../src/my_and.vhd
+R4
+Z25 8../../src/my_and.vhd
+Z26 F../../src/my_and.vhd
 l0
 L3
 VC6MJ;VA3XP7U6cEEciQjn3
 !s100 TA8db2VF1;bo3DdC45U5A3
-R6
-31
 R7
+31
+R8
 !i10b 1
-Z26 !s108 1472744799.000000
+R9
 Z27 !s90 -reportprogress|300|-93|-work|work|../../src/my_and.vhd|
 Z28 !s107 ../../src/my_and.vhd|
 !i113 0
-R11
 R12
+R13
 Abehavioral
 R2
 R3
 DEx4 work 6 my_and 0 22 C6MJ;VA3XP7U6cEEciQjn3
 31
-R7
+R8
 l9
 L8
 VIozWNeZhc]06kQDibFGeV0
 !s100 `M0BzNdX3TIaHQ:eOSOmZ2
-R6
+R7
 !i10b 1
-R26
+R9
 R27
 R28
 !i113 0
-R11
 R12
+R13
 Emy_or
 Z29 w1472744560
 R2
 R3
-R0
+R4
 Z30 8../../src/my_or.vhd
 Z31 F../../src/my_or.vhd
 l0
 L3
 V?;>S;h?0QQ7oI0:z1<]4H2
 !s100 o:=]>H^5zFiYSMda?mN;_2
-R6
+R7
 31
-Z32 !s110 1472744800
+R17
 !i10b 1
-R26
-Z33 !s90 -reportprogress|300|-93|-work|work|../../src/my_or.vhd|
-Z34 !s107 ../../src/my_or.vhd|
+R9
+Z32 !s90 -reportprogress|300|-93|-work|work|../../src/my_or.vhd|
+Z33 !s107 ../../src/my_or.vhd|
 !i113 0
-R11
 R12
+R13
 Abehavioral
 R2
 R3
 DEx4 work 5 my_or 0 22 ?;>S;h?0QQ7oI0:z1<]4H2
 31
-R32
+R17
 l9
 L8
 V4RE`U:CzWf]j9OmEj_>^D0
 !s100 QQ6Ak2]0]1WTVJ;lg@aWS1
-R6
+R7
 !i10b 1
-R26
+R9
+R32
 R33
-R34
 !i113 0
-R11
 R12
+R13
 Emy_xor
-Z35 w1472744567
+Z34 w1472744567
 R2
 R3
-R0
-Z36 8../../src/my_xor.vhd
-Z37 F../../src/my_xor.vhd
+R4
+Z35 8../../src/my_xor.vhd
+Z36 F../../src/my_xor.vhd
 l0
 L3
 Va0onjdn8V=Edl:>z0>aC;0
 !s100 mgG6Ldj3Cc?`zY2DkFPM70
-R6
+R7
 31
-R32
-!i10b 1
 R17
-Z38 !s90 -reportprogress|300|-93|-work|work|../../src/my_xor.vhd|
-Z39 !s107 ../../src/my_xor.vhd|
+!i10b 1
+R18
+Z37 !s90 -reportprogress|300|-93|-work|work|../../src/my_xor.vhd|
+Z38 !s107 ../../src/my_xor.vhd|
 !i113 0
-R11
 R12
+R13
 Abehavioral
 R2
 R3
 DEx4 work 6 my_xor 0 22 a0onjdn8V=Edl:>z0>aC;0
 31
-R32
+R17
 l9
 L8
 V=8F9MQ4Kn7h9HabmIK`FT0
 !s100 oGbzQlFG`Q6WGRWWIf8X[1
-R6
+R7
 !i10b 1
-R17
+R18
+R37
 R38
-R39
 !i113 0
-R11
 R12
+R13

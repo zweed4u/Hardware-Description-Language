@@ -14,68 +14,75 @@
 # do sim.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 11:46:38 on Sep 01,2016
+# Start time: 11:59:30 on Sep 01,2016
 # vcom -reportprogress 300 -93 -work work ../../src/full_adder_single_bit_arc.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity full_adder_single_bit_arc
 # -- Compiling architecture behavioral of full_adder_single_bit_arc
-# End time: 11:46:39 on Sep 01,2016, Elapsed time: 0:00:01
+# End time: 11:59:30 on Sep 01,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 11:46:39 on Sep 01,2016
+# Start time: 11:59:30 on Sep 01,2016
 # vcom -reportprogress 300 -93 -work work ../../src/my_and.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity my_and
 # -- Compiling architecture behavioral of my_and
-# End time: 11:46:39 on Sep 01,2016, Elapsed time: 0:00:00
+# End time: 11:59:30 on Sep 01,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 11:46:39 on Sep 01,2016
+# Start time: 11:59:30 on Sep 01,2016
 # vcom -reportprogress 300 -93 -work work ../../src/my_or.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity my_or
 # -- Compiling architecture behavioral of my_or
-# End time: 11:46:40 on Sep 01,2016, Elapsed time: 0:00:01
+# End time: 11:59:31 on Sep 01,2016, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 11:46:40 on Sep 01,2016
+# Start time: 11:59:31 on Sep 01,2016
 # vcom -reportprogress 300 -93 -work work ../../src/my_xor.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity my_xor
 # -- Compiling architecture behavioral of my_xor
-# End time: 11:46:40 on Sep 01,2016, Elapsed time: 0:00:00
+# End time: 11:59:31 on Sep 01,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 11:46:40 on Sep 01,2016
+# Start time: 11:59:31 on Sep 01,2016
 # vcom -reportprogress 300 -93 -work work ../src/full_adder_single_bit_arc_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity full_adder_single_bit_arc_tb
 # -- Compiling architecture arch of full_adder_single_bit_arc_tb
-# End time: 11:46:41 on Sep 01,2016, Elapsed time: 0:00:01
+# End time: 11:59:31 on Sep 01,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -novopt full_adder_single_bit_arc_tb 
-# Start time: 11:46:41 on Sep 01,2016
+# Start time: 11:59:31 on Sep 01,2016
 # ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
 # Loading std.standard
-# Refreshing S:/Hardware-Description-Language-master/lab1/full_adder_single_bit_arch/sim/script/work.full_adder_single_bit_arc_tb(arch)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_arch/sim/script/work.full_adder_single_bit_arc_tb(arch)
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading work.full_adder_single_bit_arc_tb(arch)
-# Refreshing S:/Hardware-Description-Language-master/lab1/full_adder_single_bit_arch/sim/script/work.full_adder_single_bit_arc(behavioral)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_arch/sim/script/work.full_adder_single_bit_arc(behavioral)
 # Loading work.full_adder_single_bit_arc(behavioral)
-# Refreshing S:/Hardware-Description-Language-master/lab1/full_adder_single_bit_arch/sim/script/work.my_and(behavioral)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_arch/sim/script/work.my_and(behavioral)
 # Loading work.my_and(behavioral)
-# Refreshing S:/Hardware-Description-Language-master/lab1/full_adder_single_bit_arch/sim/script/work.my_or(behavioral)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_arch/sim/script/work.my_or(behavioral)
 # Loading work.my_or(behavioral)
-# Refreshing S:/Hardware-Description-Language-master/lab1/full_adder_single_bit_arch/sim/script/work.my_xor(behavioral)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab1/full_adder_single_bit_arch/sim/script/work.my_xor(behavioral)
 # Loading work.my_xor(behavioral)
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: zdw7287  Hostname: ECTET-1360-09  ProcessID: 67472
+#           Attempting to use alternate WLF file "./wlft7g85y8".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft7g85y8
+# End time: 12:02:42 on Sep 01,2016, Elapsed time: 0:03:11
+# Errors: 0, Warnings: 3
