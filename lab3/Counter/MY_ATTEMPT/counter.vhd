@@ -8,7 +8,7 @@ use ieee.std_logic_1164.all;
 entity counter is
   port (
     clk             : in std_logic; 
-	reset           : in std_logic;
+    reset           : in std_logic;
     a             : in std_logic_vector(3 downto 0);
     seven_seg_out   : out std_logic_vector(6 downto 0)
   ); 
@@ -59,14 +59,14 @@ adder: generic_adder_beh
       b     => sum_sig,
       sum     => adder_sig
     );
-	
+    
 counter: generic_counter 
     port map(
       clk     => clk,
       reset     => reset,
       output     => enable_sig
     );
-	
+    
 convert_to_ssd: seven_seg 
     port map(
       bcd     => sum_sig,
@@ -76,13 +76,13 @@ convert_to_ssd: seven_seg
 process(clk,enable_sig)
 begin
 if (enable_sig = '1') then
-	if (clk'event and clk = '1') then
-		sum_sig<=adder_sig;
-	else
-		--no rising edge clock detected but enable wait for 50 MHz
-	end if;
+    if (clk'event and clk = '1') then
+        sum_sig<=adder_sig;
+    else
+        --no rising edge clock detected but enable wait for 50 MHz
+    end if;
 else
-	--register not enabled - dont pass signal
+    --register not enabled - dont pass signal
 end if;
 end process;
 end beh;
