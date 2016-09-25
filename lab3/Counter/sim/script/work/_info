@@ -7,88 +7,207 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-dC:/Users/zdw7287/Downloads/Hardware-Description-Language/lab3/stash/BCD/sim/script
-Eseven_seg
-Z0 w1474564191
-Z1 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z5 dC:/Users/zdw7287/Downloads/Hardware-Description-Language/lab3/BCD/sim/script
-Z6 8../../src/seven_seg.vhd
-Z7 F../../src/seven_seg.vhd
+Z0 dC:/Users/zdw7287/Downloads/Hardware-Description-Language/lab3/Counter/sim/script
+Ecounter
+Z1 w1474829914
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z4 8../../src/counter.vhd
+Z5 F../../src/counter.vhd
 l0
-L11
-VR_l18ET0B2nRTd8jo^68N2
-!s100 QO9MZWPAXk`8oMkz6[l8Y0
-Z8 OL;C;10.5b;63
+L8
+Vk<CP]`U9^Z<iZJ?eYeGBR3
+!s100 HWH@jHIf[MEAIYVkojjX`0
+Z6 OL;C;10.5b;63
 31
-Z9 !s110 1474564574
+Z7 !s110 1474833901
 !i10b 1
-Z10 !s108 1474564574.000000
-Z11 !s90 -reportprogress|300|-93|-work|work|../../src/seven_seg.vhd|
-Z12 !s107 ../../src/seven_seg.vhd|
+Z8 !s108 1474833901.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|../../src/counter.vhd|
+Z10 !s107 ../../src/counter.vhd|
 !i113 0
-Z13 o-93 -work work
-Z14 tExplicit 1 CvgOpt 0
+Z11 o-93 -work work
+Z12 tExplicit 1 CvgOpt 0
 Abeh
-R1
 R2
 R3
-R4
-DEx4 work 9 seven_seg 0 22 R_l18ET0B2nRTd8jo^68N2
+DEx4 work 7 counter 0 22 k<CP]`U9^Z<iZJ?eYeGBR3
 31
-R9
-l25
-L23
-V<J]j;7Jfl0kR[D@;>H0?N3
-!s100 CjA9LQbdPQl]I4j@T^9h43
-R8
+R7
+l54
+L17
+Vjd>?`5PU`Re9Y^df32T5U3
+!s100 b0AV9cYHG6`L;Wiz<m?UQ1
+R6
 !i10b 1
+R8
+R9
 R10
+!i113 0
 R11
 R12
-!i113 0
-R13
-R14
-Eseven_seg_tb
-Z15 w1474554775
-Z16 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Egeneric_adder_beh
+Z13 w1474828126
+Z14 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R2
 R3
-R4
-R5
-Z17 8../src/seven_seg_tb.vhd
-Z18 F../src/seven_seg_tb.vhd
+R0
+Z15 8../../src/generic_adder_beh.vhd
+Z16 F../../src/generic_adder_beh.vhd
+l0
+L9
+Vd4OZTEI9bdHmDG005PAGS3
+!s100 UNKXN7^2fG2ElR;BZl77E2
+R6
+31
+R7
+!i10b 1
+R8
+Z17 !s90 -reportprogress|300|-93|-work|work|../../src/generic_adder_beh.vhd|
+Z18 !s107 ../../src/generic_adder_beh.vhd|
+!i113 0
+R11
+R12
+Abeh
+R14
+R2
+R3
+DEx4 work 17 generic_adder_beh 0 22 d4OZTEI9bdHmDG005PAGS3
+l23
+L20
+V@AX:A1e:T;JCc?@5iG<751
+!s100 G=iDe;dScDCd`nM:=MeX53
+R6
+31
+R7
+!i10b 1
+R8
+R17
+R18
+!i113 0
+R11
+R12
+Egeneric_counter
+Z19 w1474829812
+R2
+R3
+R0
+Z20 8../../src/generic_counter.vhd
+Z21 F../../src/generic_counter.vhd
+l0
+L8
+V^`<KMAE]`_5EGCAHV]bZ72
+!s100 b;7GBWdQ5cL8<UCk3lILB1
+R6
+31
+Z22 !s110 1474833902
+!i10b 1
+R8
+Z23 !s90 -reportprogress|300|-93|-work|work|../../src/generic_counter.vhd|
+Z24 !s107 ../../src/generic_counter.vhd|
+!i113 0
+R11
+R12
+Abeh
+R2
+R3
+DEx4 work 15 generic_counter 0 22 ^`<KMAE]`_5EGCAHV]bZ72
+l22
+L19
+Vci`eMk=Z0FP_oZ<I]8acI2
+!s100 ;4K3_iH]OldTY<7b1_mUo3
+R6
+31
+R22
+!i10b 1
+R8
+R23
+R24
+!i113 0
+R11
+R12
+Eseven_seg
+Z25 w1474829826
+Z26 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z27 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+R2
+R3
+R0
+Z28 8../../src/seven_seg.vhd
+Z29 F../../src/seven_seg.vhd
+l0
+L11
+VON7@C@lcGnIa0i:Uc95WI3
+!s100 [eeUKl5RQO=l?4>NOCBN?3
+R6
+31
+R22
+!i10b 1
+Z30 !s108 1474833902.000000
+Z31 !s90 -reportprogress|300|-93|-work|work|../../src/seven_seg.vhd|
+Z32 !s107 ../../src/seven_seg.vhd|
+!i113 0
+R11
+R12
+Abeh
+R26
+R27
+R2
+R3
+DEx4 work 9 seven_seg 0 22 ON7@C@lcGnIa0i:Uc95WI3
+l23
+L21
+V7EB>zmBcF0;DDKjVSTWF]0
+!s100 X<EaCPMZd>1cbB>SGBZPK0
+R6
+31
+R22
+!i10b 1
+R30
+R31
+R32
+!i113 0
+R11
+R12
+Eseven_seg_tb
+Z33 w1474833694
+R14
+R2
+R3
+R0
+Z34 8../src/seven_seg_tb.vhd
+Z35 F../src/seven_seg_tb.vhd
 l0
 L9
 V=Fn8URJ<?]?=oFC]eNCod3
 !s100 <[]cRiH?Cjz[eK]hRnh^O3
-R8
+R6
 31
-R9
+R22
 !i10b 1
-R10
-Z19 !s90 -reportprogress|300|-93|-work|work|../src/seven_seg_tb.vhd|
-Z20 !s107 ../src/seven_seg_tb.vhd|
+R30
+Z36 !s90 -reportprogress|300|-93|-work|work|../src/seven_seg_tb.vhd|
+Z37 !s107 ../src/seven_seg_tb.vhd|
 !i113 0
-R13
-R14
+R11
+R12
 Aarch
-R16
+R14
+R2
 R3
-R4
 DEx4 work 12 seven_seg_tb 0 22 =Fn8URJ<?]?=oFC]eNCod3
 31
-R9
+R22
 l29
 L12
-VCHdVbL?A4MlX5^bNV483k2
-!s100 kT8cbTmhGc9=ELD:_f0L92
-R8
+V:8lLERCH=kLA[6>kj9Zgl3
+!s100 kj:]g<Lf?GP9Jn;20cMgW3
+R6
 !i10b 1
-R10
-R19
-R20
+R30
+R36
+R37
 !i113 0
-R13
-R14
+R11
+R12

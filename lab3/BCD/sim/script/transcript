@@ -14,7 +14,7 @@
 # do sim.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 13:16:14 on Sep 22,2016
+# Start time: 15:59:53 on Sep 25,2016
 # vcom -reportprogress 300 -93 -work work ../../src/seven_seg.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -23,10 +23,10 @@
 # -- Loading package STD_LOGIC_UNSIGNED
 # -- Compiling entity seven_seg
 # -- Compiling architecture beh of seven_seg
-# End time: 13:16:14 on Sep 22,2016, Elapsed time: 0:00:00
+# End time: 15:59:53 on Sep 25,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 13:16:14 on Sep 22,2016
+# Start time: 15:59:53 on Sep 25,2016
 # vcom -reportprogress 300 -93 -work work ../src/seven_seg_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -35,10 +35,10 @@
 # -- Compiling entity seven_seg_tb
 # -- Compiling architecture arch of seven_seg_tb
 # ** Warning: ../src/seven_seg_tb.vhd(24): (vcom-1207) An abstract literal and an identifier must have a separator between them.
-# End time: 13:16:14 on Sep 22,2016, Elapsed time: 0:00:00
+# End time: 15:59:53 on Sep 25,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
 # vsim -novopt seven_seg_tb 
-# Start time: 13:16:14 on Sep 22,2016
+# Start time: 15:59:53 on Sep 25,2016
 # ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
 # Loading std.standard
 # Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab3/BCD/sim/script/work.seven_seg_tb(arch)
@@ -54,5 +54,5 @@
 #    Time: 0 ns  Iteration: 0  Instance: /seven_seg_tb
 # ** Note: ****************** sequential testbench stop ****************
 #    Time: 480 ns  Iteration: 0  Instance: /seven_seg_tb
-# End time: 13:16:33 on Sep 22,2016, Elapsed time: 0:00:19
+# End time: 16:00:34 on Sep 25,2016, Elapsed time: 0:00:41
 # Errors: 0, Warnings: 1

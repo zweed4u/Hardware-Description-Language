@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 dC:/Users/zdw7287/Downloads/Hardware-Description-Language/lab3/blink/sim/script
 Eblink
-Z1 w1474554775
+Z1 w1474828126
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 R0
@@ -21,9 +21,9 @@ VgSbeDC?JAd;]:HFX73TlZ1
 !s100 Q@N>i]_LJ6WJS3Gg1AeaQ1
 Z6 OL;C;10.5b;63
 31
-Z7 !s110 1474555908
+Z7 !s110 1474833561
 !i10b 1
-Z8 !s108 1474555908.000000
+Z8 !s108 1474833561.000000
 Z9 !s90 -reportprogress|300|-93|-work|work|../../src/blink.vhd|
 Z10 !s107 ../../src/blink.vhd|
 !i113 0

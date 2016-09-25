@@ -13,8 +13,6 @@ entity seven_seg is
         max_count       : integer := 25000000
      );
     port (
-        clk             : in std_logic; 
-        reset           : in std_logic;
         bcd             : in std_logic_vector(3 downto 0);
         seven_seg_out   : out std_logic_vector(6 downto 0)
     );   
@@ -23,7 +21,7 @@ end seven_seg;
 architecture beh of seven_seg  is
 
 begin
-process(clk,reset)
+process(bcd)
     begin
     case bcd is
         when "0000" => --0
@@ -49,10 +47,5 @@ process(clk,reset)
         when others => --10 through 16 all off
             seven_seg_out<="1111111"; 
     end case;
-    
-    if reset = '1' then
-        seven_seg_out<="1111111";
-    end if;
 end process;
-
 end beh;

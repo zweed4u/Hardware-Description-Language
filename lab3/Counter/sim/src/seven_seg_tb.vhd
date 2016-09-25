@@ -11,7 +11,7 @@ end seven_seg_tb;
 
 architecture arch of seven_seg_tb is
 
-component seven_seg is
+component counter is
   port (
     clk             : in std_logic; 
     reset           : in std_logic;
@@ -56,7 +56,7 @@ async_reset: process
     wait;
 end process; 
 
-uut: seven_seg  
+uut: counter  
   port map(        
     clk            => clk,
     reset          => reset,
