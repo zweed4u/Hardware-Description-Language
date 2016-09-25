@@ -17,23 +17,22 @@ entity generic_counter is
 end generic_counter;  
 
 architecture beh of generic_counter  is
-
 signal count_sig    : integer range 0 to max_count := 0;
 
 begin
 process(clk,reset)
-  begin
-    if (reset = '1') then 
-      count_sig <= 0;
-      output <= '0';
-    elsif (clk'event and clk = '1') then
-      if (count_sig = max_count) then
-        count_sig <= 0;
-        output <= '1';
-      else
-        count_sig <= count_sig + 1;
-        output <= '0';
-      end if; 
-    end if;
+    begin
+        if (reset = '1') then 
+            count_sig <= 0;
+            output <= '0';
+        elsif (clk'event and clk = '1') then
+            if (count_sig = max_count) then
+                count_sig <= 0;
+                output <= '1';
+            else
+               count_sig <= count_sig + 1;
+               output <= '0';
+           end if; 
+        end if;
   end process;
 end beh;

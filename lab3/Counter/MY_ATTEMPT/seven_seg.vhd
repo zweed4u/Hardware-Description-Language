@@ -47,6 +47,5 @@ process(bcd)
         when others => --10 through 16 all off
             seven_seg_out<="1111111"; 
     end case;
-	
 end process;
 end beh;
