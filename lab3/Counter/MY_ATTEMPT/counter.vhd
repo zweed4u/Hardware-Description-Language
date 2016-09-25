@@ -9,7 +9,7 @@ entity counter is
   port (
     clk             : in std_logic; 
     reset           : in std_logic;
-    a             : in std_logic_vector(3 downto 0);
+    a             : in std_logic_vector(3 downto 0); --0001
     seven_seg_out   : out std_logic_vector(6 downto 0)
   ); 
 end counter;
