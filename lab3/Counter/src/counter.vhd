@@ -55,7 +55,7 @@ begin
 
 adder: generic_adder_beh 
     port map(
-      a     => "0001" --a,
+      a     => "0001", --a,
       b     => sum_sig,
       sum     => adder_sig
     );
