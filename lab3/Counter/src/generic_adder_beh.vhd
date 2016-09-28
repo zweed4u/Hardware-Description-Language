@@ -13,14 +13,19 @@ entity generic_adder_beh is
   port (
     a       : in  std_logic_vector(bits-1 downto 0);
     b       : in  std_logic_vector(bits-1 downto 0);
-    sum     : out std_logic_vector(bits-1 downto 0)
+    cin     : in  std_logic;
+    sum     : out std_logic_vector(bits-1 downto 0);
+    cout    : out std_logic
   );
 end entity generic_adder_beh;
 
 architecture beh of generic_adder_beh is
+
 signal sum_temp   : std_logic_vector(bits downto 0);
+signal cin_guard  : std_logic_vector(bits-1 downto 0) := (others => '0');
 
 begin
-  sum_temp  <= std_logic_vector(unsigned('0' & a) + unsigned('0' & b));
+  sum_temp  <= std_logic_vector(unsigned('0' & a) + unsigned('0' & b) + unsigned(cin_guard & cin));
   sum       <= sum_temp(bits-1 downto 0);
+  cout      <= sum_temp(bits); -- Carry is the most significant bit
 end beh;

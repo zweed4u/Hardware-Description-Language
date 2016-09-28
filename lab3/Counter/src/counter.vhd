@@ -23,7 +23,9 @@ component generic_adder_beh is
   port (
     a       : in  std_logic_vector(bits-1 downto 0);
     b       : in  std_logic_vector(bits-1 downto 0);
-    sum     : out std_logic_vector(bits-1 downto 0)
+    cin     : in  std_logic;
+    sum     : out std_logic_vector(bits-1 downto 0);
+    cout    : out std_logic
   );
 end component;  
 
@@ -54,11 +56,16 @@ signal adder_sig  : std_logic_vector(3 downto 0);
 begin
 
 adder: generic_adder_beh 
-    port map(
-      a     => "0001", --a,
-      b     => sum_sig,
-      sum     => adder_sig
-    );
+  generic map (
+    bits => NUM_BITS
+  )
+  port map(
+    a       => "0001",
+    b       => sum_sig,
+    cin     => '0',
+    sum     => sum,
+    cout    => open
+  );
     
 counter: generic_counter 
     port map(
