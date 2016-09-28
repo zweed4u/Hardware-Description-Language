@@ -6,12 +6,12 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity seven_seg_tb is
-end seven_seg_tb;
+entity top_tb is
+end top_tb;
 
-architecture arch of seven_seg_tb is
+architecture arch of top_tb is
 
-component counter is
+component top is
   port (
     clk             : in std_logic; 
     reset           : in std_logic;
@@ -41,7 +41,7 @@ async_reset: process
     wait;
 end process; 
 
-uut: counter  
+uut: top  
   port map(        
     clk            => clk,
     reset          => reset,

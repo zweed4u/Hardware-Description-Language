@@ -5,16 +5,16 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity counter is
+entity top is
   port (
     clk             : in std_logic; 
     reset           : in std_logic;
     --a             : in std_logic_vector(3 downto 0); --0001
     seven_seg_out   : out std_logic_vector(6 downto 0)
   ); 
-end counter;
+end top;
 
-architecture beh of counter is
+architecture beh of top is
 
 component generic_adder_beh is
   generic (
