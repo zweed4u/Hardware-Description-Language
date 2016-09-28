@@ -56,14 +56,11 @@ signal adder_sig  : std_logic_vector(3 downto 0);
 begin
 
 adder: generic_adder_beh 
-  generic map (
-    bits => NUM_BITS
-  )
   port map(
     a       => "0001",
     b       => sum_sig,
     cin     => '0',
-    sum     => sum,
+    sum     => adder_sig,
     cout    => open
   );
     
