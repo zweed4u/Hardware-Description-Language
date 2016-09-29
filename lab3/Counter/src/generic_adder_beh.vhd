@@ -26,6 +26,13 @@ signal cin_guard  : std_logic_vector(bits-1 downto 0) := (others => '0');
 
 begin
   sum_temp  <= std_logic_vector(unsigned('0' & a) + unsigned('0' & b) + unsigned(cin_guard & cin));
-  sum       <= sum_temp(bits-1 downto 0);
+  process(sum_temp)
+  begin
+  if sum_temp(bits-1 downto 0) = "1010" then
+    sum <= "0000";
+  else
+    sum <= sum_temp(bits-1 downto 0);
+  end if;
   cout      <= sum_temp(bits); -- Carry is the most significant bit
+  end process;
 end beh;

@@ -9,7 +9,6 @@ entity top is
   port (
     clk             : in std_logic; 
     reset           : in std_logic;
-    --a             : in std_logic_vector(3 downto 0); --0001
     seven_seg_out   : out std_logic_vector(6 downto 0)
   ); 
 end top;
@@ -77,16 +76,16 @@ convert_to_ssd: seven_seg
       seven_seg_out     => seven_seg_out
     );
 
-process(clk,enable_sig)
+process(clk,reset)
 begin
-if (enable_sig = '1') then
-    if (clk'event and clk = '1') then
-        sum_sig<=adder_sig;
+if clk'event and clk='1' then
+    if reset='1' then
+        sum_sig<= "0000";
     else
-        --no rising edge clock detected but enable wait for 50 MHz
+        if enable_sig = '1' then
+            sum_sig<=adder_sig;
+        end if;
     end if;
-else
-    --register not enabled - dont pass signal
 end if;
 end process;
 end beh;
