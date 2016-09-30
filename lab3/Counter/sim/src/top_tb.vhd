@@ -26,6 +26,13 @@ signal reset        : std_logic := '1';
 
 begin
 
+uut: top  
+  port map(        
+    clk            => clk,
+    reset          => reset,
+    seven_seg_out  => open
+  );
+
 -- clock process
 clock: process
   begin
@@ -41,10 +48,5 @@ async_reset: process
     wait;
 end process; 
 
-uut: top  
-  port map(        
-    clk            => clk,
-    reset          => reset,
-    seven_seg_out  => open
-  );
+
 end arch;
