@@ -97,7 +97,7 @@ sync_add: rising_edge_synchronizer
     clk       => clk,
     reset       => reset,
     async_in    => add,
-    sync_out       => synced_add,
+    sync_out       => synced_add
   );
 
 
@@ -106,7 +106,7 @@ sync_sub: rising_edge_synchronizer
     clk       => clk,
     reset       => reset,
     async_in    => sub,
-    sync_out       => synced_sub,
+    sync_out       => synced_sub
   );
 
 add_sub: generic_add_sub 
@@ -114,7 +114,7 @@ add_sub: generic_add_sub
     a       => synced_a,
     b       => synced_b,
     flag    => synced_sel,
-    c       => add_sub_out,
+    c       => add_sub_out
   );
     
 convert_to_ssd_a: seven_seg 
