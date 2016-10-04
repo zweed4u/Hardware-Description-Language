@@ -62,33 +62,84 @@ component rising_edge_synchronizer is
   );
 end component; 
 
-
-
 --INTERNAL SIGNALS HERE
+signal synced_add   : std_logic;
+signal synced_sub   : std_logic;
+signal synced_sel   : std_logic;
+signal synced_a     : std_logic_vector(2 downto 0);
+signal synced_b     : std_logic_vector(2 downto 0);
+signal add_sub_out  : std_logic_vector(3 downto 0);
+
 begin
 
-adder: generic_add_sub 
+--LOGIC NEEDED FOR SELECTS - CHECK MAPPINGS!
+--synced_sel
+
+sync_a: synchronizer
   port map(
-    a       => "0001",
-    b       => sum_sig,
-    cin     => '0',
-    sum     => adder_sig,
-    cout    => open
+    clk      =>         clk,
+    reset    =>         reset,
+    async_in =>         a,
+    sync_out =>         synced_a
+  );
+
+sync_b: synchronizer
+  port map(
+    clk      =>         clk,
+    reset    =>         reset,
+    async_in =>         b,
+    sync_out =>         synced_b
+  );
+
+
+sync_add: rising_edge_synchronizer 
+  port map(
+    clk       => clk,
+    reset       => reset,
+    async_in    => add,
+    sync_out       => synced_add,
+  );
+
+
+sync_sub: rising_edge_synchronizer 
+  port map(
+    clk       => clk,
+    reset       => reset,
+    async_in    => sub,
+    sync_out       => synced_sub,
+  );
+
+add_sub: generic_add_sub 
+  port map(
+    a       => synced_a,
+    b       => synced_b,
+    flag    => synced_sel,
+    c       => add_sub_out,
   );
     
-counter: generic_counter 
+convert_to_ssd_a: seven_seg 
     port map(
-      clk     => clk,
-      reset     => reset,
-      output     => enable_sig
-    );
-    
-convert_to_ssd: seven_seg 
-    port map(
-      bcd     => sum_sig,
-      seven_seg_out     => seven_seg_out
+      bcd     => unsigned('0' & synced_a),
+      seven_seg_out     => seven_seg_a
     );
 
+convert_to_ssd_b: seven_seg 
+    port map(
+      bcd     => unsigned('0' & synced_b),
+      seven_seg_out     => seven_seg_b
+    );
+
+convert_to_ssd_res: seven_seg 
+    port map(
+      bcd     => add_sub_out,
+      seven_seg_out     => seven_seg_res
+    );
+
+
+
+
+
+--FIX THIS PROCESS!!!!
 process(clk,reset)
 begin
 if clk'event and clk='1' then
