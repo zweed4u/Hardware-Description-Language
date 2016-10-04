@@ -29,8 +29,3 @@ begin
  
   c <= add_sig when flag = '0' else sub_sig;
 end beh;
-
-
-
-
-
