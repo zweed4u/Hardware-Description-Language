@@ -8,24 +8,29 @@ use ieee.numeric_std.all;
 
 entity generic_add_sub is
   generic (
-    bits    : integer := 4
+    bits    : integer := 3
   );
   port (
     a       : in  std_logic_vector(bits-1 downto 0);
     b       : in  std_logic_vector(bits-1 downto 0);
-    cin     : in  std_logic;
-    sum     : out std_logic_vector(bits-1 downto 0);
-    cout    : out std_logic
+    flag    : in  std_logic; -- 0: add 1: sub
+    c       : out std_logic_vector(bits downto 0)
   );
 end entity generic_add_sub;
-
+ 
 architecture beh of generic_add_sub is
-
-signal sum_temp   : std_logic_vector(bits downto 0);
-signal cin_guard  : std_logic_vector(bits-1 downto 0) := (others => '0');
-
+ 
+signal add_sig : std_logic_vector(bits downto 0);
+signal sub_sig : std_logic_vector(bits downto 0);
+ 
 begin
-  sum_temp  <= std_logic_vector(unsigned('0' & a) + unsigned('0' & b) + unsigned(cin_guard & cin));
-  sum       <= sum_temp(bits-1 downto 0);
-  cout      <= sum_temp(bits); -- Carry is the most significant bit
+  add_sig  <= std_logic_vector(unsigned('0' & a) + unsigned('0' & b));
+  sub_sig  <= std_logic_vector(unsigned('0' & a) - unsigned('0' & b));
+ 
+  c <= add_sig when flag = '0' else sub_sig;
 end beh;
+
+
+
+
+
