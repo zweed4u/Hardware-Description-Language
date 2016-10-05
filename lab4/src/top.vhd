@@ -72,41 +72,36 @@ signal add_sub_out  : std_logic_vector(3 downto 0);
 
 begin
 
---LOGIC NEEDED FOR SELECTS - CHECK MAPPINGS!
---synced_sel
-
 sync_a: synchronizer
   port map(
-    clk      =>         clk,
-    reset    =>         reset,
-    async_in =>         a,
-    sync_out =>         synced_a
+    clk         => clk,
+    reset       => reset,
+    async_in    => a,
+    sync_out    => synced_a
   );
 
 sync_b: synchronizer
   port map(
-    clk      =>         clk,
-    reset    =>         reset,
-    async_in =>         b,
-    sync_out =>         synced_b
+    clk         => clk,
+    reset       => reset,
+    async_in    => b,
+    sync_out    => synced_b
   );
-
 
 sync_add: rising_edge_synchronizer 
   port map(
-    clk       => clk,
-    reset       => reset,
-    async_in    => add,
-    sync_out       => synced_add
+    clk     => clk,
+    reset   => reset,
+    input   => add,
+    edge    => synced_add
   );
-
 
 sync_sub: rising_edge_synchronizer 
   port map(
-    clk       => clk,
-    reset       => reset,
-    async_in    => sub,
-    sync_out       => synced_sub
+    clk     => clk,
+    reset   => reset,
+    input   => sub,
+    edge    => synced_sub
   );
 
 add_sub: generic_add_sub 
@@ -119,27 +114,25 @@ add_sub: generic_add_sub
     
 convert_to_ssd_a: seven_seg 
     port map(
-      bcd     => unsigned('0' & synced_a),
-      seven_seg_out     => seven_seg_a
+      bcd           => unsigned('0' & synced_a),
+      seven_seg_out => seven_seg_a
     );
 
 convert_to_ssd_b: seven_seg 
     port map(
-      bcd     => unsigned('0' & synced_b),
-      seven_seg_out     => seven_seg_b
+      bcd           => unsigned('0' & synced_b),
+      seven_seg_out => seven_seg_b
     );
 
 convert_to_ssd_res: seven_seg 
     port map(
-      bcd     => add_sub_out,
-      seven_seg_out     => seven_seg_res
+      bcd           => add_sub_out,
+      seven_seg_out => seven_seg_res
     );
 
 
-
-
-
 --FIX THIS PROCESS!!!!
+--rising edge clock select add or sub accordingly
 process(clk,reset)
 begin
 if clk'event and clk='1' then
