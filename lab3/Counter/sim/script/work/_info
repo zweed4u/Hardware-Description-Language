@@ -1,0 +1,90 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/zdw7287/Downloads/Hardware-Description-Language/lab3/Counter/sim/script
+Egeneric_adder_beh
+Z1 w1475766407
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8../../src/generic_adder_beh.vhd
+Z6 F../../src/generic_adder_beh.vhd
+l0
+L9
+VZM:m22W6n_OU0[flII;@<2
+!s100 OOaH7j]OJo2FNLlk`2n1j2
+Z7 OL;C;10.5b;63
+31
+Z8 !s110 1475770106
+!i10b 1
+Z9 !s108 1475770106.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|../../src/generic_adder_beh.vhd|
+Z11 !s107 ../../src/generic_adder_beh.vhd|
+!i113 0
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
+Abeh
+R2
+R3
+R4
+DEx4 work 17 generic_adder_beh 0 22 ZM:m22W6n_OU0[flII;@<2
+l27
+L22
+V47TEQSEGOEnC:5zTXWXJT0
+!s100 :HNFWh71?9IMJ9A2iF1e21
+R7
+31
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+R13
+Etop
+R1
+R3
+R4
+R0
+Z14 8../../src/top.vhd
+Z15 F../../src/top.vhd
+l0
+L8
+V_]WIlG<i@i4BBz>VEEC6o0
+!s100 @?D12nlm=kd@WO91ki6D90
+R7
+31
+R8
+!i10b 1
+R9
+Z16 !s90 -reportprogress|300|-93|-work|work|../../src/top.vhd|
+Z17 !s107 ../../src/top.vhd|
+!i113 0
+R12
+R13
+Abeh
+R3
+R4
+DEx4 work 3 top 0 22 _]WIlG<i@i4BBz>VEEC6o0
+l55
+L16
+VhAn=FPTblABc7>i^Y_Y570
+!s100 Y<Ed[ok>oT[3QG9JoQAS]1
+R7
+31
+R8
+!i10b 1
+R9
+R16
+R17
+!i113 0
+R12
+R13

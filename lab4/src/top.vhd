@@ -71,6 +71,11 @@ signal synced_a     : std_logic_vector(2 downto 0);
 signal synced_b     : std_logic_vector(2 downto 0);
 signal add_sub_out  : std_logic_vector(3 downto 0);
 
+signal bcd_a   : std_logic_vector(3 downto 0);
+signal bcd_b   : std_logic_vector(3 downto 0);
+
+
+
 begin
 
 sync_a: synchronizer
@@ -115,13 +120,13 @@ add_sub: generic_add_sub
     
 convert_to_ssd_a: seven_seg 
     port map(
-      bcd           => std_logic_vector(unsigned('0' & synced_a)),
+      bcd           => bcd_a,
       seven_seg_out => seven_seg_a
     );
 
 convert_to_ssd_b: seven_seg 
     port map(
-      bcd           => std_logic_vector(unsigned('0' & synced_b)),
+      bcd           => bcd_b,
       seven_seg_out => seven_seg_b
     );
 
@@ -139,16 +144,12 @@ if clk'event and clk='1' then
     else
         if synced_add = '1' then
             synced_sel <= '0';
-        elsif synced_sub = '1' then
+        else 
             synced_sel <= '1';
-        elsif synced_add = '1' and synced_sub = '1' then
-			--both 1 - contention
-			synced_sel <= '0'; --defaults to addition
-        else
-			--both are 0
-			synced_sel <= '0'; --defaults to addition
         end if;
     end if;
 end if;
+bcd_a<=std_logic_vector(unsigned('0' & synced_a));
+bcd_b<=std_logic_vector(unsigned('0' & synced_b));
 end process;
 end beh;

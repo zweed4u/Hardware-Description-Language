@@ -1,0 +1,137 @@
+# //  ModelSim SE-64 10.5b May 21 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do sim.do
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 12:47:41 on Oct 06,2016
+# vcom -reportprogress 300 -93 -work work ../../src/top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity top
+# -- Compiling architecture beh of top
+# End time: 12:47:41 on Oct 06,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 12:47:41 on Oct 06,2016
+# vcom -reportprogress 300 -93 -work work ../../src/synchronizer.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity synchronizer
+# -- Compiling architecture beh of synchronizer
+# End time: 12:47:41 on Oct 06,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 12:47:41 on Oct 06,2016
+# vcom -reportprogress 300 -93 -work work ../../src/generic_add_sub.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity generic_add_sub
+# -- Compiling architecture beh of generic_add_sub
+# End time: 12:47:41 on Oct 06,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 12:47:41 on Oct 06,2016
+# vcom -reportprogress 300 -93 -work work ../../src/seven_seg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity seven_seg
+# -- Compiling architecture beh of seven_seg
+# End time: 12:47:41 on Oct 06,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 12:47:41 on Oct 06,2016
+# vcom -reportprogress 300 -93 -work work ../../src/rising_edge_synchronizer.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity rising_edge_synchronizer
+# -- Compiling architecture beh of rising_edge_synchronizer
+# End time: 12:47:41 on Oct 06,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 12:47:41 on Oct 06,2016
+# vcom -reportprogress 300 -93 -work work ../src/top_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity top_tb
+# -- Compiling architecture arch of top_tb
+# ** Warning: ../src/top_tb.vhd(29): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 12:47:41 on Oct 06,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vsim -novopt top_tb 
+# Start time: 12:47:41 on Oct 06,2016
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading std.standard
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab4/sim/script/work.top_tb(arch)
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.top_tb(arch)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab4/sim/script/work.top(beh)
+# Loading work.top(beh)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab4/sim/script/work.synchronizer(beh)
+# Loading work.synchronizer(beh)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab4/sim/script/work.rising_edge_synchronizer(beh)
+# Loading work.rising_edge_synchronizer(beh)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab4/sim/script/work.generic_add_sub(beh)
+# Loading work.generic_add_sub(beh)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab4/sim/script/work.seven_seg(beh)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.seven_seg(beh)
+# ** Error: invalid command name "//add"
+# Executing ONERROR command at macro ./wave.do line 23
+# ** Error: invalid command name "/*"
+# Executing ONERROR command at macro ./wave.do line 37
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder_sig'.
+# Executing ONERROR command at macro ./wave.do line 38
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder/a'.
+# Executing ONERROR command at macro ./wave.do line 40
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder/b'.
+# Executing ONERROR command at macro ./wave.do line 42
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder/cin'.
+# Executing ONERROR command at macro ./wave.do line 44
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder/sum'.
+# Executing ONERROR command at macro ./wave.do line 46
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder/cout'.
+# Executing ONERROR command at macro ./wave.do line 48
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder/sum_temp'.
+# Executing ONERROR command at macro ./wave.do line 50
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/adder/cin_guard'.
+# Executing ONERROR command at macro ./wave.do line 52
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/counter/clk'.
+# Executing ONERROR command at macro ./wave.do line 54
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/counter/reset'.
+# Executing ONERROR command at macro ./wave.do line 56
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/counter/output'.
+# Executing ONERROR command at macro ./wave.do line 58
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/counter/count_sig'.
+# Executing ONERROR command at macro ./wave.do line 60
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/convert_to_ssd/bcd'.
+# Executing ONERROR command at macro ./wave.do line 62
+# ** Error: (vish-4014) No objects found matching '/top_tb/uut/convert_to_ssd/seven_seg_out'.
+# Executing ONERROR command at macro ./wave.do line 64
+# ** Error: invalid command name "*/"
+# Executing ONERROR command at macro ./wave.do line 66
+# End time: 12:48:30 on Oct 06,2016, Elapsed time: 0:00:49
+# Errors: 51, Warnings: 1

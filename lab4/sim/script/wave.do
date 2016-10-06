@@ -20,7 +20,8 @@ add wave -noupdate /top_tb/uut/sub
 add wave -noupdate /top_tb/uut/clk
 add wave -noupdate /top_tb/uut/reset
 
-add wave -noupdate -radix States -childformat {{/top_tb/uut/seven_seg_out(6) -radix States} {/top_tb/uut/seven_seg_out(5) -radix States} {/top_tb/uut/seven_seg_out(4) -radix States} {/top_tb/uut/seven_seg_out(3) -radix States} {/top_tb/uut/seven_seg_out(2) -radix States} {/top_tb/uut/seven_seg_out(1) -radix States} {/top_tb/uut/seven_seg_out(0) -radix States}} -expand -subitemconfig {/top_tb/uut/seven_seg_out(6) {-radix States} /top_tb/uut/seven_seg_out(5) {-radix States} /top_tb/uut/seven_seg_out(4) {-radix States} /top_tb/uut/seven_seg_out(3) {-radix States} /top_tb/uut/seven_seg_out(2) {-radix States} /top_tb/uut/seven_seg_out(1) {-radix States} /top_tb/uut/seven_seg_out(0) {-radix States}} /top_tb/uut/seven_seg_out
+//add wave -noupdate -radix States -childformat {{/top_tb/uut/seven_seg_out(6) -radix States} {/top_tb/uut/seven_seg_out(5) -radix States} {/top_tb/uut/seven_seg_out(4) -radix States} {/top_tb/uut/seven_seg_out(3) -radix States} {/top_tb/uut/seven_seg_out(2) -radix States} {/top_tb/uut/seven_seg_out(1) -radix States} {/top_tb/uut/seven_seg_out(0) -radix States}} -expand -subitemconfig {/top_tb/uut/seven_seg_out(6) {-radix States} /top_tb/uut/seven_seg_out(5) {-radix States} /top_tb/uut/seven_seg_out(4) {-radix States} /top_tb/uut/seven_seg_out(3) {-radix States} /top_tb/uut/seven_seg_out(2) {-radix States} /top_tb/uut/seven_seg_out(1) {-radix States} /top_tb/uut/seven_seg_out(0) {-radix States}} /top_tb/uut/seven_seg_out
+
 add wave -noupdate /top_tb/uut/a
 add wave -noupdate /top_tb/uut/b
 add wave -noupdate /top_tb/uut/add
@@ -33,7 +34,7 @@ add wave -noupdate /top_tb/uut/seven_seg_b
 add wave -noupdate /top_tb/uut/seven_seg_res
 
 
-
+/*
 add wave -noupdate /top_tb/uut/adder_sig
 add wave -noupdate /top_tb/uut/adder/a
 add wave -noupdate /top_tb/uut/adder/b
@@ -48,6 +49,8 @@ add wave -noupdate /top_tb/uut/counter/output
 add wave -noupdate /top_tb/uut/counter/count_sig
 add wave -noupdate /top_tb/uut/convert_to_ssd/bcd
 add wave -noupdate /top_tb/uut/convert_to_ssd/seven_seg_out
+*/
+
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {0 ns} 0}
 quietly wave cursor active 1
