@@ -4,6 +4,7 @@
 -------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity top is
   port (
@@ -37,8 +38,8 @@ component synchronizer is
   port (
     clk               : in std_logic;
     reset             : in std_logic;
-    async_in          : in std_logic;
-    sync_out          : out std_logic
+    async_in          : in std_logic_vector(2 downto 0);
+    sync_out          : out std_logic_vector(2 downto 0)
   ); 
 end component;  
 
@@ -114,13 +115,13 @@ add_sub: generic_add_sub
     
 convert_to_ssd_a: seven_seg 
     port map(
-      bcd           => unsigned('0' & synced_a),
+      bcd           => std_logic_vector(unsigned('0' & synced_a)),
       seven_seg_out => seven_seg_a
     );
 
 convert_to_ssd_b: seven_seg 
     port map(
-      bcd           => unsigned('0' & synced_b),
+      bcd           => std_logic_vector(unsigned('0' & synced_b)),
       seven_seg_out => seven_seg_b
     );
 
@@ -134,20 +135,18 @@ process(clk,reset)
 begin
 if clk'event and clk='1' then
     if reset='1' then
-        synced_a<= "000";
-        synced_b<= "000";
-        synced_sel<= "0";
+        synced_sel<= '0'; --defaults to addition
     else
         if synced_add = '1' then
-            synced_sel <= "0";
+            synced_sel <= '0';
         elsif synced_sub = '1' then
-            synced_sel <= "1";
-        --both 1 - contention
+            synced_sel <= '1';
         elsif synced_add = '1' and synced_sub = '1' then
-            synced_sel <= "0";
-        --both are 0
+			--both 1 - contention
+			synced_sel <= '0'; --defaults to addition
         else
-            synced_sel <= "0";
+			--both are 0
+			synced_sel <= '0'; --defaults to addition
         end if;
     end if;
 end if;
