@@ -130,17 +130,24 @@ convert_to_ssd_res: seven_seg
       seven_seg_out => seven_seg_res
     );
 
-
---FIX THIS PROCESS!!!!
---rising edge clock select add or sub accordingly
 process(clk,reset)
 begin
 if clk'event and clk='1' then
     if reset='1' then
-        sum_sig<= "0000";
+        synced_a<= "000";
+        synced_b<= "000";
+        synced_sel<= "0";
     else
-        if enable_sig = '1' then
-            sum_sig<=adder_sig;
+        if synced_add = '1' then
+            synced_sel <= "0";
+        elsif synced_sub = '1' then
+            synced_sel <= "1";
+        --both 1 - contention
+        elsif synced_add = '1' and synced_sub = '1' then
+            synced_sel <= "0";
+        --both are 0
+        else
+            synced_sel <= "0";
         end if;
     end if;
 end if;
