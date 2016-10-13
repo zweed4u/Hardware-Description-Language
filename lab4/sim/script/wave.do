@@ -13,46 +13,17 @@ radix define States {
     -default default
 }
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /top_tb/uut/a
-add wave -noupdate /top_tb/uut/b
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/a
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/b
 add wave -noupdate /top_tb/uut/add
 add wave -noupdate /top_tb/uut/sub
 add wave -noupdate /top_tb/uut/clk
 add wave -noupdate /top_tb/uut/reset
-
-//add wave -noupdate -radix States -childformat {{/top_tb/uut/seven_seg_out(6) -radix States} {/top_tb/uut/seven_seg_out(5) -radix States} {/top_tb/uut/seven_seg_out(4) -radix States} {/top_tb/uut/seven_seg_out(3) -radix States} {/top_tb/uut/seven_seg_out(2) -radix States} {/top_tb/uut/seven_seg_out(1) -radix States} {/top_tb/uut/seven_seg_out(0) -radix States}} -expand -subitemconfig {/top_tb/uut/seven_seg_out(6) {-radix States} /top_tb/uut/seven_seg_out(5) {-radix States} /top_tb/uut/seven_seg_out(4) {-radix States} /top_tb/uut/seven_seg_out(3) {-radix States} /top_tb/uut/seven_seg_out(2) {-radix States} /top_tb/uut/seven_seg_out(1) {-radix States} /top_tb/uut/seven_seg_out(0) {-radix States}} /top_tb/uut/seven_seg_out
-
-add wave -noupdate /top_tb/uut/a
-add wave -noupdate /top_tb/uut/b
-add wave -noupdate /top_tb/uut/add
-add wave -noupdate /top_tb/uut/sub
-add wave -noupdate /top_tb/uut/clk
-add wave -noupdate /top_tb/uut/reset
-
-add wave -noupdate /top_tb/uut/seven_seg_a
-add wave -noupdate /top_tb/uut/seven_seg_b
-add wave -noupdate /top_tb/uut/seven_seg_res
-
-
-/*
-add wave -noupdate /top_tb/uut/adder_sig
-add wave -noupdate /top_tb/uut/adder/a
-add wave -noupdate /top_tb/uut/adder/b
-add wave -noupdate /top_tb/uut/adder/cin
-add wave -noupdate /top_tb/uut/adder/sum
-add wave -noupdate /top_tb/uut/adder/cout
-add wave -noupdate /top_tb/uut/adder/sum_temp
-add wave -noupdate /top_tb/uut/adder/cin_guard
-add wave -noupdate /top_tb/uut/counter/clk
-add wave -noupdate /top_tb/uut/counter/reset
-add wave -noupdate /top_tb/uut/counter/output
-add wave -noupdate /top_tb/uut/counter/count_sig
-add wave -noupdate /top_tb/uut/convert_to_ssd/bcd
-add wave -noupdate /top_tb/uut/convert_to_ssd/seven_seg_out
-*/
-
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_a
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_b
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_res
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {0 ns} 0}
+WaveRestoreCursors {{Cursor 1} {400 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 177
 configure wave -valuecolwidth 135
@@ -68,4 +39,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {585 ns}
+WaveRestoreZoom {0 ns} {525 ns}

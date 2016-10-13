@@ -68,15 +68,16 @@ async_reset: process
     wait;
 end process; 
 
--- debug process
+-- debugging process
 debug: process
   begin
+	wait for 2 * period;
+	a<="110";
+	b<="001";
     wait for 100 ns;
-    add <= '0';
-    sub <= '1';
-	a<="010";
-	b<="010";
-    wait;
+    sub <= '0';
+    add <= '1';
+	wait;
 end process; 
 
 

@@ -70,10 +70,14 @@ signal synced_sel   : std_logic;
 signal synced_a     : std_logic_vector(2 downto 0);
 signal synced_b     : std_logic_vector(2 downto 0);
 signal add_sub_out  : std_logic_vector(3 downto 0);
+
 signal bcd_a   : std_logic_vector(3 downto 0);
 signal bcd_b   : std_logic_vector(3 downto 0);
 
+
+
 begin
+
 sync_a: synchronizer
   port map(
     clk         => clk,
@@ -132,22 +136,16 @@ convert_to_ssd_res: seven_seg
       seven_seg_out => seven_seg_res
     );
 
-process(clk,reset) -- Is this sensitivity list correct?
-	begin
-	if clk'event and clk='1' then -- Does this need to be inside a clocked process?
-		if reset='1' then
-			-- What gets reset here? - 
-			-- tried declaring add_sub_out="1010"
-			-- this would result in a blank result hex display
-			-- DID NOT WORK - cannot drive
-		else
-			if synced_add = '1' then -- add signal is 1 out of its rising edge 
-				synced_sel <= '0';   -- add flag signal to gen_add_sub
-			elsif synced_sub = '1' then  -- sub signal is 1 out of its rising edge
-				synced_sel <= '1';		 -- sub flag signal to gen_add_sub
-			end if;
-		end if;
-	end if;
+
+
+process(sync_add,sync_sub)
+begin
+if synced_add = '1' then
+    synced_sel <= '0';
+elsif synced_sub='1' then
+    synced_sel <= '1';
+end if;
+
 
 bcd_a<=std_logic_vector(unsigned('0' & synced_a));
 bcd_b<=std_logic_vector(unsigned('0' & synced_b));
