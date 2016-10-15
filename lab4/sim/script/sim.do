@@ -8,4 +8,4 @@ vcom -93 -work work ../../src/rising_edge_synchronizer.vhd
 vcom -93 -work work ../src/top_tb.vhd
 vsim -novopt top_tb
 do wave.do
-run 500 ns
+run 3750 ns

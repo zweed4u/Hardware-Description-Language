@@ -44,7 +44,22 @@ process(bcd)
             seven_seg_out<="0000000" ;
         when "1001" => --9
             seven_seg_out<="0011000"; 
-        when others => --10 through 16 all off
+		
+		when "1010" => --a
+            seven_seg_out<="0001000";
+        when "1011" => --b
+            seven_seg_out<="0000011" ;
+        when "1100" => --c
+            seven_seg_out<="1000110"; 
+		when "1101" => --d
+            seven_seg_out<="0100001";
+        when "1110" => --e
+            seven_seg_out<="0000110" ;
+        when "1111" => --f
+            seven_seg_out<="0001110"; 
+		
+			
+        when others => 
             seven_seg_out<="1111111"; 
     end case;
 end process;

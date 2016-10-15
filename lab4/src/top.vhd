@@ -132,20 +132,16 @@ convert_to_ssd_res: seven_seg
       seven_seg_out => seven_seg_res
     );
 
+	
+	
+	
 process(clk,reset) -- Is this sensitivity list correct?
 	begin
 	if clk'event and clk='1' then -- Does this need to be inside a clocked process?
-		if reset='1' then
-			-- What gets reset here? - 
-			-- tried declaring add_sub_out="1010"
-			-- this would result in a blank result hex display
-			-- DID NOT WORK - cannot drive
-		else
-			if synced_add = '1' then -- add signal is 1 out of its rising edge 
-				synced_sel <= '0';   -- add flag signal to gen_add_sub
-			elsif synced_sub = '1' then  -- sub signal is 1 out of its rising edge
-				synced_sel <= '1';		 -- sub flag signal to gen_add_sub
-			end if;
+		if synced_add = '1' then -- add signal is 1 out of its rising edge 
+			synced_sel <= '0';   -- add flag signal to gen_add_sub
+		elsif synced_sub = '1' then  -- sub signal is 1 out of its rising edge
+			synced_sel <= '1';		 -- sub flag signal to gen_add_sub
 		end if;
 	end if;
 

@@ -24,13 +24,14 @@ component top is
     seven_seg_res   : out std_logic_vector(6 downto 0)
   );
 end component; 
-
+constant SEQUENTIAL_FLAG   : boolean := true;
+constant NUM_BITS          : integer := 3;
 signal output       : std_logic;
 constant period     : time := 20ns;                                              
 signal clk          : std_logic := '0';
 signal reset        : std_logic := '1';
-signal a			: std_logic_vector(2 downto 0);
-signal b			: std_logic_vector(2 downto 0);
+signal a			: std_logic_vector(2 downto 0):= (others => '0');
+signal b			: std_logic_vector(2 downto 0):= (others => '0');
 signal add			: std_logic;
 signal sub			: std_logic;
 signal seven_seg_a	: std_logic_vector(6 downto 0);
@@ -51,7 +52,6 @@ uut: top
     seven_seg_b     => seven_seg_b,
     seven_seg_res   => seven_seg_res
   );
-
   
 -- clock process
 clock: process
@@ -68,17 +68,38 @@ async_reset: process
     wait;
 end process; 
 
--- debugging process
-debug: process
-  begin
+seq_stim: if SEQUENTIAL_FLAG generate
+seq : process
+	begin
+	sub <= '0';
+    add <= '0';
 	wait for 2 * period;
-	a<="110";
-	b<="001";
-    wait for 100 ns;
-    sub <= '0';
-    add <= '1';
-	wait;
-end process; 
+	wait for 50 ns;
+	
+      report "****************** sequential testbench start ****************";
+      wait for 10 ns;   -- let all the initial conditions trickle through
+      for logic in 0 to 1 loop --half add half sub
+        add<=not(add);
+		wait for 50 ns;
+        add<=not(add);
+		wait for 50 ns;
+		a<="000";
+          for i in 0 to ((2 ** NUM_BITS) - 1) loop
+			b<="000";
+			wait for 50 ns;
+            for j in 0 to ((2 ** NUM_BITS) - 1)  loop
+              b <= std_logic_vector(unsigned(b) + 1 );
+              wait for 50 ns;
+            end loop;
+			a <= std_logic_vector(unsigned(a) + 1 );
+          end loop;
+		add<=not(add);
+		sub<=not(sub);
+      end loop;
+      report "****************** sequential testbench stop ****************";
+      wait;
+  end process; 
+end generate seq_stim;	
 
 
 end arch;

@@ -13,17 +13,23 @@ radix define States {
     -default default
 }
 quietly WaveActivateNextPane {} 0
-add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/a
-add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/b
-add wave -noupdate /top_tb/uut/add
-add wave -noupdate /top_tb/uut/sub
 add wave -noupdate /top_tb/uut/clk
 add wave -noupdate /top_tb/uut/reset
+add wave -noupdate -radix binary /top_tb/uut/synced_a
+add wave -noupdate -radix binary /top_tb/uut/synced_b
+add wave -noupdate /top_tb/uut/synced_add
+add wave -noupdate /top_tb/uut/synced_sub
+add wave -noupdate /top_tb/uut/synced_sel
 add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_a
 add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_b
+add wave -noupdate /top_tb/uut/add_sub_out
 add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_res
+add wave -noupdate /top_tb/a
+add wave -noupdate /top_tb/b
+add wave -noupdate /top_tb/add
+add wave -noupdate /top_tb/sub
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {400 ns} 0}
+WaveRestoreCursors {{Cursor 1} {3748 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 177
 configure wave -valuecolwidth 135
@@ -39,4 +45,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {525 ns}
+WaveRestoreZoom {0 ns} {3938 ns}
