@@ -1,0 +1,133 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "seven_seg_a[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_a[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_a[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_a[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_a[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_a[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_a[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_b[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_b[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_b[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_b[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_b[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_b[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_b[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_res[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_res[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_res[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_res[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_res[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_res[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_res[6]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "a[1]",
+					"strict" : false
+				},
+				{
+					"name" : "a[2]",
+					"strict" : false
+				},
+				{
+					"name" : "a[0]",
+					"strict" : false
+				},
+				{
+					"name" : "b[1]",
+					"strict" : false
+				},
+				{
+					"name" : "b[2]",
+					"strict" : false
+				},
+				{
+					"name" : "b[0]",
+					"strict" : false
+				},
+				{
+					"name" : "add",
+					"strict" : false
+				},
+				{
+					"name" : "sub",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

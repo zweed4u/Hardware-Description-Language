@@ -79,7 +79,7 @@ seq : process
       report "****************** sequential testbench start ****************";
       wait for 10 ns;   -- let all the initial conditions trickle through
       for logic in 0 to 1 loop --half add half sub
-        add<=not(add);
+        --add<=not(add);
 		wait for 50 ns;
         add<=not(add);
 		wait for 50 ns;
@@ -93,7 +93,6 @@ seq : process
             end loop;
 			a <= std_logic_vector(unsigned(a) + 1 );
           end loop;
-		add<=not(add);
 		sub<=not(sub);
       end loop;
       report "****************** sequential testbench stop ****************";

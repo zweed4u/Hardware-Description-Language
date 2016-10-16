@@ -29,7 +29,7 @@ add wave -noupdate /top_tb/b
 add wave -noupdate /top_tb/add
 add wave -noupdate /top_tb/sub
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {3748 ns} 0}
+WaveRestoreCursors {{Cursor 1} {880 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 177
 configure wave -valuecolwidth 135
@@ -45,4 +45,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {3938 ns}
+WaveRestoreZoom {0 ns} {7875 ns}
