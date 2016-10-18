@@ -35,6 +35,47 @@ stateReg: std_logic_vector(3 downto 0); --4 states
 stateNext: std_logic_vector(3 downto 0);--4 states
 
 begin 
+
+component generic_add_sub is
+  generic (
+    bits    : integer := 3
+  );
+  port (
+    a       : in  std_logic_vector(bits-1 downto 0);
+    b       : in  std_logic_vector(bits-1 downto 0);
+    flag    : in  std_logic; -- 0: add 1: sub
+    c       : out std_logic_vector(bits downto 0)
+  );
+end component;
+
+component seven_seg is
+  generic (
+    max_count       : integer := 25000000
+  );
+  port (
+    bcd             : in std_logic_vector(3 downto 0);
+    seven_seg_out   : out std_logic_vector(6 downto 0)
+  );   
+end component; 
+
+component synchronizer is
+  port (
+    clk               : in std_logic;
+    reset             : in std_logic;
+    async_in          : in std_logic_vector(2 downto 0);
+    sync_out          : out std_logic_vector(2 downto 0)
+  ); 
+end component;
+
+component rising_edge_synchronizer is 
+  port (
+    clk               : in std_logic;
+    reset             : in std_logic;
+    input             : in std_logic;
+    edge              : out std_logic
+  );
+end component;
+
 -- component instantiations here
 --example_a: example
 --  port map(
@@ -57,15 +98,41 @@ begin
     --led indicate default 
     stateNext<=stateReg; --prevent latch
     case stateReg is
+
         when input_a =>
-            --if block 
-        when input_a =>
-            --if block
-        when input_a =>
-            --if block
-        when input_a =>
-            --if block
+            s_led<="0001";
+            if s_btn='1' then 
+                stateNext<=input_b;
+            elsif reset='1' then
+                stateNext<=input_a;
+            end if;
+
+        when input_b =>
+            s_led<="0010";
+            if s_btn='1' then 
+                stateNext<=disp_sum;
+            elsif reset='1' then
+                stateNext<=input_a;
+            end if;
+
+        when disp_sum =>
+            s_led<="0100";
+            if s_btn='1' then 
+                stateNext<=disp_diff;
+            elsif reset='1' then
+                stateNext<=input_a;
+            end if;
+
+        when disp_diff =>
+            s_led<="1000";
+            if s_btn='1' then 
+                stateNext<=input_a;
+            elsif reset='1' then
+                stateNext<=input_a;
+            end if;
+
         when others =>
+            s_led<="0000";
             stateNext<=input_a;
     end case;
 end beh;
