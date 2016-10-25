@@ -14,7 +14,7 @@ use ieee.numeric_std.all;
 
 entity top is
   port (
-    input           : in std_logic_vector(7 downto 0); -- a and b, state will determin which
+    sw_in           : in std_logic_vector(7 downto 0); -- a and b, state will determin which
     s_btn           : in std_logic; -- btn to switch state
     clk             : in std_logic;
     reset           : in std_logic;
@@ -99,7 +99,7 @@ sync_a: synchronizer -- adjust component to support 8 bits!
   port map(
     clk         => clk,
     reset       => reset,
-    async_in    => input, --8
+    async_in    => sw_in, --8
     sync_out    => synced_sw --8
   );
 
@@ -206,8 +206,8 @@ begin
 
         when input_a =>
             s_led<="0001";
-            retain_a<=input;
-            preDD<=std_logic_vector(unsigned("000" & input));
+            retain_a<=sw_in;
+            preDD<=std_logic_vector(unsigned("000" & sw_in));
             --numbers from switches go through to dd prepend 0 for guard
             if synced_button='1' then 
                 stateNext<=input_b;
@@ -217,8 +217,8 @@ begin
 
         when input_b =>
             s_led<="0010";
-            retain_b<=input;
-            preDD<=std_logic_vector(unsigned("000" & input));
+            retain_b<=sw_in;
+            preDD<=std_logic_vector(unsigned("000" & sw_in));
             --numbers from switches go through to dd prepend 0 for guard
             if synced_button='1' then 
                 stateNext<=disp_sum;
