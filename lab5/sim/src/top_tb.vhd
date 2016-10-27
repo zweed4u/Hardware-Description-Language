@@ -69,7 +69,7 @@ async_reset: process
 end process; 
 
 concurrent_stimuli: if not SEQUENTIAL_FLAG generate
-  s_btn='0';
+  s_btn<='0';
 
   --input 5 for A
   sw_in <= "00000101" after 40 ns;
