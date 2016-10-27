@@ -17,62 +17,59 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY ../output_files
 
 # 2] include your relative path files here
 set_global_assignment -name VHDL_FILE ../../src/seven_seg.vhd
-set_global_assignment -name VHDL_FILE ../../src/synchronizer_8bit.vhd
+set_global_assignment -name VHDL_FILE ../../src/synchronizer.vhd
 set_global_assignment -name VHDL_FILE ../../src/rising_edge_synchronizer.vhd
-set_global_assignment -name VHDL_FILE ../../src/double_dabble.vhd
-set_global_assignment -name VHDL_FILE ../../src/memory.vhd
-set_global_assignment -name VHDL_FILE ../../src/alu.vhd
-set_global_assignment -name VHDL_FILE ../../src/components.vhd
-set_global_assignment -name VHDL_FILE ../../src/calculator.vhd
 set_global_assignment -name VHDL_FILE ../../src/top.vhd
 
+#8 bit switch
+#btn
+#clk
+#reset
+#3 7ssd
+#4bit led
 set_location_assignment PIN_AF14 -to clk
-set_location_assignment PIN_AA14 -to reset_n
-set_location_assignment PIN_AA15 -to mr
-set_location_assignment PIN_W15  -to ms
-set_location_assignment PIN_Y16  -to execute
+# reset - key0
+set_location_assignment PIN_AA14 -to reset_n 
+# led state indicator - ledrs under hex
+set_location_assignment PIN_V16  -to s_led[0]
+set_location_assignment PIN_W16  -to s_led[1]
+set_location_assignment PIN_V17  -to s_led[2]
+set_location_assignment PIN_V18  -to s_led[3]
+# sws starting at rightmost for lsb
+set_location_assignment PIN_AB12 -to sw_in[0]
+set_location_assignment PIN_AC12 -to sw_in[1]
+set_location_assignment PIN_AF9  -to sw_in[2]
+set_location_assignment PIN_AF10 -to sw_in[3]
+set_location_assignment PIN_AD11 -to sw_in[4]
+set_location_assignment PIN_AD12 -to sw_in[5]
+set_location_assignment PIN_AE11 -to sw_in[6]
+set_location_assignment PIN_AC9  -to sw_in[7]
+#btn for state trans - key3
+set_location_assignment PIN_Y16 -to s_btn
+#ssds hex2..0 - 3 rightmost hex displays
+set_location_assignment PIN_AE26 -to seven_seg_one[0]
+set_location_assignment PIN_AE27 -to seven_seg_one[1]
+set_location_assignment PIN_AE28 -to seven_seg_one[2]
+set_location_assignment PIN_AG27 -to seven_seg_one[3]
+set_location_assignment PIN_AF28 -to seven_seg_one[4]
+set_location_assignment PIN_AG28 -to seven_seg_one[5]
+set_location_assignment PIN_AH28 -to seven_seg_one[6]
 
-set_location_assignment PIN_V16  -to led[0]
-set_location_assignment PIN_W16  -to led[1]
-set_location_assignment PIN_V17  -to led[2]
-set_location_assignment PIN_V18  -to led[3]
-set_location_assignment PIN_W17  -to led[3]
+set_location_assignment PIN_AJ29 -to seven_seg_ten[0]
+set_location_assignment PIN_AH29 -to seven_seg_ten[1]
+set_location_assignment PIN_AH30 -to seven_seg_ten[2]
+set_location_assignment PIN_AG30 -to seven_seg_ten[3]
+set_location_assignment PIN_AF29 -to seven_seg_ten[4]
+set_location_assignment PIN_AF30 -to seven_seg_ten[5]
+set_location_assignment PIN_AD27 -to seven_seg_ten[6]
 
-set_location_assignment PIN_AB12 -to switch[0]
-set_location_assignment PIN_AC12 -to switch[1]
-set_location_assignment PIN_AF9  -to switch[2]
-set_location_assignment PIN_AF10 -to switch[3]
-set_location_assignment PIN_AD11 -to switch[4]
-set_location_assignment PIN_AD12 -to switch[5]
-set_location_assignment PIN_AE11 -to switch[6]
-set_location_assignment PIN_AC9  -to switch[7]
-
-set_location_assignment PIN_AD10 -to op[0]
-set_location_assignment PIN_AE12 -to op[1]
-
-set_location_assignment PIN_AE26 -to bcd_0[0]
-set_location_assignment PIN_AE27 -to bcd_0[1]
-set_location_assignment PIN_AE28 -to bcd_0[2]
-set_location_assignment PIN_AG27 -to bcd_0[3]
-set_location_assignment PIN_AF28 -to bcd_0[4]
-set_location_assignment PIN_AG28 -to bcd_0[5]
-set_location_assignment PIN_AH28 -to bcd_0[6]
-
-set_location_assignment PIN_AJ29 -to bcd_1[0]
-set_location_assignment PIN_AH29 -to bcd_1[1]
-set_location_assignment PIN_AH30 -to bcd_1[2]
-set_location_assignment PIN_AG30 -to bcd_1[3]
-set_location_assignment PIN_AF29 -to bcd_1[4]
-set_location_assignment PIN_AF30 -to bcd_1[5]
-set_location_assignment PIN_AD27 -to bcd_1[6]
-
-set_location_assignment PIN_AB23 -to bcd_2[0]
-set_location_assignment PIN_AE29 -to bcd_2[1]
-set_location_assignment PIN_AD29 -to bcd_2[2]
-set_location_assignment PIN_AC28 -to bcd_2[3]
-set_location_assignment PIN_AD30 -to bcd_2[4]
-set_location_assignment PIN_AC29 -to bcd_2[5]
-set_location_assignment PIN_AC30 -to bcd_2[6]
+set_location_assignment PIN_AB23 -to seven_seg_hun[0]
+set_location_assignment PIN_AE29 -to seven_seg_hun[1]
+set_location_assignment PIN_AD29 -to seven_seg_hun[2]
+set_location_assignment PIN_AC28 -to seven_seg_hun[3]
+set_location_assignment PIN_AD30 -to seven_seg_hun[4]
+set_location_assignment PIN_AC29 -to seven_seg_hun[5]
+set_location_assignment PIN_AC30 -to seven_seg_hun[6]
 
 # set_location_assignment PIN_AD26 -to bcd_3[0]
 # set_location_assignment PIN_AC27 -to bcd_3[1]

@@ -1,12 +1,6 @@
---lab 5 test 
+--lab 5 
 --zachary weeden
---@TODO worry about prepended 0 signals and their locations within the top level view.
---Arithmetic and state logic 
---TB with listed cases and TCL
---QUESTIONS:
---DD process in each state?
---bit guard and their placement within the top level?
---internal signal mapping, assignment and declaration /in sensitivity list
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
