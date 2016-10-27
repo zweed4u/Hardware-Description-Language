@@ -224,4 +224,5 @@ begin
             s_led<="0000";
             stateNext<=input_a;
     end case;
+	end process;
 end beh;
