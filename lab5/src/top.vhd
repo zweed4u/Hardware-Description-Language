@@ -91,19 +91,19 @@ sync_btn: rising_edge_synchronizer
   
 convert_to_ssd_a: seven_seg 
     port map(
-      bcd           => sig_hundred, --hundreds from dd
+      bcd           => hundreds, --hundreds from dd
       seven_seg_out => seven_seg_hun
     );
 
 convert_to_ssd_b: seven_seg 
     port map(
-      bcd           => sig_ten, --tens from dd
+      bcd           => tens, --tens from dd
       seven_seg_out => seven_seg_ten
     );
 
 convert_to_ssd_c: seven_seg 
     port map(
-      bcd           => sig_one, --ones from dd
+      bcd           => ones, --ones from dd
       seven_seg_out => seven_seg_one
     );
 
