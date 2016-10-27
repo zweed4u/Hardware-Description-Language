@@ -15,19 +15,12 @@ radix define States {
 quietly WaveActivateNextPane {} 0
 add wave -noupdate /top_tb/uut/clk
 add wave -noupdate /top_tb/uut/reset
-add wave -noupdate -radix binary /top_tb/uut/synced_a
-add wave -noupdate -radix binary /top_tb/uut/synced_b
-add wave -noupdate /top_tb/uut/synced_add
-add wave -noupdate /top_tb/uut/synced_sub
-add wave -noupdate /top_tb/uut/synced_sel
-add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_a
-add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_b
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_hun
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_ten
 add wave -noupdate /top_tb/uut/add_sub_out
-add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_res
-add wave -noupdate /top_tb/a
-add wave -noupdate /top_tb/b
-add wave -noupdate /top_tb/add
-add wave -noupdate /top_tb/sub
+add wave -noupdate -radix binary -radixshowbase 0 /top_tb/uut/seven_seg_one
+add wave -noupdate /top_tb/sw_in
+add wave -noupdate /top_tb/s_btn
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {880 ns} 0}
 quietly wave cursor active 1
