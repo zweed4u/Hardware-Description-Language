@@ -66,10 +66,9 @@ signal retain_a     : std_logic_vector(7 downto 0);
 signal retain_b     : std_logic_vector(7 downto 0);
 signal preDD        : std_logic_vector(11 downto 0);
 
-signal sig_one      : std_logic_vector(3 downto 0);
-signal sig_ten      : std_logic_vector(3 downto 0);
-signal sig_hundred  : std_logic_vector(3 downto 0);
-
+signal ones			: std_logic_vector(3 downto 0);
+signal tens			: std_logic_vector(3 downto 0);
+signal hundreds		: std_logic_vector(3 downto 0);
 
 --COMPONENT INSTANTIATIONS
 begin
