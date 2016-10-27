@@ -1,0 +1,130 @@
+# //  ModelSim SE-64 10.5b May 21 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do sim.do
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 11:32:55 on Oct 27,2016
+# vcom -reportprogress 300 -93 -work work ../../src/top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity top
+# -- Compiling architecture beh of top
+# End time: 11:32:55 on Oct 27,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 11:32:55 on Oct 27,2016
+# vcom -reportprogress 300 -93 -work work ../../src/synchronizer.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity synchronizer
+# -- Compiling architecture beh of synchronizer
+# End time: 11:32:55 on Oct 27,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 11:32:55 on Oct 27,2016
+# vcom -reportprogress 300 -93 -work work ../../src/seven_seg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity seven_seg
+# -- Compiling architecture beh of seven_seg
+# End time: 11:32:56 on Oct 27,2016, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 11:32:56 on Oct 27,2016
+# vcom -reportprogress 300 -93 -work work ../../src/rising_edge_synchronizer.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity rising_edge_synchronizer
+# -- Compiling architecture beh of rising_edge_synchronizer
+# End time: 11:32:56 on Oct 27,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 11:32:56 on Oct 27,2016
+# vcom -reportprogress 300 -93 -work work ../src/top_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity top_tb
+# -- Compiling architecture arch of top_tb
+# ** Warning: ../src/top_tb.vhd(32): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# ** Error: ../src/top_tb.vhd(47): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(48): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(51): (vcom-1136) Unknown identifier "seven_seg_hun".
+# ** Error: ../src/top_tb.vhd(52): (vcom-1136) Unknown identifier "seven_seg_ten".
+# ** Error: ../src/top_tb.vhd(53): (vcom-1136) Unknown identifier "seven_seg_one".
+# ** Error: ../src/top_tb.vhd(54): (vcom-1136) Unknown identifier "s_led".
+# ** Error: ../src/top_tb.vhd(73): near "=": (vcom-1576) expecting == or '+' or '-' or '&'.
+# ** Error: ../src/top_tb.vhd(76): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(76): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(77): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(77): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(80): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(80): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(81): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(81): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(84): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(84): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(86): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(86): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(90): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(90): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(91): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(91): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(94): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(94): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(95): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(95): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(98): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(98): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(100): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(100): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(104): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(104): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(105): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(105): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(108): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(108): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(109): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(109): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(112): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(112): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(114): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(114): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(118): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(118): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(119): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(119): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(122): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(122): (vcom-1136) Unknown identifier "sw_in".
+# ** Error: ../src/top_tb.vhd(123): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(123): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(126): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(126): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(128): Illegal target for signal assignment.
+# ** Error: ../src/top_tb.vhd(128): (vcom-1136) Unknown identifier "s_btn".
+# ** Error: ../src/top_tb.vhd(134): VHDL Compiler exiting
+# End time: 11:32:56 on Oct 27,2016, Elapsed time: 0:00:00
+# Errors: 56, Warnings: 1
+# ** Error: c:/software/mentorgraphics/win64/vcom failed.
+# Error in macro ./sim.do line 7
+# c:/software/mentorgraphics/win64/vcom failed.
+#     while executing
+# "vcom -93 -work work ../src/top_tb.vhd"

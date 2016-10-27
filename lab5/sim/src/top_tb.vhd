@@ -32,13 +32,12 @@ signal output               : std_logic;
 constant period             : time := 20ns;                                              
 signal clk                  : std_logic := '0';
 signal reset                : std_logic := '1';
-signal a			        : std_logic_vector(2 downto 0):= (others => '0');
-signal b			        : std_logic_vector(2 downto 0):= (others => '0');
-signal add			        : std_logic;
-signal sub			        : std_logic;
-signal seven_seg_a	        : std_logic_vector(6 downto 0);
-signal seven_seg_b	        : std_logic_vector(6 downto 0);
-signal seven_seg_res        : std_logic_vector(6 downto 0);
+signal sw_in			    : std_logic_vector(7 downto 0):= (others => '0');
+signal s_btn			    : std_logic;
+signal seven_seg_hun	    : std_logic_vector(6 downto 0);
+signal seven_seg_ten	    : std_logic_vector(6 downto 0);
+signal seven_seg_one        : std_logic_vector(6 downto 0);
+signal s_led        		: std_logic_vector(3 downto 0);
 
 begin
 
