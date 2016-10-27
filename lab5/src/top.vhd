@@ -69,7 +69,7 @@ signal synced_button: std_logic;
 
 signal retain_a     : std_logic_vector(7 downto 0);
 signal retain_b     : std_logic_vector(7 downto 0);
-signal postOp     : std_logic_vector(8 downto 0);
+signal postOp     	: std_logic_vector(8 downto 0);
 
 signal preDD        : std_logic_vector(11 downto 0);
 
