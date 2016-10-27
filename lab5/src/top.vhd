@@ -215,7 +215,7 @@ begin
 
         when disp_diff =>
             s_led<="1000";
-            preDD<=std_logic_vector(unsigned("0000" & retain_a) - unsigned("0000" & retain_b));
+            preDD<=std_logic_vector(unsigned("0000" & retain_a) - unsigned("0000" & retain_b)); -- INVESTIGATE THIS LINE!
             if synced_button='1' then 
                 stateNext<=input_a;
             elsif reset='1' then
