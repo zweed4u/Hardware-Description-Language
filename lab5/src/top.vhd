@@ -56,6 +56,11 @@ component rising_edge_synchronizer is
 end component;
 
 --INTERNAL SIGNALS
+constant input_a	: std_logic_vector(3 downto 0) :="0001";
+constant input_b	: std_logic_vector(3 downto 0) :="0010";
+constant disp_sum	: std_logic_vector(3 downto 0) :="0100";
+constant disp_diff	: std_logic_vector(3 downto 0) :="1000";
+
 signal stateReg     : std_logic_vector(3 downto 0); --4 states
 signal stateNext    : std_logic_vector(3 downto 0); --4 states
 
@@ -174,7 +179,6 @@ begin
         stateReg<=stateNext;
     end if;
 end process;
-
 
 procStateNext: process(stateReg,reset,s_btn)
 begin
