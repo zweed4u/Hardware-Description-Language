@@ -27,18 +27,6 @@ end top;
 
 architecture beh of top is
 
-component generic_add_sub is
-  generic (
-    bits    : integer := 8
-  );
-  port (
-    a       : in  std_logic_vector(bits-1 downto 0);
-    b       : in  std_logic_vector(bits-1 downto 0);
-    flag    : in  std_logic; -- 0: add 1: sub
-    c       : out std_logic_vector(bits downto 0)
-  );
-end component;
-
 component seven_seg is
   generic (
     max_count       : integer := 25000000
@@ -67,30 +55,20 @@ component rising_edge_synchronizer is
   );
 end component;
 
-component generic_add_sub is -- NOT NEEDED - INLINE ARITHMETIC IN STATE
-  generic (
-    bits    : integer := 8
-  );
-  port (
-    a       : in  std_logic_vector(bits-1 downto 0);
-    b       : in  std_logic_vector(bits-1 downto 0);
-    flag    : in  std_logic; -- 0: add 1: sub
-    c       : out std_logic_vector(bits downto 0)
-  );
-end component; 
-
-
 --INTERNAL SIGNALS
-signal stateReg: std_logic_vector(3 downto 0); --4 states
-signal stateNext: std_logic_vector(3 downto 0);--4 states
-signal synced_sw     : std_logic_vector(7 downto 0);
-signal synced_button   : std_logic;
-signal retain_a : std_logic_vector(7 downto 0);
-signal retain_b : std_logic_vector(7 downto 0);
-signal preDD : std_logic_vector(11 downto 0);
-signal sig_one : std_logic_vector(3 downto 0);
-signal sig_ten : std_logic_vector(3 downto 0);
-signal sig_hundred : std_logic_vector(3 downto 0);
+signal stateReg     : std_logic_vector(3 downto 0); --4 states
+signal stateNext    : std_logic_vector(3 downto 0); --4 states
+
+signal synced_sw    : std_logic_vector(7 downto 0);
+signal synced_button: std_logic;
+
+signal retain_a     : std_logic_vector(7 downto 0);
+signal retain_b     : std_logic_vector(7 downto 0);
+signal preDD        : std_logic_vector(11 downto 0);
+
+signal sig_one      : std_logic_vector(3 downto 0);
+signal sig_ten      : std_logic_vector(3 downto 0);
+signal sig_hundred  : std_logic_vector(3 downto 0);
 
 
 --COMPONENT INSTANTIATIONS
@@ -203,12 +181,10 @@ procStateNext: process(stateReg,reset,s_btn)
 begin
     stateNext<=stateReg; --prevent latch
     case stateReg is
-
         when input_a =>
             s_led<="0001";
             retain_a<=sw_in;
-            preDD<=std_logic_vector(unsigned("000" & sw_in));
-            --numbers from switches go through to dd prepend 0 for guard
+            preDD<=std_logic_vector(unsigned("0000" & sw_in));
             if synced_button='1' then 
                 stateNext<=input_b;
             elsif reset='1' then
@@ -218,8 +194,7 @@ begin
         when input_b =>
             s_led<="0010";
             retain_b<=sw_in;
-            preDD<=std_logic_vector(unsigned("000" & sw_in));
-            --numbers from switches go through to dd prepend 0 for guard
+            preDD<=std_logic_vector(unsigned("0000" & sw_in));
             if synced_button='1' then 
                 stateNext<=disp_sum;
             elsif reset='1' then
@@ -228,9 +203,7 @@ begin
 
         when disp_sum =>
             s_led<="0100";
-            --std_logic_vector(unsigned("000" & retain_a) + unsigned("000" & retain_b));
-            --retain_a+retain_b
-            --sum of retain_a and retain_b go to dd prepend 3 zeros for guard
+            preDD<=std_logic_vector(unsigned("0000" & retain_a) + unsigned("0000" & retain_b));
             if synced_button='1' then 
                 stateNext<=disp_diff;
             elsif reset='1' then
@@ -239,9 +212,7 @@ begin
 
         when disp_diff =>
             s_led<="1000";
-            --std_logic_vector(unsigned("000" & retain_a) - unsigned("000" & retain_b));
-            --retain_a-retain_b
-            --diff of retain_a and retain_b go to dd prepend 3 zeros for guard
+            preDD<=std_logic_vector(unsigned("0000" & retain_a) - unsigned("0000" & retain_b));
             if synced_button='1' then 
                 stateNext<=input_a;
             elsif reset='1' then

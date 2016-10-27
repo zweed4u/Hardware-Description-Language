@@ -26,19 +26,19 @@ component top is
 end component;
 
 --INTERNAL SIGNALS HERE - FIX THESE
-constant SEQUENTIAL_FLAG   : boolean := true;
-constant NUM_BITS          : integer := 3;
-signal output       : std_logic;
-constant period     : time := 20ns;                                              
-signal clk          : std_logic := '0';
-signal reset        : std_logic := '1';
-signal a			: std_logic_vector(2 downto 0):= (others => '0');
-signal b			: std_logic_vector(2 downto 0):= (others => '0');
-signal add			: std_logic;
-signal sub			: std_logic;
-signal seven_seg_a	: std_logic_vector(6 downto 0);
-signal seven_seg_b	: std_logic_vector(6 downto 0);
-signal seven_seg_res: std_logic_vector(6 downto 0);
+constant SEQUENTIAL_FLAG    : boolean := false;
+constant NUM_BITS           : integer := 3;
+signal output               : std_logic;
+constant period             : time := 20ns;                                              
+signal clk                  : std_logic := '0';
+signal reset                : std_logic := '1';
+signal a			        : std_logic_vector(2 downto 0):= (others => '0');
+signal b			        : std_logic_vector(2 downto 0):= (others => '0');
+signal add			        : std_logic;
+signal sub			        : std_logic;
+signal seven_seg_a	        : std_logic_vector(6 downto 0);
+signal seven_seg_b	        : std_logic_vector(6 downto 0);
+signal seven_seg_res        : std_logic_vector(6 downto 0);
 
 begin
 
@@ -69,37 +69,66 @@ async_reset: process
     wait;
 end process; 
 
-seq_stim: if SEQUENTIAL_FLAG generate
-seq : process
-	begin
-	sub <= '0';
-    add <= '0';
-	wait for 2 * period;
-	wait for 50 ns;
-	
-      report "****************** sequential testbench start ****************";
-      wait for 10 ns;   -- let all the initial conditions trickle through
-      for logic in 0 to 1 loop --half add half sub
-        --add<=not(add);
-		wait for 50 ns;
-        add<=not(add);
-		wait for 50 ns;
-		a<="000";
-          for i in 0 to ((2 ** NUM_BITS) - 1) loop
-			b<="000";
-			wait for 50 ns;
-            for j in 0 to ((2 ** NUM_BITS) - 1)  loop
-              b <= std_logic_vector(unsigned(b) + 1 );
-              wait for 50 ns;
-            end loop;
-			a <= std_logic_vector(unsigned(a) + 1 );
-          end loop;
-		sub<=not(sub);
-      end loop;
-      report "****************** sequential testbench stop ****************";
-      wait;
-  end process; 
-end generate seq_stim;	
+concurrent_stimuli: if not SEQUENTIAL_FLAG generate
+  s_btn='0';
+
+  --input 5 for A
+  sw_in <= "00000101" after 40 ns;
+  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 5)
+
+  --input 2 for B
+  sw_in <= "00000010" after 80 ns;
+  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 2)
+
+
+  s_btn <= '1' after 120 ns; -- check SSD - need to ne toggled? (sum 7)
+
+  s_btn <= '1' after 160 ns; -- check SSD - need to ne toggled? (diff 3)
+
+
+  --input 2 for A
+  sw_in <= "00000010" after 200 ns;
+  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 2)
+
+  --input 5 for B
+  sw_in <= "00000101" after 240 ns;
+  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 5)
+
+
+  s_btn <= '1' after 280 ns; -- check SSD - need to ne toggled? (sum 7)
+
+  s_btn <= '1' after 320 ns; -- check SSD - need to ne toggled? (diff 509)
+
+
+  --input 200 for A
+  sw_in <= "11001000" after 360 ns;
+  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 200)
+
+  --input 100 for B
+  sw_in <= "01100100" after 400 ns;
+  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 100)
+
+
+  s_btn <= '1' after 440 ns; -- check SSD - need to ne toggled? (sum 300)
+
+  s_btn <= '1' after 480 ns; -- check SSD - need to ne toggled? (diff 100)
+
+
+  --input 100 for A
+  sw_in <= "01100100" after 520 ns;
+  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 100)
+
+  --input 200 for B
+  sw_in <= "11001000" after 560 ns;
+  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 200)
+
+
+  s_btn <= '1' after 600 ns; -- check SSD - need to ne toggled? (sum 300)
+
+  s_btn <= '1' after 640 ns; -- check SSD - need to ne toggled? (diff 412)
+
+end generate concurrent_stimuli;
+
 
 
 end arch;
