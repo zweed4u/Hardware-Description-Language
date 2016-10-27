@@ -23,8 +23,8 @@ begin
 double_flop :process(reset,clk,async_in)
   begin
     if reset = '1' then
-      flop1 <= "0000000";   
-      flop2 <= "0000000";	
+      flop1 <= "00000000";   
+      flop2 <= "00000000";	
     elsif rising_edge(clk) then
       flop1 <= async_in;
       flop2 <= flop1;
