@@ -72,59 +72,59 @@ concurrent_stimuli: if not SEQUENTIAL_FLAG generate
   s_btn<='0';
 
   --input 5 for A
-  sw_in <= "00000101" after 40 ns;
-  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 5)
-
-  --input 2 for B
-  sw_in <= "00000010" after 80 ns;
-  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 2)
-
-
-  s_btn <= '1' after 120 ns; -- check SSD - need to ne toggled? (sum 7)
-
-  s_btn <= '1' after 160 ns; -- check SSD - need to ne toggled? (diff 3)
-
-
-  --input 2 for A
-  sw_in <= "00000010" after 200 ns;
-  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 2)
-
-  --input 5 for B
-  sw_in <= "00000101" after 240 ns;
-  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 5)
-
-
-  s_btn <= '1' after 280 ns; -- check SSD - need to ne toggled? (sum 7)
-
-  s_btn <= '1' after 320 ns; -- check SSD - need to ne toggled? (diff 509)
-
-
-  --input 200 for A
-  sw_in <= "11001000" after 360 ns;
-  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 200)
-
-  --input 100 for B
-  sw_in <= "01100100" after 400 ns;
-  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 100)
-
-
-  s_btn <= '1' after 440 ns; -- check SSD - need to ne toggled? (sum 300)
-
-  s_btn <= '1' after 480 ns; -- check SSD - need to ne toggled? (diff 100)
-
-
-  --input 100 for A
-  sw_in <= "01100100" after 520 ns;
-  s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 100)
-
-  --input 200 for B
-  sw_in <= "11001000" after 560 ns;
-  s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 200)
-
-
-  s_btn <= '1' after 600 ns; -- check SSD - need to ne toggled? (sum 300)
-
-  s_btn <= '1' after 640 ns; -- check SSD - need to ne toggled? (diff 412)
+  sw_in <= "00000101" after 500 ns;
+  s_btn <= '1' after 500 ns; -- lock A in - check SSD  - need to be toggled? (A 5)
+  --
+  ----input 2 for B
+  --sw_in <= "00000010" after 80 ns;
+  --s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 2)
+  --
+  --
+  --s_btn <= '1' after 120 ns; -- check SSD - need to ne toggled? (sum 7)
+  --
+  --s_btn <= '1' after 160 ns; -- check SSD - need to ne toggled? (diff 3)
+  --
+  --
+  ----input 2 for A
+  --sw_in <= "00000010" after 200 ns;
+  --s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 2)
+  --
+  ----input 5 for B
+  --sw_in <= "00000101" after 240 ns;
+  --s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 5)
+  --
+  --
+  --s_btn <= '1' after 280 ns; -- check SSD - need to ne toggled? (sum 7)
+  --
+  --s_btn <= '1' after 320 ns; -- check SSD - need to ne toggled? (diff 509)
+  --
+  --
+  ----input 200 for A
+  --sw_in <= "11001000" after 360 ns;
+  --s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 200)
+  --
+  ----input 100 for B
+  --sw_in <= "01100100" after 400 ns;
+  --s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 100)
+  --
+  --
+  --s_btn <= '1' after 440 ns; -- check SSD - need to ne toggled? (sum 300)
+  --
+  --s_btn <= '1' after 480 ns; -- check SSD - need to ne toggled? (diff 100)
+  --
+  --
+  ----input 100 for A
+  --sw_in <= "01100100" after 520 ns;
+  --s_btn <= '1'; -- lock A in - check SSD  - need to be toggled? (A 100)
+  --
+  ----input 200 for B
+  --sw_in <= "11001000" after 560 ns;
+  --s_btn <= '1'; -- lock B in - check SSD  - need to be toggled? (B 200)
+  --
+  --
+  --s_btn <= '1' after 600 ns; -- check SSD - need to ne toggled? (sum 300)
+  --
+  --s_btn <= '1' after 640 ns; -- check SSD - need to ne toggled? (diff 412)
 
 end generate concurrent_stimuli;
 
