@@ -69,6 +69,8 @@ signal synced_button: std_logic;
 
 signal retain_a     : std_logic_vector(7 downto 0);
 signal retain_b     : std_logic_vector(7 downto 0);
+signal postOp     : std_logic_vector(8 downto 0);
+
 signal preDD        : std_logic_vector(11 downto 0);
 
 signal ones			: std_logic_vector(3 downto 0);
@@ -206,7 +208,8 @@ begin
 
         when disp_sum =>
             s_led<="0100";
-            preDD<=std_logic_vector(unsigned("0000" & retain_a) + unsigned("0000" & retain_b));
+            postOp<=std_logic_vector(unsigned('0' & retain_a) + unsigned('0' & retain_b));
+			preDD<=std_logic_vector(unsigned("000" & postOp));
             if synced_button='1' then 
                 stateNext<=disp_diff;
             elsif reset='1' then
@@ -215,7 +218,8 @@ begin
 
         when disp_diff =>
             s_led<="1000";
-            preDD<=std_logic_vector(unsigned("0000" & retain_a) - unsigned("0000" & retain_b)); -- INVESTIGATE THIS LINE!
+            postOp<=std_logic_vector(unsigned('0' & retain_a) - unsigned('0' & retain_b)); 
+            preDD<=std_logic_vector(unsigned("000" & postOp)); 
             if synced_button='1' then 
                 stateNext<=input_a;
             elsif reset='1' then
