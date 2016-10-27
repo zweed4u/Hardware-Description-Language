@@ -18,10 +18,14 @@ add wave -noupdate /top_tb/uut/reset
 add wave -noupdate -radix States -radixshowbase 0 /top_tb/uut/seven_seg_hun
 add wave -noupdate -radix States -radixshowbase 0 /top_tb/uut/seven_seg_ten
 add wave -noupdate -radix States -radixshowbase 0 /top_tb/uut/seven_seg_one
-add wave -noupdate /top_tb/sw_in
+add wave -noupdate -radix binary /top_tb/sw_in
 add wave -noupdate /top_tb/s_btn
+add wave -noupdate -radix binary /top_tb/s_led
+add wave -noupdate /top_tb/uut/retain_a
+add wave -noupdate /top_tb/uut/retain_b
+add wave -noupdate /top_tb/uut/preDD
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {0 ns} 0}
+WaveRestoreCursors {{Cursor 1} {2509 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 177
 configure wave -valuecolwidth 135
@@ -37,4 +41,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {6023 ns}
+WaveRestoreZoom {0 ns} {7875 ns}

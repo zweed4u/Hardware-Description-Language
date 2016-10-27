@@ -180,7 +180,7 @@ begin
     end if;
 end process;
 
-procStateNext: process(stateReg,reset,s_btn)
+procStateNext: process(stateReg,clk,reset,synced_button)
 begin
     stateNext<=stateReg; --prevent latch
     case stateReg is
