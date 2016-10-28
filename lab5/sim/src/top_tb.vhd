@@ -74,7 +74,7 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
   sequential_tb : process 
     begin
 	wait for 2 * period;
-	sw_in <= "01100100";
+	sw_in <= "00000101";
 	wait for 500 ns;
 	for k in 0 to 1 loop
 		s_btn<=not(s_btn);
@@ -82,7 +82,7 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
 	end loop;
 	
 	wait for 2 * period;
-	sw_in <= "11001000";
+	sw_in <= "00000010";
 	wait for 500 ns;
 	for k in 0 to 1 loop
 		s_btn<=not(s_btn);
@@ -106,7 +106,6 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
 	-------------------------
 	-------------------------
 	-------------------------
-	
 	wait for 2 * period;
 	sw_in <= "00000010";
 	wait for 500 ns;
