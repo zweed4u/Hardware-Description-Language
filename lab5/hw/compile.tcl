@@ -2,7 +2,7 @@
 # Quartus II compile script for DE1-SoC board
 
 # 1] name your project here
-set project_name "calculator"
+set project_name "lab5"
 
 file delete -force project
 file delete -force output_files
@@ -23,13 +23,15 @@ set_global_assignment -name VHDL_FILE ../../src/top.vhd
 
 set_location_assignment PIN_AF14 -to clk
 
-set_location_assignment PIN_AA14 -to reset_n 
+#leftmost sw
+set_location_assignment PIN_AE12 -to reset 
 
 set_location_assignment PIN_V16  -to s_led[0]
 set_location_assignment PIN_W16  -to s_led[1]
 set_location_assignment PIN_V17  -to s_led[2]
 set_location_assignment PIN_V18  -to s_led[3]
 
+#rightmost sws
 set_location_assignment PIN_AB12 -to sw_in[0]
 set_location_assignment PIN_AC12 -to sw_in[1]
 set_location_assignment PIN_AF9  -to sw_in[2]
@@ -39,7 +41,8 @@ set_location_assignment PIN_AD12 -to sw_in[5]
 set_location_assignment PIN_AE11 -to sw_in[6]
 set_location_assignment PIN_AC9  -to sw_in[7]
 
-set_location_assignment PIN_Y16 -to s_btn
+#rightmost btn
+set_location_assignment PIN_AA14 -to s_btn
 
 set_location_assignment PIN_AE26 -to seven_seg_one[0]
 set_location_assignment PIN_AE27 -to seven_seg_one[1]
