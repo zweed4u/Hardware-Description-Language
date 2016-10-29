@@ -21,21 +21,15 @@ set_global_assignment -name VHDL_FILE ../../src/synchronizer.vhd
 set_global_assignment -name VHDL_FILE ../../src/rising_edge_synchronizer.vhd
 set_global_assignment -name VHDL_FILE ../../src/top.vhd
 
-#8 bit switch
-#btn
-#clk
-#reset
-#3 7ssd
-#4bit led
 set_location_assignment PIN_AF14 -to clk
-# reset - key0
+
 set_location_assignment PIN_AA14 -to reset_n 
-# led state indicator - ledrs under hex
+
 set_location_assignment PIN_V16  -to s_led[0]
 set_location_assignment PIN_W16  -to s_led[1]
 set_location_assignment PIN_V17  -to s_led[2]
 set_location_assignment PIN_V18  -to s_led[3]
-# sws starting at rightmost for lsb
+
 set_location_assignment PIN_AB12 -to sw_in[0]
 set_location_assignment PIN_AC12 -to sw_in[1]
 set_location_assignment PIN_AF9  -to sw_in[2]
@@ -44,9 +38,9 @@ set_location_assignment PIN_AD11 -to sw_in[4]
 set_location_assignment PIN_AD12 -to sw_in[5]
 set_location_assignment PIN_AE11 -to sw_in[6]
 set_location_assignment PIN_AC9  -to sw_in[7]
-#btn for state trans - key3
+
 set_location_assignment PIN_Y16 -to s_btn
-#ssds hex2..0 - 3 rightmost hex displays
+
 set_location_assignment PIN_AE26 -to seven_seg_one[0]
 set_location_assignment PIN_AE27 -to seven_seg_one[1]
 set_location_assignment PIN_AE28 -to seven_seg_one[2]

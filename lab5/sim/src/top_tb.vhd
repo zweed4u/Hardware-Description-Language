@@ -80,7 +80,7 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
 		s_btn<=not(s_btn);
 		wait for 50 ns;
 	end loop;
-	
+	wait for 500 ns;
 	wait for 2 * period;
 	sw_in <= "00000010";
 	wait for 500 ns;
@@ -122,8 +122,23 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
 		wait for 50 ns;
 	end loop;
 	
+	wait for 2 * period;
+	wait for 500 ns;
+	for k in 0 to 1 loop
+		s_btn<=not(s_btn);
+		wait for 50 ns;
+	end loop;
 	
-	
+	wait for 1000 ns;
+	for k in 0 to 1 loop
+		s_btn<=not(s_btn);
+		wait for 50 ns;
+	end loop;
+	-------------------------
+	-------------------------
+	-------------------------
+	-------------------------
+	-------------------------	
 	wait for 2 * period;
 	sw_in <= "11001000";
 	wait for 500 ns;
@@ -140,6 +155,23 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
 		wait for 50 ns;
 	end loop;
 	
+	wait for 2 * period;
+	wait for 500 ns;
+	for k in 0 to 1 loop
+		s_btn<=not(s_btn);
+		wait for 50 ns;
+	end loop;
+	
+	wait for 1000 ns;
+	for k in 0 to 1 loop
+		s_btn<=not(s_btn);
+		wait for 50 ns;
+	end loop;
+	-------------------------
+	-------------------------
+	-------------------------
+	-------------------------
+	-------------------------
 	
 	
 	
@@ -154,6 +186,19 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
 	wait for 2 * period;
 	sw_in <= "11001000";
 	wait for 500 ns;
+	for k in 0 to 1 loop
+		s_btn<=not(s_btn);
+		wait for 50 ns;
+	end loop;
+	
+	wait for 2 * period;
+	wait for 500 ns;
+	for k in 0 to 1 loop
+		s_btn<=not(s_btn);
+		wait for 50 ns;
+	end loop;
+	
+	wait for 1000 ns;
 	for k in 0 to 1 loop
 		s_btn<=not(s_btn);
 		wait for 50 ns;
