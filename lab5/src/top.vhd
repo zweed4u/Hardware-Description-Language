@@ -1,14 +1,12 @@
 --lab 5 
 --zachary weeden
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-
 entity top is
   port (
-    sw_in           : in std_logic_vector(7 downto 0); -- a and b, state will determin which
+    sw_in           : in std_logic_vector(7 downto 0); 
     s_btn           : in std_logic; -- btn to switch state
     clk             : in std_logic;
     reset           : in std_logic;
@@ -50,10 +48,10 @@ component rising_edge_synchronizer is
 end component;
 
 --INTERNAL SIGNALS
-constant input_a	: std_logic_vector(3 downto 0) :="0001";
-constant input_b	: std_logic_vector(3 downto 0) :="0010";
-constant disp_sum	: std_logic_vector(3 downto 0) :="0100";
-constant disp_diff	: std_logic_vector(3 downto 0) :="1000";
+constant input_a    : std_logic_vector(3 downto 0) :="0001";
+constant input_b    : std_logic_vector(3 downto 0) :="0010";
+constant disp_sum   : std_logic_vector(3 downto 0) :="0100";
+constant disp_diff  : std_logic_vector(3 downto 0) :="1000";
 
 signal stateReg     : std_logic_vector(3 downto 0); --4 states
 signal stateNext    : std_logic_vector(3 downto 0); --4 states
@@ -63,17 +61,17 @@ signal synced_button: std_logic;
 
 signal retain_a     : std_logic_vector(7 downto 0);
 signal retain_b     : std_logic_vector(7 downto 0);
-signal postOp     	: std_logic_vector(8 downto 0);
+signal postOp       : std_logic_vector(8 downto 0);
 
 signal preDD        : std_logic_vector(11 downto 0);
 
-signal ones			: std_logic_vector(3 downto 0);
-signal tens			: std_logic_vector(3 downto 0);
-signal hundreds		: std_logic_vector(3 downto 0);
+signal ones         : std_logic_vector(3 downto 0);
+signal tens         : std_logic_vector(3 downto 0);
+signal hundreds     : std_logic_vector(3 downto 0);
 
 --COMPONENT INSTANTIATIONS
 begin
-sync_a: synchronizer -- adjust component to support 8 bits!
+sync_a: synchronizer 
   port map(
     clk         => clk,
     reset       => reset,
@@ -203,7 +201,7 @@ begin
         when disp_sum =>
             s_led<="0100";
             postOp<=std_logic_vector(unsigned('0' & retain_a) + unsigned('0' & retain_b));
-			preDD<=std_logic_vector(unsigned("000" & postOp));
+            preDD<=std_logic_vector(unsigned("000" & postOp));
             if synced_button='1' then 
                 stateNext<=disp_diff;
             elsif reset='1' then
@@ -225,5 +223,5 @@ begin
             s_led<="0000";
             stateNext<=input_a;
     end case;
-	end process;
+    end process;
 end beh;
