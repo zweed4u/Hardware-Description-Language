@@ -72,17 +72,23 @@ end component;
 --NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
 --NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
 --NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
---constant input_a    : std_logic_vector(3 downto 0) :="0001";
---constant input_b    : std_logic_vector(3 downto 0) :="0010";
---constant disp_sum   : std_logic_vector(3 downto 0) :="0100";
---constant disp_diff  : std_logic_vector(3 downto 0) :="1000";
+constant read_w         : std_logic_vector(3 downto 0) :="00001";
+constant read_r         : std_logic_vector(3 downto 0) :="00010";
+constant write_r        : std_logic_vector(3 downto 0) :="00100";
+constant write_w_no_op  : std_logic_vector(3 downto 0) :="01000"; -- this is synonymous with 'write_w_wait'
+constant write_w        : std_logic_vector(3 downto 0) :="10000";
 
---signal stateReg     : std_logic_vector(3 downto 0); --4 states
---signal stateNext    : std_logic_vector(3 downto 0); --4 states
+signal stateReg     : std_logic_vector(4 downto 0); --5 states
+signal stateNext    : std_logic_vector(4 downto 0); --5 states
 --
---signal synced_sw    : std_logic_vector(7 downto 0);
---signal synced_button: std_logic;
+--PROGRESS ON INTERNAL SIGNAL DECLARATIONS FROM DIAGRAM
+--
+signal synced_sw    : std_logic_vector(7 downto 0);
+signal synced_op    : std_logic_vector(2 downto 0);
 
+signal synced_mr      : std_logic;
+signal synced_ms      : std_logic;
+signal synced_execute : std_logic;
 
 --COMPONENT INSTANTIATIONS
 begin
