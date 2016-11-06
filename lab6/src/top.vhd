@@ -35,8 +35,8 @@ end component;
 
 
 component memory is
-  generic (addr_width : integer := 2;
-           data_width : integer := 4);
+  generic (addr_width : integer := 2;  --Verify Proper vector lengths
+           data_width : integer := 4); --Verify Proper vector lengths
   port (
     clk               : in std_logic;
     we                : in std_logic;
@@ -66,12 +66,7 @@ component rising_edge_synchronizer is
 end component;
 
 --INTERNAL SIGNALS
---examples!!!
---NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
---NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
---NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
---NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
---NEED TO BE EDITTED AND INCLUDE SAVE SIGNAL FOR READ_R CASE WHICH PULLS FROM THE MEM W/O ALU
+--States
 constant read_w         : std_logic_vector(3 downto 0) :="00001";
 constant read_r         : std_logic_vector(3 downto 0) :="00010";
 constant write_r        : std_logic_vector(3 downto 0) :="00100";
@@ -80,15 +75,27 @@ constant write_w        : std_logic_vector(3 downto 0) :="10000";
 
 signal stateReg     : std_logic_vector(4 downto 0); --5 states
 signal stateNext    : std_logic_vector(4 downto 0); --5 states
---
---PROGRESS ON INTERNAL SIGNAL DECLARATIONS FROM DIAGRAM
---
+
 signal synced_sw    : std_logic_vector(7 downto 0);
 signal synced_op    : std_logic_vector(2 downto 0);
 
 signal synced_mr      : std_logic;
 signal synced_ms      : std_logic;
 signal synced_execute : std_logic;
+
+signal to_mem    : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
+signal save      : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'dout' signal)
+
+signal result_sig     : std_logic_vector(7 downto 0); --Result of ALU - verify proper length (no padding?)
+
+signal preDD        : std_logic_vector(11 downto 0);
+signal ones         : std_logic_vector(3 downto 0);
+signal tens         : std_logic_vector(3 downto 0);
+signal hundreds     : std_logic_vector(3 downto 0);
+
+signal state_reg_output  : std_logic_vector(4 downto 0); --5 states???
+signal output_logic_we   : std_logic;
+signal output_logic_addr : std_logic_vector(1 downto 0);
 
 --COMPONENT INSTANTIATIONS
 begin
@@ -157,7 +164,7 @@ comp_memory: memory
       we   => output_logic_we,
       addr => output_logic_addr,
       din  => to_mem,
-      dout => alu_out
+      dout => save  --MEM TO ALU
     );
 
 
