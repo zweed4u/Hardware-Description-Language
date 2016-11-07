@@ -4,6 +4,13 @@
 --ALU component? - if just a process then determine padding and arithmetic logic
 --Length of vectors eg. dout/save 
 --Signal coming from fsm register to datapath
+--to_mem assignment in each state? 
+--write_s == write_r???
+--         || we || add
+--write_w  ||  1 || 00 working register
+--read_w   ||  0 || 00 working register
+--write_s  ||  1 || 01 save register
+--read_s   ||  0 || 01 save register
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -231,61 +238,75 @@ bcd1: process(preDD)
 procStateReg: process(reset_n, clk)
 begin
     if (reset_n = '1') then
-        stateReg<=input_a; --state
+        stateReg<=read_w; --state
     elsif (clk'event and clk ='1') then
         stateReg<=stateNext;
     end if;
 end process;
 
+ 
+--Case states
+--read_w, read_r, write_r, write_w_no_op, write_w
 --Fix this sensitivity list and the state logic
 procStateNext: process(stateReg,clk,reset_n,synced_execute)
 begin
     stateNext<=stateReg; --prevent latch
     case stateReg is
-        when input_a =>
-            s_led<="0001";
-            retain_a<=sw_in;
-            preDD<=std_logic_vector(unsigned("0000" & sw_in));
-            if synced_button='1' then 
-                stateNext<=input_b;
-            elsif reset_n='1' then
-                stateNext<=input_a;
+        when read_w =>
+            led<="00001";
+            output_logic_we<='0'
+            output_logic_addr<="00"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            if synced_execute='1' then
+                stateNext<=write_w_no_op;
+            elsif synced_ms='1' then
+                stateNext<=write_r;
+            elsif synced_mr='1' then
+                stateNext<=read_r;
+            else 
+                stateNext<=read_w;
             end if;
 
-        when input_b =>
-            s_led<="0010";
-            retain_b<=sw_in;
-            preDD<=std_logic_vector(unsigned("0000" & sw_in));
-            if synced_button='1' then 
-                stateNext<=disp_sum;
-            elsif reset_n='1' then
-                stateNext<=input_a;
+        when read_r => --read_s?
+            led<="00010";
+            output_logic_we<='0'
+            output_logic_addr<="01"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            if synced_execute='1' then
+                stateNext<=write_w_no_op;
+            else
+                stateNext<=read_w;
             end if;
 
-        when disp_sum =>
-            s_led<="0100";
-            postOp<=std_logic_vector(unsigned('0' & retain_a) + unsigned('0' & retain_b));
-            preDD<=std_logic_vector(unsigned("000" & postOp));
-            if synced_button='1' then 
-                stateNext<=disp_diff;
-            elsif reset_n='1' then
-                stateNext<=input_a;
-            end if;
+        when write_r => --write_s?
+            led<="00100";
+            output_logic_we<='1'
+            output_logic_addr<="01"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            stateNext<=read_w;
 
-        when disp_diff =>
-            s_led<="1000";
-            postOp<=std_logic_vector(unsigned('0' & retain_a) - unsigned('0' & retain_b)); 
-            preDD<=std_logic_vector(unsigned("000" & postOp)); 
-            if synced_button='1' then 
-                stateNext<=input_a;
-            elsif reset_n='1' then
-                stateNext<=input_a;
-            end if;
+        when write_w_no_op =>
+            led<="01000";
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            --wait for clk
+            stateNext<=write_w;
+
+        when write_w =>
+            led<="10000";
+            output_logic_we<='1'
+            output_logic_addr<="00"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            stateNext<=read_w;
 
         when others =>
             --shouldnt hit this case
-            s_led<="0000";
-            stateNext<=input_a;
+            s_led<="00000";
+            stateNext<=read_w;
     end case;
     end process;
 end beh;
