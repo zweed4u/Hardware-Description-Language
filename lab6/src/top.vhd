@@ -1,4 +1,4 @@
---lab 6 
+--lab 6 - check reset_n polarity/logic
 --zachary weeden
 
 library ieee;
@@ -103,7 +103,7 @@ sync_switches: synchronizer
   port map(
     clk         => clk,
     reset       => not reset_n,
-    async_in    => sw_in, 
+    async_in    => switch, 
     sync_out    => synced_sw
   );
   
@@ -112,7 +112,7 @@ sync_op: synchronizer
   port map(
     clk         => clk,
     reset       => not reset_n,
-    async_in    => sw_in, 
+    async_in    => op, 
     sync_out    => synced_op
   );
 
@@ -227,22 +227,16 @@ bcd1: process(preDD)
   end process bcd1;
 
 --NEEDS TO BE EDITTED FROM HERE DOWN
---NEEDS TO BE EDITTED FROM HERE DOWN  
---NEEDS TO BE EDITTED FROM HERE DOWN  
---NEEDS TO BE EDITTED FROM HERE DOWN  
---NEEDS TO BE EDITTED FROM HERE DOWN  
---NEEDS TO BE EDITTED FROM HERE DOWN  
---NEEDS TO BE EDITTED FROM HERE DOWN  
-procStateReg: process(reset, clk)
+procStateReg: process(reset_n, clk)
 begin
-    if (reset = '1') then
+    if (reset_n = '1') then
         stateReg<=input_a; --state
     elsif (clk'event and clk ='1') then
         stateReg<=stateNext;
     end if;
 end process;
 
-procStateNext: process(stateReg,clk,reset,synced_button)
+procStateNext: process(stateReg,clk,reset_n,synced_button)
 begin
     stateNext<=stateReg; --prevent latch
     case stateReg is
@@ -252,7 +246,7 @@ begin
             preDD<=std_logic_vector(unsigned("0000" & sw_in));
             if synced_button='1' then 
                 stateNext<=input_b;
-            elsif reset='1' then
+            elsif reset_n='1' then
                 stateNext<=input_a;
             end if;
 
@@ -262,7 +256,7 @@ begin
             preDD<=std_logic_vector(unsigned("0000" & sw_in));
             if synced_button='1' then 
                 stateNext<=disp_sum;
-            elsif reset='1' then
+            elsif reset_n='1' then
                 stateNext<=input_a;
             end if;
 
@@ -272,7 +266,7 @@ begin
             preDD<=std_logic_vector(unsigned("000" & postOp));
             if synced_button='1' then 
                 stateNext<=disp_diff;
-            elsif reset='1' then
+            elsif reset_n='1' then
                 stateNext<=input_a;
             end if;
 
@@ -282,7 +276,7 @@ begin
             preDD<=std_logic_vector(unsigned("000" & postOp)); 
             if synced_button='1' then 
                 stateNext<=input_a;
-            elsif reset='1' then
+            elsif reset_n='1' then
                 stateNext<=input_a;
             end if;
 
