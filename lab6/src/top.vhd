@@ -1,6 +1,9 @@
 --lab 6 - check reset_n polarity/logic
 --zachary weeden
-
+--QUESTIONS 
+--ALU component? - if just a process then determine padding and arithmetic logic
+--Length of vectors eg. dout/save 
+--Signal coming from fsm register to datapath
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -24,12 +27,10 @@ end top;
 architecture beh of top is
 
 component seven_seg is
-  generic (
-    max_count       : integer := 25000000
-  );
+  generic  max_count  : integer := 25000000);
   port (
-    bcd             : in std_logic_vector(3 downto 0);
-    seven_seg_out   : out std_logic_vector(6 downto 0)
+    bcd               : in std_logic_vector(3 downto 0);
+    seven_seg_out     : out std_logic_vector(6 downto 0)
   );
 end component; 
 
@@ -67,31 +68,31 @@ end component;
 
 --INTERNAL SIGNALS
 --States
-constant read_w         : std_logic_vector(3 downto 0) :="00001";
-constant read_r         : std_logic_vector(3 downto 0) :="00010";
-constant write_r        : std_logic_vector(3 downto 0) :="00100";
-constant write_w_no_op  : std_logic_vector(3 downto 0) :="01000"; -- this is synonymous with 'write_w_wait'
-constant write_w        : std_logic_vector(3 downto 0) :="10000";
+constant read_w          : std_logic_vector(3 downto 0) :="00001";
+constant read_r          : std_logic_vector(3 downto 0) :="00010";
+constant write_r         : std_logic_vector(3 downto 0) :="00100";
+constant write_w_no_op   : std_logic_vector(3 downto 0) :="01000"; -- this is synonymous with 'write_w_wait'
+constant write_w         : std_logic_vector(3 downto 0) :="10000";
 
-signal stateReg     : std_logic_vector(4 downto 0); --5 states
-signal stateNext    : std_logic_vector(4 downto 0); --5 states
+signal stateReg          : std_logic_vector(4 downto 0); --5 states
+signal stateNext         : std_logic_vector(4 downto 0); --5 states
 
-signal synced_sw    : std_logic_vector(7 downto 0);
-signal synced_op    : std_logic_vector(2 downto 0);
+signal synced_sw         : std_logic_vector(7 downto 0);
+signal synced_op         : std_logic_vector(2 downto 0);
 
-signal synced_mr      : std_logic;
-signal synced_ms      : std_logic;
-signal synced_execute : std_logic;
+signal synced_mr         : std_logic;
+signal synced_ms         : std_logic;
+signal synced_execute    : std_logic;
 
-signal to_mem    : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
-signal save      : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'dout' signal)
+signal to_mem            : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
+signal save              : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'dout' signal)
 
-signal result_sig     : std_logic_vector(7 downto 0); --Result of ALU - verify proper length (no padding?)
+signal result_sig        : std_logic_vector(7 downto 0); --Result of ALU - verify proper length (no padding?)
 
-signal preDD        : std_logic_vector(11 downto 0);
-signal ones         : std_logic_vector(3 downto 0);
-signal tens         : std_logic_vector(3 downto 0);
-signal hundreds     : std_logic_vector(3 downto 0);
+signal preDD             : std_logic_vector(11 downto 0);
+signal ones              : std_logic_vector(3 downto 0);
+signal tens              : std_logic_vector(3 downto 0);
+signal hundreds          : std_logic_vector(3 downto 0);
 
 signal state_reg_output  : std_logic_vector(4 downto 0); --5 states???
 signal output_logic_we   : std_logic;
@@ -236,7 +237,8 @@ begin
     end if;
 end process;
 
-procStateNext: process(stateReg,clk,reset_n,synced_button)
+--Fix this sensitivity list and the state logic
+procStateNext: process(stateReg,clk,reset_n,synced_execute)
 begin
     stateNext<=stateReg; --prevent latch
     case stateReg is
