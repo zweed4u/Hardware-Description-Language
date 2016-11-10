@@ -211,6 +211,9 @@ end process;
 --Fix this sensitivity list and the state logic
 procStateNext: process(stateReg,clk,reset_n,synced_execute) --NSL
 begin
+    if reset_n = '0' then 
+        stateReg <= read_w;
+    else 
     stateNext <= stateReg; --prevent latch
     case stateReg is
         when read_w =>
@@ -219,11 +222,11 @@ begin
             output_logic_addr <= "0000"
             --switch and alu logic
             --what gets passed through/assigned to mem/ssd
-            if synced_execute='1' then
+            if (synced_execute='1') then
                 stateNext <= write_w_no_op;
-            elsif synced_ms='1' then
+            elsif (synced_ms='1') then
                 stateNext <= write_r;
-            elsif synced_mr='1' then
+            elsif (synced_mr='1') then
                 stateNext <= read_r;
             else 
                 stateNext <= read_w;
@@ -235,7 +238,7 @@ begin
             output_logic_addr <= "0001"
             --switch and alu logic
             --what gets passed through/assigned to mem/ssd
-            if synced_execute='1' then
+            if (synced_execute='1') then
                 stateNext <= write_w_no_op;
             else
                 stateNext <= read_w;
@@ -284,7 +287,6 @@ end process;
 --functional units process here?
 --routing process here?
 --data register process here?
-
 
 --DOUBLE DABBLE PROCESS - takes 8 bit number and parses into hundreds, tens,and ones
 bcd1: process(preDD)
