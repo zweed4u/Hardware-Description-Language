@@ -17,14 +17,14 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY ../output_files
 
 # 2] include your relative path files here
 set_global_assignment -name VHDL_FILE ../../src/seven_seg.vhd
-set_global_assignment -name VHDL_FILE ../../src/synchronizer_8bit.vhd
+set_global_assignment -name VHDL_FILE ../../src/synchronizer.vhd
 set_global_assignment -name VHDL_FILE ../../src/rising_edge_synchronizer.vhd
 
-set_global_assignment -name VHDL_FILE ../../src/double_dabble.vhd
+# set_global_assignment -name VHDL_FILE ../../src/double_dabble.vhd
 set_global_assignment -name VHDL_FILE ../../src/memory.vhd
 set_global_assignment -name VHDL_FILE ../../src/alu.vhd
-set_global_assignment -name VHDL_FILE ../../src/components.vhd
-set_global_assignment -name VHDL_FILE ../../src/calculator.vhd
+# set_global_assignment -name VHDL_FILE ../../src/components.vhd
+# set_global_assignment -name VHDL_FILE ../../src/calculator.vhd
 set_global_assignment -name VHDL_FILE ../../src/top.vhd
 
 set_location_assignment PIN_AF14 -to clk
