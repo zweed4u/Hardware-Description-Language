@@ -6,6 +6,8 @@
 --Signal coming from fsm register to datapath
 --to_mem assignment in each state? 
 --write_s == write_r???
+--TWO STATEMACHINES? HOW TO IMPLEMENT OP CODE 
+--CLOCK CYCLE ON GOING BACK TO IDLE ON MS OR MR
 --         || we || add
 --write_w  ||  1 || 00 working register
 --read_w   ||  0 || 00 working register
@@ -73,6 +75,17 @@ component rising_edge_synchronizer is
   );
 end component;
 
+component alu is
+  port (
+    clk        :in std_logic;
+    reset      :in std_logic;
+    a          :in std_logic_vector(7 downto 0);
+    b          :in std_logic_vector(7 downto 0);
+    op         :in std_logic_vector(1 downto 0); --comment for good practice 00 add 01 sub 10 mult 11 div
+    result     :out std_logic_vector(7 downto 0)
+  );
+end entity al
+
 --INTERNAL SIGNALS
 --States
 constant read_w          : std_logic_vector(3 downto 0) :="00001";
@@ -91,8 +104,8 @@ signal synced_mr         : std_logic;
 signal synced_ms         : std_logic;
 signal synced_execute    : std_logic;
 
-signal to_mem            : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
-signal save              : std_logic_vector(3 downto 0); --Verify Proper vector lengths (synonymous with 'dout' signal)
+signal to_mem            : std_logic_vector(7 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
+signal save              : std_logic_vector(7 downto 0); --Verify Proper vector lengths (synonymous with 'dout' signal)
 
 signal result_sig        : std_logic_vector(7 downto 0); --Result of ALU - verify proper length (no padding?)
 
@@ -115,7 +128,6 @@ sync_switches: synchronizer
     sync_out    => synced_sw
   );
   
-begin
 sync_op: synchronizer 
   port map(
     clk         => clk,
@@ -124,6 +136,16 @@ sync_op: synchronizer
     sync_out    => synced_op
   );
 
+alu_comp: alu --check vector lengths and assignments
+  port map(
+    clk         => clk,
+    reset       => not reset_n,
+    a           => dout, 
+    b           => synced_sw,
+    op          => synced_op,
+    result      => result_sig
+  );
+  
 sync_mr: rising_edge_synchronizer 
   port map(
     clk     => clk,
@@ -172,9 +194,94 @@ comp_memory: memory
       we   => output_logic_we,
       addr => output_logic_addr,
       din  => to_mem,
-      dout => save  --MEM TO ALU
+      dout => save
     );
 
+--NEEDS TO BE EDITTED FROM HERE DOWN
+procStateReg: process(reset_n, clk)
+begin
+    if (reset_n = '1') then
+        stateReg<=read_w; --state
+    elsif (clk'event and clk ='1') then
+        stateReg<=stateNext;
+    end if;
+end process;
+
+ 
+--Case states
+--read_w, read_r, write_r, write_w_no_op, write_w
+--Fix this sensitivity list and the state logic
+procStateNext: process(stateReg,clk,reset_n,synced_execute)
+begin
+    stateNext<=stateReg; --prevent latch
+    case stateReg is
+        when read_w =>
+            led<="00001";
+            output_logic_we<='0'
+            output_logic_addr<="00"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            if synced_execute='1' then
+                stateNext<=write_w_no_op;
+            elsif synced_ms='1' then
+                stateNext<=write_r;
+            elsif synced_mr='1' then
+                stateNext<=read_r;
+            else 
+                stateNext<=read_w;
+            end if;
+
+        when read_r => --same as read_s
+            led<="00010";
+            output_logic_we<='0'
+            output_logic_addr<="01"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            if synced_execute='1' then
+                stateNext<=write_w_no_op;
+            else
+                stateNext<=read_w;
+            end if;
+
+        when write_r => --same as write_s
+            led<="00100";
+            output_logic_we<='1'
+            output_logic_addr<="01"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            stateNext<=read_w;
+
+        when write_w_no_op =>
+            led<="01000";
+            output_logic_we<='1'
+            output_logic_addr<="00"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            --wait for clk
+            stateNext<=write_w;
+
+        when write_w =>
+            led<="10000";
+            output_logic_we<='1'
+            output_logic_addr<="00"
+            --switch and alu logic
+            --what gets passed through/assigned to mem/ssd
+            stateNext<=read_w;
+
+        when others =>
+            --shouldnt hit this case
+            s_led<="00000";
+            stateNext<=read_w;
+    end case;
+
+    --Does this belong here - also other declarations based off states?
+    if (clk'event and clk ='1') then
+        if stateReg=write_w_no_op then
+            to_mem<=result_sig;
+        elsif stateReg=read_r
+            to_mem<=save;
+        preDD<=std_logic_vector(unsigned("0000" & to_mem));
+end process;
 
 
 --DOUBLE DABBLE PROCESS - takes 8 bit number and parses into hundreds, tens,and ones
@@ -234,79 +341,4 @@ bcd1: process(preDD)
     --thousands <= STD_LOGIC_VECTOR(bcd(15 downto 12));
   end process bcd1;
 
---NEEDS TO BE EDITTED FROM HERE DOWN
-procStateReg: process(reset_n, clk)
-begin
-    if (reset_n = '1') then
-        stateReg<=read_w; --state
-    elsif (clk'event and clk ='1') then
-        stateReg<=stateNext;
-    end if;
-end process;
-
- 
---Case states
---read_w, read_r, write_r, write_w_no_op, write_w
---Fix this sensitivity list and the state logic
-procStateNext: process(stateReg,clk,reset_n,synced_execute)
-begin
-    stateNext<=stateReg; --prevent latch
-    case stateReg is
-        when read_w =>
-            led<="00001";
-            output_logic_we<='0'
-            output_logic_addr<="00"
-            --switch and alu logic
-            --what gets passed through/assigned to mem/ssd
-            if synced_execute='1' then
-                stateNext<=write_w_no_op;
-            elsif synced_ms='1' then
-                stateNext<=write_r;
-            elsif synced_mr='1' then
-                stateNext<=read_r;
-            else 
-                stateNext<=read_w;
-            end if;
-
-        when read_r => --read_s?
-            led<="00010";
-            output_logic_we<='0'
-            output_logic_addr<="01"
-            --switch and alu logic
-            --what gets passed through/assigned to mem/ssd
-            if synced_execute='1' then
-                stateNext<=write_w_no_op;
-            else
-                stateNext<=read_w;
-            end if;
-
-        when write_r => --write_s?
-            led<="00100";
-            output_logic_we<='1'
-            output_logic_addr<="01"
-            --switch and alu logic
-            --what gets passed through/assigned to mem/ssd
-            stateNext<=read_w;
-
-        when write_w_no_op =>
-            led<="01000";
-            --switch and alu logic
-            --what gets passed through/assigned to mem/ssd
-            --wait for clk
-            stateNext<=write_w;
-
-        when write_w =>
-            led<="10000";
-            output_logic_we<='1'
-            output_logic_addr<="00"
-            --switch and alu logic
-            --what gets passed through/assigned to mem/ssd
-            stateNext<=read_w;
-
-        when others =>
-            --shouldnt hit this case
-            s_led<="00000";
-            stateNext<=read_w;
-    end case;
-    end process;
 end beh;
