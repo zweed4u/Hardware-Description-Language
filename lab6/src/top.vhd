@@ -45,8 +45,8 @@ end component;
 
 
 component memory is
-  generic (addr_width : integer := 2;  --Verify Proper vector lengths
-           data_width : integer := 4); --Verify Proper vector lengths
+  generic (addr_width : integer := 4;  --Verify Proper vector lengths
+           data_width : integer := 8); --Verify Proper vector lengths
   port (
     clk               : in std_logic;
     we                : in std_logic;
@@ -84,7 +84,7 @@ component alu is
     op         :in std_logic_vector(1 downto 0); --comment for good practice 00 add 01 sub 10 mult 11 div
     result     :out std_logic_vector(7 downto 0)
   );
-end entity al
+end component;
 
 --INTERNAL SIGNALS
 --States
