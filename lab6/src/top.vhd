@@ -98,16 +98,16 @@ signal stateReg          : std_logic_vector(4 downto 0); --5 states
 signal stateNext         : std_logic_vector(4 downto 0); --5 states
 
 signal synced_sw         : std_logic_vector(7 downto 0);
-signal synced_op         : std_logic_vector(2 downto 0);
+signal synced_op         : std_logic_vector(1 downto 0);
 
 signal synced_mr         : std_logic;
 signal synced_ms         : std_logic;
 signal synced_execute    : std_logic;
 
-signal to_mem            : std_logic_vector(7 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
 signal save              : std_logic_vector(7 downto 0); --Verify Proper vector lengths (synonymous with 'dout' signal)
-
 signal result_sig        : std_logic_vector(7 downto 0); --Result of ALU - verify proper length (no padding?)
+
+signal to_mem            : std_logic_vector(7 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
 
 signal preDD             : std_logic_vector(11 downto 0);
 signal ones              : std_logic_vector(3 downto 0);
@@ -116,7 +116,7 @@ signal hundreds          : std_logic_vector(3 downto 0);
 
 signal state_reg_output  : std_logic_vector(4 downto 0); --5 states???
 signal output_logic_we   : std_logic;
-signal output_logic_addr : std_logic_vector(1 downto 0);
+signal output_logic_addr : std_logic_vector(3 downto 0);
 
 --COMPONENT INSTANTIATIONS
 begin
