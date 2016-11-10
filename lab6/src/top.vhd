@@ -201,9 +201,9 @@ comp_memory: memory
 procStateReg: process(reset_n, clk)
 begin
     if (reset_n = '1') then
-        stateReg<=read_w; --state
+        stateReg <= read_w; --state
     elsif (clk'event and clk ='1') then
-        stateReg<=stateNext;
+        stateReg <= stateNext;
     end if;
 end process;
 
@@ -213,74 +213,74 @@ end process;
 --Fix this sensitivity list and the state logic
 procStateNext: process(stateReg,clk,reset_n,synced_execute)
 begin
-    stateNext<=stateReg; --prevent latch
+    stateNext <= stateReg; --prevent latch
     case stateReg is
         when read_w =>
-            led<="00001";
-            output_logic_we<='0'
-            output_logic_addr<="00"
+            led <= "00001";
+            output_logic_we <= '0'
+            output_logic_addr <= "0000"
             --switch and alu logic
             --what gets passed through/assigned to mem/ssd
             if synced_execute='1' then
-                stateNext<=write_w_no_op;
+                stateNext <= write_w_no_op;
             elsif synced_ms='1' then
-                stateNext<=write_r;
+                stateNext <= write_r;
             elsif synced_mr='1' then
-                stateNext<=read_r;
+                stateNext <= read_r;
             else 
-                stateNext<=read_w;
+                stateNext <= read_w;
             end if;
 
         when read_r => --same as read_s
-            led<="00010";
-            output_logic_we<='0'
-            output_logic_addr<="01"
+            led <= "00010";
+            output_logic_we <= '0'
+            output_logic_addr <= "0001"
             --switch and alu logic
             --what gets passed through/assigned to mem/ssd
             if synced_execute='1' then
-                stateNext<=write_w_no_op;
+                stateNext <= write_w_no_op;
             else
-                stateNext<=read_w;
+                stateNext <= read_w;
             end if;
 
         when write_r => --same as write_s
-            led<="00100";
-            output_logic_we<='1'
-            output_logic_addr<="01"
+            led <= "00100";
+            output_logic_we <= '1'
+            output_logic_addr <= "0001"
             --switch and alu logic
             --what gets passed through/assigned to mem/ssd
-            stateNext<=read_w;
+            stateNext <= read_w;
 
         when write_w_no_op =>
-            led<="01000";
-            output_logic_we<='1'
-            output_logic_addr<="00"
+            led <= "01000";
+            output_logic_we <= '1'
+            output_logic_addr <= "0000"
             --switch and alu logic
             --what gets passed through/assigned to mem/ssd
             --wait for clk
-            stateNext<=write_w;
+            stateNext <= write_w;
 
         when write_w =>
-            led<="10000";
-            output_logic_we<='1'
-            output_logic_addr<="00"
+            led <= "10000";
+            output_logic_we <= '1'
+            output_logic_addr <= "0000"
             --switch and alu logic
             --what gets passed through/assigned to mem/ssd
-            stateNext<=read_w;
+            stateNext <= read_w;
 
         when others =>
             --shouldnt hit this case
-            s_led<="00000";
-            stateNext<=read_w;
+            s_led <= "00000";
+            stateNext <= read_w;
     end case;
 
     --Does this belong here - also other declarations based off states?
     if (clk'event and clk ='1') then
         if stateReg=write_w_no_op then
-            to_mem<=result_sig;
-        elsif stateReg=read_r
-            to_mem<=save;
-        preDD<=std_logic_vector(unsigned("0000" & to_mem));
+            to_mem <= result_sig;
+    elsif stateReg=read_r
+        to_mem <= save;
+    preDD <= std_logic_vector(unsigned("0000" & to_mem));
 end process;
 
 
