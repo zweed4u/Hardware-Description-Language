@@ -196,7 +196,7 @@ comp_memory: memory
     );
 
 --NEEDS TO BE EDITTED FROM HERE DOWN
-procStateReg: process(reset_n, clk)
+procStateReg: process(reset_n, clk) --SR 
 begin
     if (reset_n = '0') then
         stateReg <= read_w; --state
@@ -209,7 +209,7 @@ end process;
 --Case states
 --read_w, read_r, write_r, write_w_no_op, write_w
 --Fix this sensitivity list and the state logic
-procStateNext: process(stateReg,clk,reset_n,synced_execute)
+procStateNext: process(stateReg,clk,reset_n,synced_execute) --NSL
 begin
     stateNext <= stateReg; --prevent latch
     case stateReg is
@@ -280,6 +280,10 @@ begin
         to_mem <= save;
     preDD <= std_logic_vector(unsigned("0000" & to_mem));
 end process;
+
+--functional units process here?
+--routing process here?
+--data register process here?
 
 
 --DOUBLE DABBLE PROCESS - takes 8 bit number and parses into hundreds, tens,and ones
