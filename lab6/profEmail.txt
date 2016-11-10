@@ -1,0 +1,4 @@
+Hi Zachary,
+  Yup, write s and read s are the same as write r and read r.  Also, yes I would reuse your gen_add_sub beh alu and add the mult and div operations.  You will need to pad the div operation before you do the divide, however the mult operation will take an 8 bit and 8 bit and spit out a 16 bit.  You then need to clip back that 16 bit result back to 8 bits.  Hope this helps.
+ 
+,Dr. Kaputa
