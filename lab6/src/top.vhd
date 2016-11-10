@@ -121,7 +121,7 @@ begin
 sync_switches: synchronizer 
   port map(
     clk         => clk,
-    reset       => not reset_n,
+    reset       => reset_n,
     async_in    => switch, 
     sync_out    => synced_sw
   );
@@ -129,7 +129,7 @@ sync_switches: synchronizer
 sync_op: synchronizer 
   port map(
     clk         => clk,
-    reset       => not reset_n,
+    reset       => reset_n,
     async_in    => op, 
     sync_out    => synced_op
   );
@@ -137,7 +137,7 @@ sync_op: synchronizer
 alu_comp: alu --check vector lengths and assignments
   port map(
     clk         => clk,
-    reset       => not reset_n,
+    reset       => reset_n,
     a           => dout, 
     b           => synced_sw,
     op          => synced_op,
@@ -147,7 +147,7 @@ alu_comp: alu --check vector lengths and assignments
 sync_mr: rising_edge_synchronizer 
   port map(
     clk     => clk,
-    reset   => not reset_n,
+    reset   => reset_n,
     input   => mr,
     edge    => synced_mr
   );
@@ -155,7 +155,7 @@ sync_mr: rising_edge_synchronizer
 sync_ms: rising_edge_synchronizer 
   port map(
     clk     => clk,
-    reset   => not reset_n,
+    reset   => reset_n,
     input   => ms,
     edge    => synced_ms
   );
@@ -163,7 +163,7 @@ sync_ms: rising_edge_synchronizer
 sync_execute: rising_edge_synchronizer 
   port map(
     clk     => clk,
-    reset   => not reset_n,
+    reset   => reset_n,
     input   => execute,
     edge    => synced_execute
   );
@@ -198,7 +198,7 @@ comp_memory: memory
 --NEEDS TO BE EDITTED FROM HERE DOWN
 procStateReg: process(reset_n, clk)
 begin
-    if (reset_n = '1') then
+    if (reset_n = '0') then
         stateReg <= read_w; --state
     elsif (clk'event and clk ='1') then
         stateReg <= stateNext;

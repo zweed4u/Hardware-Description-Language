@@ -22,7 +22,7 @@ signal flop2     : std_logic_vector(7 downto 0);
 begin 
 double_flop :process(reset,clk,async_in)
   begin
-    if reset = '1' then
+    if reset = '0' then
       flop1 <= "00000000";   
       flop2 <= "00000000";	
     elsif rising_edge(clk) then
