@@ -207,7 +207,7 @@ comp_memory: memory
     );
 
 --state register
-process(reset_n, clk) --SR 
+procStateReg: process(reset_n, clk) --SR 
 begin
     if (reset_n = '0') then
         stateReg <= read_w; --state
@@ -217,10 +217,10 @@ begin
 end process;
 
 --sensitivity list? Next State Logic
-process(stateReg,reset_n,synced_execute,synced_ms,synced_mr) --NSL
+procStateNext: process(stateReg,reset_n,synced_execute) --NSL
 begin
     if reset_n = '0' then 
-        stateNext <= read_w;
+        stateReg <= read_w;
     else 
         stateNext <= stateReg; --prevent latch
         case stateReg is
@@ -275,7 +275,7 @@ begin
 end process;
 
 -- routing [asynchronous]
-process(switch,reset_n,stateReg,clk)
+process(switch,reset_n,stateReg)
 begin
     --other declarations based off states?
     if (clk'event and clk ='1') then
