@@ -14,7 +14,7 @@
 # do sim.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:41 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../../src/top.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -22,30 +22,30 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity top
 # -- Compiling architecture beh of top
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:41 on Nov 13,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:41 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../../src/synchronizer2.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity synchronizer2
 # -- Compiling architecture beh of synchronizer2
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:41 on Nov 13,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:41 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../../src/synchronizer8.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity synchronizer8
 # -- Compiling architecture beh of synchronizer8
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:41 on Nov 13,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:41 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../../src/seven_seg.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -54,20 +54,20 @@
 # -- Loading package STD_LOGIC_UNSIGNED
 # -- Compiling entity seven_seg
 # -- Compiling architecture beh of seven_seg
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:41 on Nov 13,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:41 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../../src/rising_edge_synchronizer.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity rising_edge_synchronizer
 # -- Compiling architecture beh of rising_edge_synchronizer
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:42 on Nov 13,2016, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:42 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../../src/alu.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -75,10 +75,10 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity alu
 # -- Compiling architecture beh of alu
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:42 on Nov 13,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:42 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../../src/memory.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -86,10 +86,10 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity memory
 # -- Compiling architecture beh of memory
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:42 on Nov 13,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:42 on Nov 13,2016
 # vcom -reportprogress 300 -93 -work work ../src/top_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -98,10 +98,10 @@
 # -- Compiling entity top_tb
 # -- Compiling architecture arch of top_tb
 # ** Warning: ../src/top_tb.vhd(32): (vcom-1207) An abstract literal and an identifier must have a separator between them.
-# End time: 18:13:10 on Nov 13,2016, Elapsed time: 0:00:00
+# End time: 18:36:42 on Nov 13,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
 # vsim -novopt top_tb 
-# Start time: 18:13:10 on Nov 13,2016
+# Start time: 18:36:42 on Nov 13,2016
 # ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
 # Loading std.standard
 # Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/sim/script/work.top_tb(arch)
@@ -193,5 +193,5 @@
 #    Time: 20 ns  Iteration: 1  Instance: /top_tb/uut/comp_memory
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 40 ns  Iteration: 1  Instance: /top_tb/uut/comp_memory
-# End time: 18:13:32 on Nov 13,2016, Elapsed time: 0:00:22
+# End time: 18:37:48 on Nov 13,2016, Elapsed time: 0:01:06
 # Errors: 0, Warnings: 35
