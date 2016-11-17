@@ -1,5 +1,5 @@
 Analysis & Synthesis report for calculator
-Thu Nov 17 12:40:44 2016
+Thu Nov 17 14:36:58 2016
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -57,13 +57,13 @@ agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Nov 17 12:40:44 2016           ;
+; Analysis & Synthesis Status     ; Successful - Thu Nov 17 14:36:58 2016           ;
 ; Quartus Prime Version           ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
 ; Revision Name                   ; calculator                                      ;
 ; Top-level Entity Name           ; top                                             ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 61                                              ;
+; Total registers                 ; 62                                              ;
 ; Total pins                      ; 41                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 16                                              ;
@@ -219,16 +219,16 @@ agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 203       ;
+; Estimate of Logic utilization (ALMs needed) ; 209       ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 383       ;
+; Combinational ALUT usage for logic          ; 390       ;
 ;     -- 7 input functions                    ; 0         ;
-;     -- 6 input functions                    ; 9         ;
-;     -- 5 input functions                    ; 62        ;
-;     -- 4 input functions                    ; 132       ;
-;     -- <=3 input functions                  ; 180       ;
+;     -- 6 input functions                    ; 17        ;
+;     -- 5 input functions                    ; 55        ;
+;     -- 4 input functions                    ; 137       ;
+;     -- <=3 input functions                  ; 181       ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 61        ;
+; Dedicated logic registers                   ; 62        ;
 ;                                             ;           ;
 ; I/O pins                                    ; 41        ;
 ; Total MLAB memory bits                      ; 0         ;
@@ -237,9 +237,9 @@ agreement for further details.
 ; Total DSP Blocks                            ; 1         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 69        ;
-; Total fan-out                               ; 1735      ;
-; Average fan-out                             ; 3.24      ;
+; Maximum fan-out                             ; 70        ;
+; Total fan-out                               ; 1773      ;
+; Average fan-out                             ; 3.27      ;
 +---------------------------------------------+-----------+
 
 
@@ -248,7 +248,7 @@ agreement for further details.
 +--------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                 ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                               ; Library Name ;
 +--------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
-; |top                                       ; 383 (31)          ; 61 (13)      ; 16                ; 1          ; 41   ; 0            ; |top                                                                                                              ; work         ;
+; |top                                       ; 390 (38)          ; 62 (14)      ; 16                ; 1          ; 41   ; 0            ; |top                                                                                                              ; work         ;
 ;    |alu:alu_comp|                          ; 329 (18)          ; 16 (16)      ; 0                 ; 1          ; 0    ; 0            ; |top|alu:alu_comp                                                                                                 ; work         ;
 ;       |lpm_divide:Div0|                    ; 311 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|alu:alu_comp|lpm_divide:Div0                                                                                 ; work         ;
 ;          |lpm_divide_7dm:auto_generated|   ; 311 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|alu:alu_comp|lpm_divide:Div0|lpm_divide_7dm:auto_generated                                                   ; work         ;
@@ -295,11 +295,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------+----------------------+------------------------+
 ; Latch Name                                         ; Latch Enable Signal  ; Free of Timing Hazards ;
 +----------------------------------------------------+----------------------+------------------------+
-; led[0]$latch                                       ; reset_n              ; yes                    ;
-; led[1]$latch                                       ; reset_n              ; yes                    ;
-; led[2]$latch                                       ; reset_n              ; yes                    ;
-; led[3]$latch                                       ; reset_n              ; yes                    ;
-; led[4]$latch                                       ; reset_n              ; yes                    ;
+; led[0]$latch                                       ; led[4]               ; yes                    ;
+; led[1]$latch                                       ; led[4]               ; yes                    ;
+; led[2]$latch                                       ; led[4]               ; yes                    ;
+; led[3]$latch                                       ; led[4]               ; yes                    ;
+; led[4]$latch                                       ; led[4]               ; yes                    ;
 ; output_logic_we                                    ; output_logic_addr[1] ; yes                    ;
 ; output_logic_addr[0]                               ; output_logic_addr[1] ; yes                    ;
 ; Number of user-specified and inferred latches = 7  ;                      ;                        ;
@@ -312,10 +312,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 61    ;
+; Total registers                              ; 62    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 16    ;
-; Number of registers using Asynchronous Clear ; 45    ;
+; Number of registers using Asynchronous Clear ; 46    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 16    ;
 ; Number of registers using Preset             ; 0     ;
@@ -327,16 +327,16 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-------------------------------------------------+---------+
 ; Inverted Register                               ; Fan out ;
 +-------------------------------------------------+---------+
-; stateReg[0]                                     ; 11      ;
+; stateReg[0]                                     ; 16      ;
 ; rising_edge_synchronizer:sync_execute|input_zz  ; 2       ;
 ; rising_edge_synchronizer:sync_execute|input_zzz ; 1       ;
-; rising_edge_synchronizer:sync_ms|input_zz       ; 2       ;
-; rising_edge_synchronizer:sync_ms|input_zzz      ; 1       ;
 ; rising_edge_synchronizer:sync_mr|input_zz       ; 2       ;
 ; rising_edge_synchronizer:sync_mr|input_zzz      ; 1       ;
+; rising_edge_synchronizer:sync_ms|input_zz       ; 2       ;
+; rising_edge_synchronizer:sync_ms|input_zzz      ; 1       ;
 ; rising_edge_synchronizer:sync_execute|input_z   ; 1       ;
-; rising_edge_synchronizer:sync_ms|input_z        ; 1       ;
 ; rising_edge_synchronizer:sync_mr|input_z        ; 1       ;
+; rising_edge_synchronizer:sync_ms|input_z        ; 1       ;
 ; Total number of inverted registers = 10         ;         ;
 +-------------------------------------------------+---------+
 
@@ -355,8 +355,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |top|to_mem[0]                   ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top|alu:alu_comp|result_temp[4] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |top|to_mem[7]                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top|alu:alu_comp|result_temp[3] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
 
 
@@ -519,12 +519,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 61                          ;
-;     CLR               ; 37                          ;
+; arriav_ff             ; 62                          ;
+;     CLR               ; 38                          ;
 ;     CLR SLD           ; 8                           ;
 ;     ENA               ; 8                           ;
 ;     ENA SLD           ; 8                           ;
-; arriav_lcell_comb     ; 388                         ;
+; arriav_lcell_comb     ; 395                         ;
 ;     arith             ; 167                         ;
 ;         0 data inputs ; 23                          ;
 ;         1 data inputs ; 8                           ;
@@ -532,20 +532,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 14                          ;
 ;         4 data inputs ; 69                          ;
 ;         5 data inputs ; 41                          ;
-;     normal            ; 221                         ;
+;     normal            ; 228                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 7                           ;
-;         2 data inputs ; 74                          ;
+;         2 data inputs ; 75                          ;
 ;         3 data inputs ; 46                          ;
-;         4 data inputs ; 63                          ;
-;         5 data inputs ; 21                          ;
-;         6 data inputs ; 9                           ;
+;         4 data inputs ; 68                          ;
+;         5 data inputs ; 14                          ;
+;         6 data inputs ; 17                          ;
 ; arriav_mac            ; 1                           ;
 ; boundary_port         ; 41                          ;
 ; stratixv_ram_block    ; 8                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 31.00                       ;
-; Average LUT depth     ; 21.46                       ;
+; Average LUT depth     ; 21.23                       ;
 +-----------------------+-----------------------------+
 
 
@@ -554,7 +554,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -564,7 +564,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Thu Nov 17 12:40:33 2016
+    Info: Processing started: Thu Nov 17 14:36:47 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off calculator -c calculator
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/seven_seg.vhd
@@ -589,26 +589,26 @@ Info (12021): Found 2 design units, including 1 entities, in source file /users/
     Info (12022): Found design unit 1: top-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 34
     Info (12023): Found entity 1: top File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 18
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Warning (10631): VHDL Process Statement warning at top.vhd(219): inferring latch(es) for signal or variable "led", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Warning (10631): VHDL Process Statement warning at top.vhd(219): inferring latch(es) for signal or variable "output_logic_we", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Warning (10631): VHDL Process Statement warning at top.vhd(219): inferring latch(es) for signal or variable "output_logic_addr", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Warning (10492): VHDL Process Statement warning at top.vhd(288): signal "to_mem" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 288
-Info (10041): Inferred latch for "output_logic_addr[0]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "output_logic_addr[1]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "output_logic_addr[2]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "output_logic_addr[3]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "output_logic_we" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "led[0]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "led[1]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "led[2]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "led[3]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (10041): Inferred latch for "led[4]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-Info (12128): Elaborating entity "synchronizer8" for hierarchy "synchronizer8:sync_switches" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 131
-Info (12128): Elaborating entity "synchronizer2" for hierarchy "synchronizer2:sync_op" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 139
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_comp" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 147
-Info (12128): Elaborating entity "rising_edge_synchronizer" for hierarchy "rising_edge_synchronizer:sync_mr" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 157
-Info (12128): Elaborating entity "seven_seg" for hierarchy "seven_seg:convert_to_ssd_a" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 181
-Info (12128): Elaborating entity "memory" for hierarchy "memory:comp_memory" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 199
+Warning (10631): VHDL Process Statement warning at top.vhd(220): inferring latch(es) for signal or variable "led", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Warning (10631): VHDL Process Statement warning at top.vhd(220): inferring latch(es) for signal or variable "output_logic_we", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Warning (10631): VHDL Process Statement warning at top.vhd(220): inferring latch(es) for signal or variable "output_logic_addr", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Warning (10492): VHDL Process Statement warning at top.vhd(291): signal "to_mem" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 291
+Info (10041): Inferred latch for "output_logic_addr[0]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "output_logic_addr[1]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "output_logic_addr[2]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "output_logic_addr[3]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "output_logic_we" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "led[0]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "led[1]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "led[2]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "led[3]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (10041): Inferred latch for "led[4]" at top.vhd(220) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+Info (12128): Elaborating entity "synchronizer8" for hierarchy "synchronizer8:sync_switches" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 132
+Info (12128): Elaborating entity "synchronizer2" for hierarchy "synchronizer2:sync_op" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 140
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_comp" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 148
+Info (12128): Elaborating entity "rising_edge_synchronizer" for hierarchy "rising_edge_synchronizer:sync_mr" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 158
+Info (12128): Elaborating entity "seven_seg" for hierarchy "seven_seg:convert_to_ssd_a" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 182
+Info (12128): Elaborating entity "memory" for hierarchy "memory:comp_memory" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 200
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "memory:comp_memory|RAM_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
@@ -661,26 +661,36 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_dnh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/sign_div_unsign_dnh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_03f.tdf
     Info (12023): Found entity 1: alt_u_div_03f File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/alt_u_div_03f.tdf Line: 23
-Warning (13012): Latch output_logic_we has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 126
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 211
-Warning (13012): Latch output_logic_addr[0] has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 211
+Warning (13012): Latch led[0]$latch has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 212
+Warning (13012): Latch led[1]$latch has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 212
+Warning (13012): Latch led[2]$latch has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 212
+Warning (13012): Latch led[3]$latch has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 212
+Warning (13012): Latch led[4]$latch has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 212
+Warning (13012): Latch output_logic_we has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 127
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 212
+Warning (13012): Latch output_logic_addr[0] has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 220
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[1] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 212
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "seven_seg_hun[1]" is stuck at GND File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 27
 Info (286030): Timing-Driven Synthesis is running
 Info (17036): Removed 3 MSB VCC or GND address nodes from RAM block "memory:comp_memory|altsyncram:RAM_rtl_0|altsyncram_oor1:auto_generated|ALTSYNCRAM" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/altsyncram_oor1.tdf Line: 128
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 468 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 474 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 26 output pins
-    Info (21061): Implemented 418 logic cells
+    Info (21061): Implemented 424 logic cells
     Info (21064): Implemented 8 RAM segments
     Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 889 megabytes
-    Info: Processing ended: Thu Nov 17 12:40:44 2016
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 890 megabytes
+    Info: Processing ended: Thu Nov 17 14:36:58 2016
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Total CPU time (on all processors): 00:00:22
 
 

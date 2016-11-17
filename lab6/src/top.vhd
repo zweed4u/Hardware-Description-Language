@@ -97,14 +97,15 @@ end component;
 
 --INTERNAL SIGNALS
 --States
-constant read_w          : std_logic_vector(4 downto 0) :="00001";
-constant read_r          : std_logic_vector(4 downto 0) :="00010";
-constant write_r         : std_logic_vector(4 downto 0) :="00100";
-constant write_w_no_op   : std_logic_vector(4 downto 0) :="01000"; -- this is synonymous with 'write_w_wait'
-constant write_w         : std_logic_vector(4 downto 0) :="10000";
+constant read_w          : std_logic_vector(5 downto 0) :="000001";
+constant read_r          : std_logic_vector(5 downto 0) :="000010";
+constant write_r         : std_logic_vector(5 downto 0) :="000100";
+constant write_w_no_op   : std_logic_vector(5 downto 0) :="001000"; -- this is synonymous with 'write_w_wait'
+constant write_w         : std_logic_vector(5 downto 0) :="010000";
+constant write_mem_to_work         : std_logic_vector(5 downto 0) :="100000";
 
-signal stateReg          : std_logic_vector(4 downto 0);
-signal stateNext         : std_logic_vector(4 downto 0);
+signal stateReg          : std_logic_vector(5 downto 0);
+signal stateNext         : std_logic_vector(5 downto 0);
 
 signal synced_sw         : std_logic_vector(7 downto 0);
 signal synced_op         : std_logic_vector(1 downto 0);
@@ -242,12 +243,10 @@ begin
 
             when read_r => --same as read_s
                 led <= "00010";
-				output_logic_we <= '0';
-				output_logic_addr <= "0001";
                 if (synced_execute='1') then
                     stateNext <= write_w_no_op;
                 else
-                    stateNext <= read_w;
+                    stateNext <= write_mem_to_work;
                 end if;
 
             when write_r => --same as write_s
@@ -258,13 +257,16 @@ begin
 
             when write_w_no_op =>
                 led <= "01000";
+                stateNext <= write_w;
+
+			when write_mem_to_work => 
 				output_logic_we <= '1';
                 output_logic_addr <= "0000";
-                stateNext <= write_w;
+				stateNext <= write_w;
 
             when write_w =>
                 led <= "10000";
-                output_logic_we <= '1';
+				output_logic_we <= '1';
                 output_logic_addr <= "0000";
                 stateNext <= read_w;
 
