@@ -10,4 +10,4 @@ vcom -93 -work work ../../src/memory.vhd
 vcom -93 -work work ../src/top_tb.vhd
 vsim -novopt top_tb
 do wave.do
-run 6500 ns
+run 7100 ns

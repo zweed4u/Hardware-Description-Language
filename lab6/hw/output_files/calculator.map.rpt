@@ -1,0 +1,686 @@
+Analysis & Synthesis report for calculator
+Thu Nov 17 12:40:44 2016
+Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. User-Specified and Inferred Latches
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Registers Packed Into Inferred Megafunctions
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for memory:comp_memory|altsyncram:RAM_rtl_0|altsyncram_oor1:auto_generated
+ 16. Parameter Settings for User Entity Instance: seven_seg:convert_to_ssd_a
+ 17. Parameter Settings for User Entity Instance: seven_seg:convert_to_ssd_b
+ 18. Parameter Settings for User Entity Instance: seven_seg:convert_to_ssd_c
+ 19. Parameter Settings for User Entity Instance: memory:comp_memory
+ 20. Parameter Settings for Inferred Entity Instance: memory:comp_memory|altsyncram:RAM_rtl_0
+ 21. Parameter Settings for Inferred Entity Instance: alu:alu_comp|lpm_divide:Div0
+ 22. altsyncram Parameter Settings by Entity Instance
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Nov 17 12:40:44 2016           ;
+; Quartus Prime Version           ; 15.1.0 Build 185 10/21/2015 SJ Standard Edition ;
+; Revision Name                   ; calculator                                      ;
+; Top-level Entity Name           ; top                                             ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 61                                              ;
+; Total pins                      ; 41                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 16                                              ;
+; Total DSP Blocks                ; 1                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; top                ; calculator         ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Synthesis Seed                                                                  ; 1                  ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ; < 0.1%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                               ;
++--------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path           ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                                        ; Library ;
++--------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+---------+
+; ../../src/seven_seg.vhd                    ; yes             ; User VHDL File                                        ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/seven_seg.vhd                                     ;         ;
+; ../../src/synchronizer8.vhd                ; yes             ; User VHDL File                                        ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/synchronizer8.vhd                                 ;         ;
+; ../../src/synchronizer2.vhd                ; yes             ; User VHDL File                                        ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/synchronizer2.vhd                                 ;         ;
+; ../../src/rising_edge_synchronizer.vhd     ; yes             ; User VHDL File                                        ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/rising_edge_synchronizer.vhd                      ;         ;
+; ../../src/memory.vhd                       ; yes             ; User VHDL File                                        ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/memory.vhd                                        ;         ;
+; ../../src/alu.vhd                          ; yes             ; User VHDL File                                        ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/alu.vhd                                           ;         ;
+; ../../src/top.vhd                          ; yes             ; User VHDL File                                        ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd                                           ;         ;
+; altsyncram.tdf                             ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/altsyncram.tdf                                                       ;         ;
+; stratix_ram_block.inc                      ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                ;         ;
+; lpm_mux.inc                                ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/lpm_mux.inc                                                          ;         ;
+; lpm_decode.inc                             ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/lpm_decode.inc                                                       ;         ;
+; aglobal151.inc                             ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/aglobal151.inc                                                       ;         ;
+; a_rdenreg.inc                              ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                        ;         ;
+; altrom.inc                                 ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/altrom.inc                                                           ;         ;
+; altram.inc                                 ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/altram.inc                                                           ;         ;
+; altdpram.inc                               ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/altdpram.inc                                                         ;         ;
+; db/altsyncram_oor1.tdf                     ; yes             ; Auto-Generated Megafunction                           ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/altsyncram_oor1.tdf                     ;         ;
+; db/calculator.ram0_memory_1967841f.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/calculator.ram0_memory_1967841f.hdl.mif ;         ;
+; lpm_divide.tdf                             ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                       ;         ;
+; abs_divider.inc                            ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/abs_divider.inc                                                      ;         ;
+; sign_div_unsign.inc                        ; yes             ; Megafunction                                          ; c:/altera/15.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                  ;         ;
+; db/lpm_divide_7dm.tdf                      ; yes             ; Auto-Generated Megafunction                           ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/lpm_divide_7dm.tdf                      ;         ;
+; db/sign_div_unsign_dnh.tdf                 ; yes             ; Auto-Generated Megafunction                           ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/sign_div_unsign_dnh.tdf                 ;         ;
+; db/alt_u_div_03f.tdf                       ; yes             ; Auto-Generated Megafunction                           ; C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/alt_u_div_03f.tdf                       ;         ;
++--------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 203       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 383       ;
+;     -- 7 input functions                    ; 0         ;
+;     -- 6 input functions                    ; 9         ;
+;     -- 5 input functions                    ; 62        ;
+;     -- 4 input functions                    ; 132       ;
+;     -- <=3 input functions                  ; 180       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 61        ;
+;                                             ;           ;
+; I/O pins                                    ; 41        ;
+; Total MLAB memory bits                      ; 0         ;
+; Total block memory bits                     ; 16        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 1         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 69        ;
+; Total fan-out                               ; 1735      ;
+; Average fan-out                             ; 3.24      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                     ;
++--------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                 ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                               ; Library Name ;
++--------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
+; |top                                       ; 383 (31)          ; 61 (13)      ; 16                ; 1          ; 41   ; 0            ; |top                                                                                                              ; work         ;
+;    |alu:alu_comp|                          ; 329 (18)          ; 16 (16)      ; 0                 ; 1          ; 0    ; 0            ; |top|alu:alu_comp                                                                                                 ; work         ;
+;       |lpm_divide:Div0|                    ; 311 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|alu:alu_comp|lpm_divide:Div0                                                                                 ; work         ;
+;          |lpm_divide_7dm:auto_generated|   ; 311 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|alu:alu_comp|lpm_divide:Div0|lpm_divide_7dm:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_dnh:divider|  ; 311 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|alu:alu_comp|lpm_divide:Div0|lpm_divide_7dm:auto_generated|sign_div_unsign_dnh:divider                       ; work         ;
+;                |alt_u_div_03f:divider|     ; 311 (311)         ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|alu:alu_comp|lpm_divide:Div0|lpm_divide_7dm:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_03f:divider ; work         ;
+;    |memory:comp_memory|                    ; 0 (0)             ; 0 (0)        ; 16                ; 0          ; 0    ; 0            ; |top|memory:comp_memory                                                                                           ; work         ;
+;       |altsyncram:RAM_rtl_0|               ; 0 (0)             ; 0 (0)        ; 16                ; 0          ; 0    ; 0            ; |top|memory:comp_memory|altsyncram:RAM_rtl_0                                                                      ; work         ;
+;          |altsyncram_oor1:auto_generated|  ; 0 (0)             ; 0 (0)        ; 16                ; 0          ; 0    ; 0            ; |top|memory:comp_memory|altsyncram:RAM_rtl_0|altsyncram_oor1:auto_generated                                       ; work         ;
+;    |rising_edge_synchronizer:sync_execute| ; 2 (2)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |top|rising_edge_synchronizer:sync_execute                                                                        ; work         ;
+;    |rising_edge_synchronizer:sync_mr|      ; 2 (2)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |top|rising_edge_synchronizer:sync_mr                                                                             ; work         ;
+;    |rising_edge_synchronizer:sync_ms|      ; 2 (2)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |top|rising_edge_synchronizer:sync_ms                                                                             ; work         ;
+;    |seven_seg:convert_to_ssd_a|            ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|seven_seg:convert_to_ssd_a                                                                                   ; work         ;
+;    |seven_seg:convert_to_ssd_b|            ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|seven_seg:convert_to_ssd_b                                                                                   ; work         ;
+;    |seven_seg:convert_to_ssd_c|            ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |top|seven_seg:convert_to_ssd_c                                                                                   ; work         ;
+;    |synchronizer2:sync_op|                 ; 0 (0)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |top|synchronizer2:sync_op                                                                                        ; work         ;
+;    |synchronizer8:sync_switches|           ; 0 (0)             ; 16 (16)      ; 0                 ; 0          ; 0    ; 0            ; |top|synchronizer8:sync_switches                                                                                  ; work         ;
++--------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                            ;
++-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+--------------------------------------------+
+; Name                                                                              ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                        ;
++-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+--------------------------------------------+
+; memory:comp_memory|altsyncram:RAM_rtl_0|altsyncram_oor1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 16           ; 8            ; 16           ; 8            ; 128  ; db/calculator.ram0_memory_1967841f.hdl.mif ;
++-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+--------------------------------------------+
+
+
++-----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary  ;
++---------------------------------+-------------+
+; Statistic                       ; Number Used ;
++---------------------------------+-------------+
+; Independent 9x9                 ; 1           ;
+; Total number of DSP blocks      ; 1           ;
+;                                 ;             ;
+; Fixed Point Unsigned Multiplier ; 1           ;
++---------------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++----------------------------------------------------+----------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal  ; Free of Timing Hazards ;
++----------------------------------------------------+----------------------+------------------------+
+; led[0]$latch                                       ; reset_n              ; yes                    ;
+; led[1]$latch                                       ; reset_n              ; yes                    ;
+; led[2]$latch                                       ; reset_n              ; yes                    ;
+; led[3]$latch                                       ; reset_n              ; yes                    ;
+; led[4]$latch                                       ; reset_n              ; yes                    ;
+; output_logic_we                                    ; output_logic_addr[1] ; yes                    ;
+; output_logic_addr[0]                               ; output_logic_addr[1] ; yes                    ;
+; Number of user-specified and inferred latches = 7  ;                      ;                        ;
++----------------------------------------------------+----------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 61    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 45    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------+
+; Inverted Register Statistics                              ;
++-------------------------------------------------+---------+
+; Inverted Register                               ; Fan out ;
++-------------------------------------------------+---------+
+; stateReg[0]                                     ; 11      ;
+; rising_edge_synchronizer:sync_execute|input_zz  ; 2       ;
+; rising_edge_synchronizer:sync_execute|input_zzz ; 1       ;
+; rising_edge_synchronizer:sync_ms|input_zz       ; 2       ;
+; rising_edge_synchronizer:sync_ms|input_zzz      ; 1       ;
+; rising_edge_synchronizer:sync_mr|input_zz       ; 2       ;
+; rising_edge_synchronizer:sync_mr|input_zzz      ; 1       ;
+; rising_edge_synchronizer:sync_execute|input_z   ; 1       ;
+; rising_edge_synchronizer:sync_ms|input_z        ; 1       ;
+; rising_edge_synchronizer:sync_mr|input_z        ; 1       ;
+; Total number of inverted registers = 10         ;         ;
++-------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                        ;
++-------------------------------+------------------------------+------+
+; Register Name                 ; Megafunction                 ; Type ;
++-------------------------------+------------------------------+------+
+; memory:comp_memory|dout[0..7] ; memory:comp_memory|RAM_rtl_0 ; RAM  ;
++-------------------------------+------------------------------+------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |top|to_mem[0]                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top|alu:alu_comp|result_temp[4] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Source assignments for memory:comp_memory|altsyncram:RAM_rtl_0|altsyncram_oor1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------+
+; Assignment                      ; Value              ; From ; To                              ;
++---------------------------------+--------------------+------+---------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
++---------------------------------+--------------------+------+---------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seven_seg:convert_to_ssd_a ;
++----------------+----------+---------------------------------------------+
+; Parameter Name ; Value    ; Type                                        ;
++----------------+----------+---------------------------------------------+
+; max_count      ; 25000000 ; Signed Integer                              ;
++----------------+----------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seven_seg:convert_to_ssd_b ;
++----------------+----------+---------------------------------------------+
+; Parameter Name ; Value    ; Type                                        ;
++----------------+----------+---------------------------------------------+
+; max_count      ; 25000000 ; Signed Integer                              ;
++----------------+----------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: seven_seg:convert_to_ssd_c ;
++----------------+----------+---------------------------------------------+
+; Parameter Name ; Value    ; Type                                        ;
++----------------+----------+---------------------------------------------+
+; max_count      ; 25000000 ; Signed Integer                              ;
++----------------+----------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: memory:comp_memory ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; addr_width     ; 4     ; Signed Integer                         ;
+; data_width     ; 8     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: memory:comp_memory|altsyncram:RAM_rtl_0         ;
++------------------------------------+--------------------------------------------+----------------+
+; Parameter Name                     ; Value                                      ; Type           ;
++------------------------------------+--------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                          ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                         ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                        ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                         ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                        ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                          ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                                  ; Untyped        ;
+; WIDTH_A                            ; 8                                          ; Untyped        ;
+; WIDTHAD_A                          ; 4                                          ; Untyped        ;
+; NUMWORDS_A                         ; 16                                         ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                               ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                       ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                       ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                       ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                       ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                       ; Untyped        ;
+; WIDTH_B                            ; 8                                          ; Untyped        ;
+; WIDTHAD_B                          ; 4                                          ; Untyped        ;
+; NUMWORDS_B                         ; 16                                         ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                     ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                     ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                     ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                                     ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                               ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                     ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                       ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                       ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                       ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                       ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                       ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                       ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                          ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                          ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                       ; Untyped        ;
+; BYTE_SIZE                          ; 8                                          ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                   ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                       ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                       ; Untyped        ;
+; INIT_FILE                          ; db/calculator.ram0_memory_1967841f.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                     ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                          ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                     ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                     ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                     ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                     ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                            ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                            ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                      ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                      ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                          ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                                  ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_oor1                            ; Untyped        ;
++------------------------------------+--------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: alu:alu_comp|lpm_divide:Div0 ;
++------------------------+----------------+-------------------------------------+
+; Parameter Name         ; Value          ; Type                                ;
++------------------------+----------------+-------------------------------------+
+; LPM_WIDTHN             ; 16             ; Untyped                             ;
+; LPM_WIDTHD             ; 16             ; Untyped                             ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                             ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                             ;
+; LPM_PIPELINE           ; 0              ; Untyped                             ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                             ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                             ;
+; CBXI_PARAMETER         ; lpm_divide_7dm ; Untyped                             ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                             ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                             ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                          ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                        ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                        ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                      ;
++------------------------+----------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                    ;
++-------------------------------------------+-----------------------------------------+
+; Name                                      ; Value                                   ;
++-------------------------------------------+-----------------------------------------+
+; Number of entity instances                ; 1                                       ;
+; Entity Instance                           ; memory:comp_memory|altsyncram:RAM_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                               ;
+;     -- WIDTH_A                            ; 8                                       ;
+;     -- NUMWORDS_A                         ; 16                                      ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                            ;
+;     -- WIDTH_B                            ; 8                                       ;
+;     -- NUMWORDS_B                         ; 16                                      ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                ;
++-------------------------------------------+-----------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 61                          ;
+;     CLR               ; 37                          ;
+;     CLR SLD           ; 8                           ;
+;     ENA               ; 8                           ;
+;     ENA SLD           ; 8                           ;
+; arriav_lcell_comb     ; 388                         ;
+;     arith             ; 167                         ;
+;         0 data inputs ; 23                          ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 14                          ;
+;         4 data inputs ; 69                          ;
+;         5 data inputs ; 41                          ;
+;     normal            ; 221                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 74                          ;
+;         3 data inputs ; 46                          ;
+;         4 data inputs ; 63                          ;
+;         5 data inputs ; 21                          ;
+;         6 data inputs ; 9                           ;
+; arriav_mac            ; 1                           ;
+; boundary_port         ; 41                          ;
+; stratixv_ram_block    ; 8                           ;
+;                       ;                             ;
+; Max LUT depth         ; 31.00                       ;
+; Average LUT depth     ; 21.46                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
+    Info: Processing started: Thu Nov 17 12:40:33 2016
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off calculator -c calculator
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/seven_seg.vhd
+    Info (12022): Found design unit 1: seven_seg-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/seven_seg.vhd Line: 21
+    Info (12023): Found entity 1: seven_seg File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/seven_seg.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/synchronizer8.vhd
+    Info (12022): Found design unit 1: synchronizer8-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/synchronizer8.vhd Line: 17
+    Info (12023): Found entity 1: synchronizer8 File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/synchronizer8.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/synchronizer2.vhd
+    Info (12022): Found design unit 1: synchronizer2-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/synchronizer2.vhd Line: 17
+    Info (12023): Found entity 1: synchronizer2 File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/synchronizer2.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/rising_edge_synchronizer.vhd
+    Info (12022): Found design unit 1: rising_edge_synchronizer-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/rising_edge_synchronizer.vhd Line: 17
+    Info (12023): Found entity 1: rising_edge_synchronizer File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/rising_edge_synchronizer.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/memory.vhd
+    Info (12022): Found design unit 1: memory-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/memory.vhd Line: 21
+    Info (12023): Found entity 1: memory File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/memory.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/alu.vhd
+    Info (12022): Found design unit 1: alu-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/alu.vhd Line: 17
+    Info (12023): Found entity 1: alu File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/alu.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /users/zdw7287/downloads/hardware-description-language/lab6/src/top.vhd
+    Info (12022): Found design unit 1: top-beh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 34
+    Info (12023): Found entity 1: top File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 18
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Warning (10631): VHDL Process Statement warning at top.vhd(219): inferring latch(es) for signal or variable "led", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Warning (10631): VHDL Process Statement warning at top.vhd(219): inferring latch(es) for signal or variable "output_logic_we", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Warning (10631): VHDL Process Statement warning at top.vhd(219): inferring latch(es) for signal or variable "output_logic_addr", which holds its previous value in one or more paths through the process File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Warning (10492): VHDL Process Statement warning at top.vhd(288): signal "to_mem" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 288
+Info (10041): Inferred latch for "output_logic_addr[0]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "output_logic_addr[1]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "output_logic_addr[2]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "output_logic_addr[3]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "output_logic_we" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "led[0]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "led[1]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "led[2]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "led[3]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (10041): Inferred latch for "led[4]" at top.vhd(219) File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+Info (12128): Elaborating entity "synchronizer8" for hierarchy "synchronizer8:sync_switches" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 131
+Info (12128): Elaborating entity "synchronizer2" for hierarchy "synchronizer2:sync_op" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 139
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_comp" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 147
+Info (12128): Elaborating entity "rising_edge_synchronizer" for hierarchy "rising_edge_synchronizer:sync_mr" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 157
+Info (12128): Elaborating entity "seven_seg" for hierarchy "seven_seg:convert_to_ssd_a" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 181
+Info (12128): Elaborating entity "memory" for hierarchy "memory:comp_memory" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 199
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "memory:comp_memory|RAM_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 4
+        Info (286033): Parameter NUMWORDS_A set to 16
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 4
+        Info (286033): Parameter NUMWORDS_B set to 16
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/calculator.ram0_memory_1967841f.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "alu:alu_comp|Div0" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/alu.vhd Line: 35
+Info (12130): Elaborated megafunction instantiation "memory:comp_memory|altsyncram:RAM_rtl_0"
+Info (12133): Instantiated megafunction "memory:comp_memory|altsyncram:RAM_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "4"
+    Info (12134): Parameter "NUMWORDS_A" = "16"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "4"
+    Info (12134): Parameter "NUMWORDS_B" = "16"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/calculator.ram0_memory_1967841f.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_oor1.tdf
+    Info (12023): Found entity 1: altsyncram_oor1 File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/altsyncram_oor1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "alu:alu_comp|lpm_divide:Div0" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/alu.vhd Line: 35
+Info (12133): Instantiated megafunction "alu:alu_comp|lpm_divide:Div0" with the following parameter: File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/alu.vhd Line: 35
+    Info (12134): Parameter "LPM_WIDTHN" = "16"
+    Info (12134): Parameter "LPM_WIDTHD" = "16"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_7dm.tdf
+    Info (12023): Found entity 1: lpm_divide_7dm File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/lpm_divide_7dm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dnh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_dnh File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/sign_div_unsign_dnh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_03f.tdf
+    Info (12023): Found entity 1: alt_u_div_03f File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/alt_u_div_03f.tdf Line: 23
+Warning (13012): Latch output_logic_we has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 126
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 211
+Warning (13012): Latch output_logic_addr[0] has unsafe behavior File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 219
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal stateReg[0] File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 211
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "seven_seg_hun[1]" is stuck at GND File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/src/top.vhd Line: 27
+Info (286030): Timing-Driven Synthesis is running
+Info (17036): Removed 3 MSB VCC or GND address nodes from RAM block "memory:comp_memory|altsyncram:RAM_rtl_0|altsyncram_oor1:auto_generated|ALTSYNCRAM" File: C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab6/hw/project/db/altsyncram_oor1.tdf Line: 128
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 468 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 26 output pins
+    Info (21061): Implemented 418 logic cells
+    Info (21064): Implemented 8 RAM segments
+    Info (21062): Implemented 1 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 889 megabytes
+    Info: Processing ended: Thu Nov 17 12:40:44 2016
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:21
+
+

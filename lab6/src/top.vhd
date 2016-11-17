@@ -27,7 +27,7 @@ entity top is
     seven_seg_hun   : out std_logic_vector(6 downto 0);
     seven_seg_ten   : out std_logic_vector(6 downto 0);
     seven_seg_one   : out std_logic_vector(6 downto 0);
-    led             : out std_logic_vector(4 downto 0) -- state indicator
+    led             : out std_logic_vector(4 downto 0)
   ); 
 end top;
 
@@ -45,8 +45,8 @@ end component;
 
 
 component memory is
-  generic (addr_width : integer := 4;  --Verify Proper vector lengths
-           data_width : integer := 8); --Verify Proper vector lengths
+  generic (addr_width : integer := 4; 
+           data_width : integer := 8);
   port (
     clk               : in std_logic;
     we                : in std_logic;
@@ -90,7 +90,7 @@ component alu is
     reset      :in std_logic;
     a          :in std_logic_vector(7 downto 0);
     b          :in std_logic_vector(7 downto 0);
-    op         :in std_logic_vector(1 downto 0); --comment for good practice 00 add 01 sub 10 mult 11 div
+    op         :in std_logic_vector(1 downto 0);
     result     :out std_logic_vector(7 downto 0)
   );
 end component;
@@ -103,8 +103,8 @@ constant write_r         : std_logic_vector(4 downto 0) :="00100";
 constant write_w_no_op   : std_logic_vector(4 downto 0) :="01000"; -- this is synonymous with 'write_w_wait'
 constant write_w         : std_logic_vector(4 downto 0) :="10000";
 
-signal stateReg          : std_logic_vector(4 downto 0); --5 states
-signal stateNext         : std_logic_vector(4 downto 0); --5 states
+signal stateReg          : std_logic_vector(4 downto 0);
+signal stateNext         : std_logic_vector(4 downto 0);
 
 signal synced_sw         : std_logic_vector(7 downto 0);
 signal synced_op         : std_logic_vector(1 downto 0);
@@ -113,17 +113,16 @@ signal synced_mr         : std_logic;
 signal synced_ms         : std_logic;
 signal synced_execute    : std_logic;
 
-signal save              : std_logic_vector(7 downto 0); --Verify Proper vector lengths (synonymous with 'dout' signal)
-signal result_sig        : std_logic_vector(7 downto 0); --Result of ALU - verify proper length (no padding?)
+signal save              : std_logic_vector(7 downto 0);
+signal result_sig        : std_logic_vector(7 downto 0);
 
-signal to_mem            : std_logic_vector(7 downto 0); --Verify Proper vector lengths (synonymous with 'din' signal)
+signal to_mem            : std_logic_vector(7 downto 0);
 
 signal preDD             : std_logic_vector(11 downto 0);
 signal ones              : std_logic_vector(3 downto 0);
 signal tens              : std_logic_vector(3 downto 0);
 signal hundreds          : std_logic_vector(3 downto 0);
 
-signal state_reg_output  : std_logic_vector(4 downto 0); --5 states???
 signal output_logic_we   : std_logic;
 signal output_logic_addr : std_logic_vector(3 downto 0);
 
@@ -145,7 +144,7 @@ sync_op: synchronizer2
     sync_out    => synced_op
   );
 
-alu_comp: alu --check vector lengths and assignments
+alu_comp: alu 
   port map(
     clk         => clk,
     reset       => reset_n,
@@ -216,7 +215,7 @@ begin
     end if;
 end process;
 
---sensitivity list? Next State Logic
+--sensitivity list Next State Logic
 process(stateReg,reset_n,synced_execute,synced_ms,synced_mr) --NSL
 begin
     if reset_n = '0' then 
@@ -233,6 +232,9 @@ begin
                 elsif (synced_ms='1') then
                     stateNext <= write_r;
                 elsif (synced_mr='1') then
+					--preparing memory for mr (read_r state)
+					output_logic_we <= '0';
+					output_logic_addr <= "0001";
                     stateNext <= read_r;
                 else 
                     stateNext <= read_w;
@@ -240,8 +242,8 @@ begin
 
             when read_r => --same as read_s
                 led <= "00010";
-                output_logic_we <= '0';
-                output_logic_addr <= "0001";
+				output_logic_we <= '0';
+				output_logic_addr <= "0001";
                 if (synced_execute='1') then
                     stateNext <= write_w_no_op;
                 else
@@ -256,8 +258,8 @@ begin
 
             when write_w_no_op =>
                 led <= "01000";
-                output_logic_we <= '1'; --signals assigned here?
-                output_logic_addr <= "0000"; --signals assigned here?
+				output_logic_we <= '1';
+                output_logic_addr <= "0000";
                 stateNext <= write_w;
 
             when write_w =>
@@ -277,7 +279,6 @@ end process;
 -- routing [asynchronous]
 process(switch,reset_n,stateReg,clk)
 begin
-    --other declarations based off states?
     if (clk'event and clk ='1') then
         if (stateReg=write_w_no_op) then
             to_mem <= result_sig;
@@ -288,9 +289,6 @@ begin
     preDD <= std_logic_vector(unsigned("0000" & to_mem));
 end process;
 
---functional units process here?
---routing process here?
---data register process here?
 
 --DOUBLE DABBLE PROCESS - takes 8 bit number and parses into hundreds, tens,and ones
 bcd1: process(preDD)

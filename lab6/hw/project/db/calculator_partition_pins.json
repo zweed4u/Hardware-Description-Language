@@ -1,0 +1,169 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "seven_seg_hun[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_hun[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_hun[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_hun[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_hun[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_hun[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_ten[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_ten[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_ten[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_ten[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_ten[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_ten[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_ten[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_one[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_one[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_one[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_one[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_one[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_one[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_one[6]",
+					"strict" : false
+				},
+				{
+					"name" : "led[0]",
+					"strict" : false
+				},
+				{
+					"name" : "led[1]",
+					"strict" : false
+				},
+				{
+					"name" : "led[2]",
+					"strict" : false
+				},
+				{
+					"name" : "led[3]",
+					"strict" : false
+				},
+				{
+					"name" : "led[4]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "op[1]",
+					"strict" : false
+				},
+				{
+					"name" : "op[0]",
+					"strict" : false
+				},
+				{
+					"name" : "switch[3]",
+					"strict" : false
+				},
+				{
+					"name" : "execute",
+					"strict" : false
+				},
+				{
+					"name" : "ms",
+					"strict" : false
+				},
+				{
+					"name" : "mr",
+					"strict" : false
+				},
+				{
+					"name" : "switch[4]",
+					"strict" : false
+				},
+				{
+					"name" : "switch[5]",
+					"strict" : false
+				},
+				{
+					"name" : "switch[7]",
+					"strict" : false
+				},
+				{
+					"name" : "switch[6]",
+					"strict" : false
+				},
+				{
+					"name" : "switch[2]",
+					"strict" : false
+				},
+				{
+					"name" : "switch[1]",
+					"strict" : false
+				},
+				{
+					"name" : "switch[0]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

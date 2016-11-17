@@ -16,8 +16,9 @@ radix define States {
     "7'b0100001" "d" -color "red",
     "7'b0000110" "e" -color "red",
     "7'b0001110" "f" -color "red",
-    "7'b1111111" "-color",
+    "7'b1111111" "null" -color "red",
     "red" "-default",
+    "default" "-default",
     "default" "-default",
     "default" "",
     -default default
@@ -41,21 +42,26 @@ add wave -noupdate -radix binary /top_tb/uut/synced_op
 add wave -noupdate /top_tb/uut/synced_mr
 add wave -noupdate /top_tb/uut/synced_ms
 add wave -noupdate /top_tb/uut/synced_execute
-add wave -noupdate /top_tb/uut/save
+add wave -noupdate -radix binary /top_tb/uut/save
 add wave -noupdate /top_tb/uut/result_sig
 add wave -noupdate /top_tb/uut/to_mem
 add wave -noupdate /top_tb/uut/preDD
 add wave -noupdate /top_tb/uut/ones
 add wave -noupdate /top_tb/uut/tens
 add wave -noupdate /top_tb/uut/hundreds
-add wave -noupdate /top_tb/uut/state_reg_output
 add wave -noupdate /top_tb/uut/output_logic_we
 add wave -noupdate /top_tb/uut/output_logic_addr
+add wave -noupdate /top_tb/uut/comp_memory/clk
+add wave -noupdate -expand -group mem /top_tb/uut/comp_memory/we
+add wave -noupdate -expand -group mem /top_tb/uut/comp_memory/addr
+add wave -noupdate -expand -group mem /top_tb/uut/comp_memory/din
+add wave -noupdate -expand -group mem /top_tb/uut/comp_memory/dout
+add wave -noupdate -expand -group mem /top_tb/uut/comp_memory/RAM
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {6514 ns} 0}
+WaveRestoreCursors {{Cursor 1} {6460 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 210
-configure wave -valuecolwidth 135
+configure wave -valuecolwidth 73
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
 configure wave -snapdistance 10
@@ -68,4 +74,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {7875 ns}
+WaveRestoreZoom {0 ns} {7455 ns}
