@@ -1,16 +1,11 @@
---lab 6 - check reset_n polarity/logic
---zachary weeden
---QUESTIONS 
---Length of vectors eg. dout/save 
---Signal coming from fsm register to datapath
---to_mem assignment in each state? 
---TWO STATEMACHINES? HOW TO IMPLEMENT OP CODE 
---CLOCK CYCLE ON GOING BACK TO IDLE ON MS OR MR
+--lab 6 
+--Zachary Weeden
 --         || we || add
 --write_w  ||  1 || 00 working register
 --read_w   ||  0 || 00 working register
 --write_s  ||  1 || 01 save register
 --read_s   ||  0 || 01 save register
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -97,12 +92,12 @@ end component;
 
 --INTERNAL SIGNALS
 --States
-constant read_w          : std_logic_vector(5 downto 0) :="000001";
-constant read_r          : std_logic_vector(5 downto 0) :="000010";
-constant write_r         : std_logic_vector(5 downto 0) :="000100";
-constant write_w_no_op   : std_logic_vector(5 downto 0) :="001000"; -- this is synonymous with 'write_w_wait'
-constant write_w         : std_logic_vector(5 downto 0) :="010000";
-constant write_mem_to_work         : std_logic_vector(5 downto 0) :="100000";
+constant read_w               : std_logic_vector(5 downto 0) :="000001";
+constant read_r               : std_logic_vector(5 downto 0) :="000010";
+constant write_r              : std_logic_vector(5 downto 0) :="000100";
+constant write_w_no_op        : std_logic_vector(5 downto 0) :="001000"; -- this is synonymous with 'write_w_wait'
+constant write_w              : std_logic_vector(5 downto 0) :="010000";
+constant write_mem_to_work    : std_logic_vector(5 downto 0) :="100000"; -- needed for static mr
 
 signal stateReg          : std_logic_vector(5 downto 0);
 signal stateNext         : std_logic_vector(5 downto 0);
@@ -246,7 +241,7 @@ begin
                 if (synced_execute='1') then
                     stateNext <= write_w_no_op;
                 else
-                    stateNext <= write_mem_to_work;
+                    stateNext <= write_mem_to_work; --case to write mr value to the working register
                 end if;
 
             when write_r => --same as write_s
@@ -262,7 +257,7 @@ begin
 			when write_mem_to_work => 
 				output_logic_we <= '1';
                 output_logic_addr <= "0000";
-				stateNext <= write_w;
+				stateNext <= write_w; --continue on the read_w -> read_r -> read_w chain
 
             when write_w =>
                 led <= "10000";
