@@ -31,9 +31,14 @@ architecture beh of top is
 --
 --
 --ROM component here
---Omit unused components
---
---
+--Omit unused components - adjust this
+component blink_rom
+  PORT(
+    address         : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
+    clock           : IN STD_LOGIC  := '1';
+    q               : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+  );
+end component;
 
 
 component seven_seg is
@@ -138,16 +143,22 @@ signal output_logic_addr : std_logic_vector(3 downto 0);
 --alias mr: std_logic is concatenated_op_input(9);
 --alias opCode: std_logic_vector(1 downto 0) is concatenated_op_input(11 downto 10);
 --ADJUST SYNCHED SIGNALS ABOVE AND MAPPINGS THAT ARE MODIFIED
+--SIGNALS FOR EXAMPLE ROM INST
+signal address_sig  : std_logic_vector(4 downto 0) := "00001";
+signal q_sig        : std_logic_vector(3 downto 0);
+signal enable       : std_logic;
+
 
 --COMPONENT INSTANTIATIONS
 begin
-
---
---
 --ROM instantiation here
 --Omit unneeded instances
---
---
+rom_inst : blink_rom 
+  port map (
+    address     => address_sig,
+    clock       => clk,
+    q           => q_sig
+  );
 
 sync_switches: synchronizer8 
   port map(
