@@ -1,4 +1,4 @@
---lab 6 
+--lab 7
 --Zachary Weeden
 --         || we || add
 --write_w  ||  1 || 00 working register
@@ -27,6 +27,14 @@ entity top is
 end top;
 
 architecture beh of top is
+
+--
+--
+--ROM component here
+--Omit unused components
+--
+--
+
 
 component seven_seg is
   generic (
@@ -122,8 +130,25 @@ signal hundreds          : std_logic_vector(3 downto 0);
 signal output_logic_we   : std_logic;
 signal output_logic_addr : std_logic_vector(3 downto 0);
 
+--rom signal eg. 00    00    00000000
+--               op   mr ms   number
+--signal concatenated_op_input : std_logic_vector(11 downto 0);
+--alias input: std_logic_vector(7 downto 0) is concatenated_op_input(7 downto 0);
+--alias ms: std_logic is concatenated_op_input(8);
+--alias mr: std_logic is concatenated_op_input(9);
+--alias opCode: std_logic_vector(1 downto 0) is concatenated_op_input(11 downto 10);
+--ADJUST SYNCHED SIGNALS ABOVE AND MAPPINGS THAT ARE MODIFIED
+
 --COMPONENT INSTANTIATIONS
 begin
+
+--
+--
+--ROM instantiation here
+--Omit unneeded instances
+--
+--
+
 sync_switches: synchronizer8 
   port map(
     clk         => clk,
