@@ -1,0 +1,95 @@
+# //  ModelSim SE-64 10.5b May 21 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do sim.do
+# Model Technology ModelSim SE-64 vmap 10.5b Lib Mapping Utility 2016.05 May 21 2016
+# vmap altera_mf ../../src/altera_mf 
+# Modifying c:/software/mentorgraphics/win64/../modelsim.ini
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 16:37:13 on Nov 26,2016
+# vcom -reportprogress 300 -93 -work work ../../src/rom/blink_rom.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package altera_mf_components
+# -- Compiling entity blink_rom
+# -- Compiling architecture SYN of blink_rom
+# End time: 16:37:14 on Nov 26,2016, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 16:37:14 on Nov 26,2016
+# vcom -reportprogress 300 -93 -work work ../../src/generic_counter.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity generic_counter
+# -- Compiling architecture beh of generic_counter
+# End time: 16:37:14 on Nov 26,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 16:37:14 on Nov 26,2016
+# vcom -reportprogress 300 -93 -work work ../../src/seven_seg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity seven_seg
+# -- Compiling architecture beh of seven_seg
+# End time: 16:37:14 on Nov 26,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 16:37:14 on Nov 26,2016
+# vcom -reportprogress 300 -93 -work work ../../src/blink_block_mem.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity blink_block_mem
+# -- Compiling architecture beh of blink_block_mem
+# End time: 16:37:14 on Nov 26,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim SE-64 vcom 10.5b Compiler 2016.05 May 21 2016
+# Start time: 16:37:14 on Nov 26,2016
+# vcom -reportprogress 300 -93 -work work ../src/blink_block_mem_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity blink_block_mem_tb
+# -- Compiling architecture arch of blink_block_mem_tb
+# ** Warning: ../src/blink_block_mem_tb.vhd(25): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+# End time: 16:37:14 on Nov 26,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vsim -novopt blink_block_mem_tb 
+# Start time: 16:37:14 on Nov 26,2016
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading std.standard
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab7/supplementary/blink_block_mem/sim/script/work.blink_block_mem_tb(arch)
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.blink_block_mem_tb(arch)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab7/supplementary/blink_block_mem/sim/script/work.blink_block_mem(beh)
+# Loading ieee.numeric_std(body)
+# Loading work.blink_block_mem(beh)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab7/supplementary/blink_block_mem/sim/script/work.seven_seg(beh)
+# Loading work.seven_seg(beh)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab7/supplementary/blink_block_mem/sim/script/work.blink_rom(syn)
+# Loading altera_mf.altera_mf_components
+# Loading work.blink_rom(syn)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading altera_mf.altera_common_conversion(body)
+# Loading altera_mf.altera_device_families(body)
+# Loading altera_mf.altsyncram(translated)
+# Refreshing C:/Users/zdw7287/Downloads/Hardware-Description-Language/lab7/supplementary/blink_block_mem/sim/script/work.generic_counter(beh)
+# Loading work.generic_counter(beh)
+# End time: 16:44:01 on Nov 26,2016, Elapsed time: 0:06:47
+# Errors: 0, Warnings: 1
