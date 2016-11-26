@@ -12,24 +12,21 @@ use ieee.numeric_std.all;
 
 entity top is
   port (
-    switch          : in std_logic_vector(7 downto 0);
-    op              : in std_logic_vector(1 downto 0); 
+    --switch          : in std_logic_vector(7 downto 0);
+    --op              : in std_logic_vector(1 downto 0); 
     clk             : in std_logic;
     reset_n         : in std_logic;
-    mr              : in std_logic;
-    ms              : in std_logic;
+    --mr              : in std_logic;
+    --ms              : in std_logic;
     execute         : in std_logic;
     seven_seg_hun   : out std_logic_vector(6 downto 0);
     seven_seg_ten   : out std_logic_vector(6 downto 0);
     seven_seg_one   : out std_logic_vector(6 downto 0);
-    led             : out std_logic_vector(4 downto 0)
+    --led             : out std_logic_vector(4 downto 0)
   ); 
 end top;
 
 architecture beh of top is
-
---
---
 --ROM component here
 --Omit unused components - adjust this
 component blink_rom
@@ -40,7 +37,6 @@ component blink_rom
   );
 end component;
 
-
 component seven_seg is
   generic (
         max_count       : integer := 25000000
@@ -50,7 +46,6 @@ component seven_seg is
     seven_seg_out     : out std_logic_vector(6 downto 0)
   );
 end component; 
-
 
 component memory is
   generic (addr_width : integer := 4; 
@@ -63,25 +58,6 @@ component memory is
     dout              : out std_logic_vector(data_width - 1 downto 0)
   );
 end component; 
-
-
-component synchronizer8 is
-  port (
-    clk               : in std_logic;
-    reset             : in std_logic;
-    async_in          : in std_logic_vector(7 downto 0);
-    sync_out          : out std_logic_vector(7 downto 0)
-  ); 
-end component;
-
-component synchronizer2 is
-  port (
-    clk               : in std_logic;
-    reset             : in std_logic;
-    async_in          : in std_logic_vector(1 downto 0);
-    sync_out          : out std_logic_vector(1 downto 0)
-  ); 
-end component;
 
 component rising_edge_synchronizer is 
   port (
@@ -115,11 +91,11 @@ constant write_mem_to_work    : std_logic_vector(5 downto 0) :="100000"; -- need
 signal stateReg          : std_logic_vector(5 downto 0);
 signal stateNext         : std_logic_vector(5 downto 0);
 
-signal synced_sw         : std_logic_vector(7 downto 0);
-signal synced_op         : std_logic_vector(1 downto 0);
+--signal synced_sw         : std_logic_vector(7 downto 0);
+--signal synced_op         : std_logic_vector(1 downto 0);
 
-signal synced_mr         : std_logic;
-signal synced_ms         : std_logic;
+--signal synced_mr         : std_logic;
+--signal synced_ms         : std_logic;
 signal synced_execute    : std_logic;
 
 signal save              : std_logic_vector(7 downto 0);
@@ -148,7 +124,6 @@ signal address_sig  : std_logic_vector(4 downto 0) := "00001";
 signal q_sig        : std_logic_vector(3 downto 0);
 signal enable       : std_logic;
 
-
 --COMPONENT INSTANTIATIONS
 begin
 --ROM instantiation here
@@ -160,22 +135,6 @@ rom_inst : blink_rom
     q           => q_sig
   );
 
-sync_switches: synchronizer8 
-  port map(
-    clk         => clk,
-    reset       => reset_n,
-    async_in    => switch, 
-    sync_out    => synced_sw
-  );
-  
-sync_op: synchronizer2 
-  port map(
-    clk         => clk,
-    reset       => reset_n,
-    async_in    => op, 
-    sync_out    => synced_op
-  );
-
 alu_comp: alu 
   port map(
     clk         => clk,
@@ -185,23 +144,7 @@ alu_comp: alu
     op          => synced_op,
     result      => result_sig
   );
-  
-sync_mr: rising_edge_synchronizer 
-  port map(
-    clk     => clk,
-    reset   => reset_n,
-    input   => mr,
-    edge    => synced_mr
-  );
-  
-sync_ms: rising_edge_synchronizer 
-  port map(
-    clk     => clk,
-    reset   => reset_n,
-    input   => ms,
-    edge    => synced_ms
-  );
-
+ 
 sync_execute: rising_edge_synchronizer 
   port map(
     clk     => clk,
@@ -256,7 +199,7 @@ begin
         stateNext <= stateReg; --prevent latch
         case stateReg is
             when read_w =>
-                led <= "00001";
+                --led <= "00001";
                 output_logic_we <= '0';
                 output_logic_addr <= "0000";
                 if (synced_execute='1') then
@@ -273,7 +216,7 @@ begin
                 end if;
 
             when read_r => --same as read_s
-                led <= "00010";
+                --led <= "00010";
                 if (synced_execute='1') then
                     stateNext <= write_w_no_op;
                 else
@@ -281,13 +224,13 @@ begin
                 end if;
 
             when write_r => --same as write_s
-                led <= "00100";
+                --led <= "00100";
                 output_logic_we <= '1';
                 output_logic_addr <= "0001";
                 stateNext <= read_w;
 
             when write_w_no_op =>
-                led <= "01000";
+                --led <= "01000";
                 stateNext <= write_w;
 
 			when write_mem_to_work => 
@@ -296,14 +239,14 @@ begin
 				stateNext <= write_w; --continue on the read_w -> read_r -> read_w chain
 
             when write_w =>
-                led <= "10000";
+                --led <= "10000";
 				output_logic_we <= '1';
                 output_logic_addr <= "0000";
                 stateNext <= read_w;
 
             when others =>
                 --shouldnt hit this case
-                led <= "00000";
+                --led <= "00000";
                 stateNext <= read_w;
         end case;
     end if;
