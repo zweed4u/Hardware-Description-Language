@@ -7,17 +7,17 @@ DATA_RADIX    = BIN; % Enter BIN, DEC, HEX, OCT, or UNS; unless %
 -- Specify values for addresses, which can be single address or range
 CONTENT
 BEGIN
+%   only supporting test case numbers
 %   op   mr ms   number
 %   00   0  0   00000000
-0   : 000000000000;   
-1   : 000000000001;   
-2   : 000000000010;   
-3   : 000000000011;   
-4   : 000000000100;   
-5   : 000000000101;   
-6   : 000000000110;   
-7   : 000000000111;   
-8   : 000000001000;   
-9   : 000000001001;   
-[10..15] : 000000000000;
+0   : 000000000100; % add 4
+1   : 100000001000; % mult 8
+2   : 100100001000; % ms toggle  
+3   : 100000001000; % ms toggle 
+4   : 010000001000; % sub 8
+5   : 110000000010; % div 2 
+6   : 111000000010; % mr toggle  
+7   : 110000000010; % mr toggle  
+8   : 110000000010; % div 2   
+[9..15] : 000000000000;
 END;
