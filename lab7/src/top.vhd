@@ -31,9 +31,9 @@ architecture beh of top is
 --Omit unused components - adjust this
 component blink_rom
   PORT(
-    address         : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
+    address         : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
     clock           : IN STD_LOGIC  := '1';
-    q               : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+    q               : OUT STD_LOGIC_VECTOR (11 DOWNTO 0)
   );
 end component;
 
@@ -120,14 +120,14 @@ signal output_logic_addr : std_logic_vector(3 downto 0);
 --alias opCode: std_logic_vector(1 downto 0) is concatenated_op_input(11 downto 10);
 --ADJUST SYNCHED SIGNALS ABOVE AND MAPPINGS THAT ARE MODIFIED
 --SIGNALS FOR EXAMPLE ROM INST
-signal address_sig  : std_logic_vector(4 downto 0) := "00001";
-signal q_sig        : std_logic_vector(3 downto 0);
+signal address_sig  : std_logic_vector(3 downto 0) := "0001"; -- DEFAULT ADDRESS?
+signal q_sig        : std_logic_vector(11 downto 0);
 signal enable       : std_logic;
 
 --COMPONENT INSTANTIATIONS
 begin
 --ROM instantiation here
---Omit unneeded instances
+--Omit unneeded instances - MAP INTERNAL SIGNALS TO EITHER PROCESS OR OTHER COMPONENTS 
 rom_inst : blink_rom 
   port map (
     address     => address_sig,
@@ -322,5 +322,19 @@ bcd1: process(preDD)
     hundreds <= STD_LOGIC_VECTOR(bcd(11 downto 8));
     --thousands <= STD_LOGIC_VECTOR(bcd(15 downto 12));
   end process bcd1;
+
+  
+  
+  --process to fetch on execute and parse 12 bit qsig from rom component with aliases - ADJUST THIS
+  update_address: process(clk,reset,address_sig)
+  begin
+    if reset = '1' then
+      address_sig <= (others => '0');
+    elsif clk'event and clk = '1' then
+      if enable = '1' then
+        address_sig <= std_logic_vector(unsigned(address_sig) + 1 );
+      end if;
+    end if;
+  end process;
 
 end beh;
