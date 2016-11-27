@@ -33,7 +33,6 @@
 --authorized distributors.  Please refer to the applicable 
 --agreement for further details.
 
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
@@ -43,19 +42,19 @@ USE altera_mf.altera_mf_components.all;
 ENTITY blink_rom IS
 	PORT
 	(
-		address		: IN STD_LOGIC_VECTOR (4 DOWNTO 0);
+		address		: IN STD_LOGIC_VECTOR (3 DOWNTO 0);
 		clock		: IN STD_LOGIC  := '1';
-		q		: OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+		q		: OUT STD_LOGIC_VECTOR (11 DOWNTO 0)
 	);
 END blink_rom;
 
 
 ARCHITECTURE SYN OF blink_rom IS
 
-	SIGNAL sub_wire0	: STD_LOGIC_VECTOR (3 DOWNTO 0);
+	SIGNAL sub_wire0	: STD_LOGIC_VECTOR (11 DOWNTO 0);
 
 BEGIN
-	q    <= sub_wire0(3 DOWNTO 0);
+	q    <= sub_wire0(11 DOWNTO 0);
 
 	altsyncram_component : altsyncram
 	GENERIC MAP (
@@ -66,13 +65,13 @@ BEGIN
 		intended_device_family => "Cyclone V",
 		lpm_hint => "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=BLNK",
 		lpm_type => "altsyncram",
-		numwords_a => 32,
+		numwords_a => 16,
 		operation_mode => "ROM",
 		outdata_aclr_a => "NONE",
 		outdata_reg_a => "CLOCK0",
 		ram_block_type => "M10K",
-		widthad_a => 5,
-		width_a => 4,
+		widthad_a => 4,
+		width_a => 12,
 		width_byteena_a => 1
 	)
 	PORT MAP (
