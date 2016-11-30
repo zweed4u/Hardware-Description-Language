@@ -11,18 +11,13 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity top is
-  port (
-    --switch          : in std_logic_vector(7 downto 0);
-    --op              : in std_logic_vector(1 downto 0); 
+  port ( 
     clk             : in std_logic;
     reset_n         : in std_logic;
-    --mr              : in std_logic;
-    --ms              : in std_logic;
     execute         : in std_logic;
     seven_seg_hun   : out std_logic_vector(6 downto 0);
     seven_seg_ten   : out std_logic_vector(6 downto 0);
-    seven_seg_one   : out std_logic_vector(6 downto 0);
-    --led             : out std_logic_vector(4 downto 0)
+    seven_seg_one   : out std_logic_vector(6 downto 0)
   ); 
 end top;
 
@@ -113,16 +108,13 @@ signal output_logic_addr : std_logic_vector(3 downto 0);
 
 --rom signal eg. 00    00    00000000
 --               op   mr ms   number
---signal concatenated_op_input : std_logic_vector(11 downto 0);
---alias input: std_logic_vector(7 downto 0) is concatenated_op_input(7 downto 0);
---alias ms: std_logic is concatenated_op_input(8);
---alias mr: std_logic is concatenated_op_input(9);
---alias opCode: std_logic_vector(1 downto 0) is concatenated_op_input(11 downto 10);
---ADJUST SYNCHED SIGNALS ABOVE AND MAPPINGS THAT ARE MODIFIED
---SIGNALS FOR EXAMPLE ROM INST
-signal address_sig  : std_logic_vector(3 downto 0) := "0001"; -- DEFAULT ADDRESS?
-signal q_sig        : std_logic_vector(11 downto 0);
-signal enable       : std_logic;
+signal address_sig  : std_logic_vector(3 downto 0) := "0000"; --address into rom - execute increments
+signal concatenated_op_input : std_logic_vector(11 downto 0); --output of rom
+alias input: std_logic_vector(7 downto 0) is concatenated_op_input(7 downto 0);
+alias ms: std_logic is concatenated_op_input(8);
+alias mr: std_logic is concatenated_op_input(9);
+alias opCode: std_logic_vector(1 downto 0) is concatenated_op_input(11 downto 10);
+--ADJUST MAPPINGS THAT ARE MODIFIED
 
 --COMPONENT INSTANTIATIONS
 begin
@@ -132,7 +124,7 @@ rom_inst : blink_rom
   port map (
     address     => address_sig,
     clock       => clk,
-    q           => q_sig
+    q           => concatenated_op_input
   );
 
 alu_comp: alu 
@@ -140,8 +132,8 @@ alu_comp: alu
     clk         => clk,
     reset       => reset_n,
     a           => save, 
-    b           => synced_sw,
-    op          => synced_op,
+    b           => input, --alias from rom not synched
+    op          => opCode,
     result      => result_sig
   );
  
@@ -180,6 +172,23 @@ comp_memory: memory
       dout => save
     );
 
+--process to fetch on execute and parse 12 bit qsig from rom component with aliases - ADJUST THIS
+update_address: process(clk,reset_n,address_sig)
+  begin
+    if reset_n = '0' then
+      address_sig <= (others => '0');
+    elsif clk'event and clk = '1' then
+      if synced_execute = '1' then
+        address_sig <= std_logic_vector(unsigned(address_sig) + 1 );
+      end if;
+    end if;
+end process;
+
+
+--PARSE ROM SIGNAL - maybe synch signals?
+--parse_rom_signal: process(synced_execute, clk, reset_n)
+
+
 --state register
 process(reset_n, clk) --SR 
 begin
@@ -191,7 +200,7 @@ begin
 end process;
 
 --sensitivity list Next State Logic
-process(stateReg,reset_n,synced_execute,synced_ms,synced_mr) --NSL
+process(stateReg, reset_n, synced_execute, ms, mr) --NSL mr and ms arent synched
 begin
     if reset_n = '0' then 
         stateNext <= read_w;
@@ -204,9 +213,9 @@ begin
                 output_logic_addr <= "0000";
                 if (synced_execute='1') then
                     stateNext <= write_w_no_op;
-                elsif (synced_ms='1') then
+                elsif (ms='1') then --not synched
                     stateNext <= write_r;
-                elsif (synced_mr='1') then
+                elsif (mr='1') then --not synched
 					--preparing memory for mr (read_r state)
 					output_logic_we <= '0';
 					output_logic_addr <= "0001";
@@ -253,7 +262,7 @@ begin
 end process;
 
 -- routing [asynchronous]
-process(switch,reset_n,stateReg,clk)
+process(input, reset_n, stateReg, clk)
 begin
     if (clk'event and clk ='1') then
         if (stateReg=write_w_no_op) then
@@ -322,19 +331,5 @@ bcd1: process(preDD)
     hundreds <= STD_LOGIC_VECTOR(bcd(11 downto 8));
     --thousands <= STD_LOGIC_VECTOR(bcd(15 downto 12));
   end process bcd1;
-
-  
-  
-  --process to fetch on execute and parse 12 bit qsig from rom component with aliases - ADJUST THIS
-  update_address: process(clk,reset,address_sig)
-  begin
-    if reset = '1' then
-      address_sig <= (others => '0');
-    elsif clk'event and clk = '1' then
-      if enable = '1' then
-        address_sig <= std_logic_vector(unsigned(address_sig) + 1 );
-      end if;
-    end if;
-  end process;
 
 end beh;
