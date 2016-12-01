@@ -2,7 +2,7 @@
 # Quartus II compile script for DE1-SoC board
 
 # 1] name your project here
-set project_name "calculator"
+set project_name "blink_block_mem"
 
 file delete -force project
 file delete -force output_files
@@ -19,9 +19,6 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY ../output_files
 set_global_assignment -name QIP_FILE ../../src/rom/blink_rom.qip
 set_global_assignment -name VHDL_FILE ../../src/seven_seg.vhd
 set_global_assignment -name VHDL_FILE ../../src/rising_edge_synchronizer.vhd
-
-#set_global_assignment -name VHDL_FILE ../../src/rom.vhd
-
 set_global_assignment -name VHDL_FILE ../../src/memory.vhd
 set_global_assignment -name VHDL_FILE ../../src/alu.vhd
 set_global_assignment -name VHDL_FILE ../../src/top.vhd

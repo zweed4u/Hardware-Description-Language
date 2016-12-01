@@ -22,9 +22,9 @@ Vm843^elblT4MJO_;aheaD2
 !s100 @Z30[Q3m34I^Q25MH1QN:2
 Z7 OL;C;10.5b;63
 31
-Z8 !s110 1480615289
+Z8 !s110 1480616898
 !i10b 1
-Z9 !s108 1480615289.000000
+Z9 !s108 1480616898.000000
 Z10 !s90 -reportprogress|300|-93|-work|work|../../src/alu.vhd|
 Z11 !s107 ../../src/alu.vhd|
 !i113 0
@@ -63,11 +63,11 @@ VJK[>Gc^cZ]HXTQn5o3BBf3
 !s100 4BXi>]UL<ZG7;>?meC:Q=0
 R7
 31
-R8
+Z18 !s110 1480616897
 !i10b 1
-R9
-Z18 !s90 -reportprogress|300|-93|-work|work|../../src/rom/blink_rom.vhd|
-Z19 !s107 ../../src/rom/blink_rom.vhd|
+Z19 !s108 1480616897.000000
+Z20 !s90 -reportprogress|300|-93|-work|work|../../src/rom/blink_rom.vhd|
+Z21 !s107 ../../src/rom/blink_rom.vhd|
 !i113 0
 R12
 R13
@@ -77,38 +77,38 @@ R3
 R4
 DEx4 work 9 blink_rom 0 22 JK[>Gc^cZ]HXTQn5o3BBf3
 31
-R8
+R18
 l56
 L52
 V;:ah9R`8zYc[;UEb4:Oa80
 !s100 UhDoO53Z<`a^@mN[Hk@4D0
 R7
 !i10b 1
-R9
-R18
 R19
+R20
+R21
 !i113 0
 R12
 R13
 Ememory
-R1
+Z22 w1480616002
 R2
 R3
 R4
 R0
-Z20 8../../src/memory.vhd
-Z21 F../../src/memory.vhd
+Z23 8../../src/memory.vhd
+Z24 F../../src/memory.vhd
 l0
 L9
 Vjzk>n0mjj5X6m]BnNkG052
 !s100 dOm[56=XDj7<TNW3zUklD3
 R7
 31
-Z22 !s110 1480611660
+R8
 !i10b 1
-Z23 !s108 1480611660.000000
-Z24 !s90 -reportprogress|300|-93|-work|work|../../src/memory.vhd|
-Z25 !s107 ../../src/memory.vhd|
+R9
+Z25 !s90 -reportprogress|300|-93|-work|work|../../src/memory.vhd|
+Z26 !s107 ../../src/memory.vhd|
 !i113 0
 R12
 R13
@@ -118,16 +118,16 @@ R3
 R4
 DEx4 work 6 memory 0 22 jzk>n0mjj5X6m]BnNkG052
 31
-R22
+R8
 l26
 L21
 VLKo4zSa>39@galUVKS>I>2
 !s100 2dXD[Ri1k1_[8z2YL:M^i2
 R7
 !i10b 1
-R23
-R24
+R9
 R25
+R26
 !i113 0
 R12
 R13
@@ -136,8 +136,8 @@ R1
 R3
 R4
 R0
-Z26 8../../src/rising_edge_synchronizer.vhd
-Z27 F../../src/rising_edge_synchronizer.vhd
+Z27 8../../src/rising_edge_synchronizer.vhd
+Z28 F../../src/rising_edge_synchronizer.vhd
 l0
 L8
 V7^gf[0AcMz;oFDKIj=b3N3
@@ -147,8 +147,8 @@ R7
 R8
 !i10b 1
 R9
-Z28 !s90 -reportprogress|300|-93|-work|work|../../src/rising_edge_synchronizer.vhd|
-Z29 !s107 ../../src/rising_edge_synchronizer.vhd|
+Z29 !s90 -reportprogress|300|-93|-work|work|../../src/rising_edge_synchronizer.vhd|
+Z30 !s107 ../../src/rising_edge_synchronizer.vhd|
 !i113 0
 R12
 R13
@@ -165,20 +165,20 @@ VB@7AW:aOIJKhaEIzCCHbf1
 R7
 !i10b 1
 R9
-R28
 R29
+R30
 !i113 0
 R12
 R13
 Eseven_seg
 R1
-Z30 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-Z31 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z31 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z32 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 R3
 R4
 R0
-Z32 8../../src/seven_seg.vhd
-Z33 F../../src/seven_seg.vhd
+Z33 8../../src/seven_seg.vhd
+Z34 F../../src/seven_seg.vhd
 l0
 L11
 VON7@C@lcGnIa0i:Uc95WI3
@@ -188,14 +188,14 @@ R7
 R8
 !i10b 1
 R9
-Z34 !s90 -reportprogress|300|-93|-work|work|../../src/seven_seg.vhd|
-Z35 !s107 ../../src/seven_seg.vhd|
+Z35 !s90 -reportprogress|300|-93|-work|work|../../src/seven_seg.vhd|
+Z36 !s107 ../../src/seven_seg.vhd|
 !i113 0
 R12
 R13
 Abeh
-R30
 R31
+R32
 R3
 R4
 DEx4 work 9 seven_seg 0 22 ON7@C@lcGnIa0i:Uc95WI3
@@ -208,19 +208,19 @@ V0`gDh3I4CB:OmUDDfFTe`1
 R7
 !i10b 1
 R9
-R34
 R35
+R36
 !i113 0
 R12
 R13
 Etop
-Z36 w1480615284
+Z37 w1480615314
 R2
 R3
 R4
 R0
-Z37 8../../src/top.vhd
-Z38 F../../src/top.vhd
+Z38 8../../src/top.vhd
+Z39 F../../src/top.vhd
 l0
 L7
 V`cIRoIbL>Tk_<l3@]VZ`k2
@@ -229,9 +229,9 @@ R7
 31
 R8
 !i10b 1
-R9
-Z39 !s90 -reportprogress|300|-93|-work|work|../../src/top.vhd|
-Z40 !s107 ../../src/top.vhd|
+R19
+Z40 !s90 -reportprogress|300|-93|-work|work|../../src/top.vhd|
+Z41 !s107 ../../src/top.vhd|
 !i113 0
 R12
 R13
@@ -244,24 +244,24 @@ DEx4 work 3 top 0 22 `cIRoIbL>Tk_<l3@]VZ`k2
 R8
 l103
 L18
-V^<lG?d7MT0FbjP:bMUG;>0
-!s100 >zPa5`OOSK6@dkcoF:]a;3
+VOi[e`W2cDA:4YbAjSG5<[3
+!s100 =LZd>OozBE2HOT>AC1fGK2
 R7
 !i10b 1
-R9
-R39
+R19
 R40
+R41
 !i113 0
 R12
 R13
 Etop_tb
-Z41 w1480613764
+Z42 w1480613764
 R2
 R3
 R4
 R0
-Z42 8../src/top_tb.vhd
-Z43 F../src/top_tb.vhd
+Z43 8../src/top_tb.vhd
+Z44 F../src/top_tb.vhd
 l0
 L9
 VM6P>KAQL:9Yd4F3<_o3N>3
@@ -271,8 +271,8 @@ R7
 R8
 !i10b 1
 R9
-Z44 !s90 -reportprogress|300|-93|-work|work|../src/top_tb.vhd|
-Z45 !s107 ../src/top_tb.vhd|
+Z45 !s90 -reportprogress|300|-93|-work|work|../src/top_tb.vhd|
+Z46 !s107 ../src/top_tb.vhd|
 !i113 0
 R12
 R13
@@ -290,8 +290,8 @@ V06aI13[M?6z0I3]Ob>UAC2
 R7
 !i10b 1
 R9
-R44
 R45
+R46
 !i113 0
 R12
 R13

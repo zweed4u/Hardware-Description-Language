@@ -7,14 +7,14 @@ DATA_RADIX    = BIN; % Enter BIN, DEC, HEX, OCT, or UNS; unless %
 -- Specify values for addresses, which can be single address or range
 CONTENT
 BEGIN
-0   : 000000000100;   
-1   : 100000001000;   
-2   : 100100001000;   
-3   : 100000001000;   
-4   : 010000001000;   
-5   : 110000000010;   
-6   : 111000000010;   
-7   : 110000000010;   
-8   : 110000000010;   
+0   : 000000000100;   % add 4
+1   : 100000001000;   % multiply by 8
+2   : 000100000000;   % toggle ms
+3   : 000000000000;   % toggle ms
+4   : 010000001000;   % subtract 8
+5   : 110000000010;   % divide by 2
+6   : 001000000000;   % toggle mr
+7   : 000000000000;   % toggle mr
+8   : 110000000010;   % divide by 2
 [9..15] : 000000000000;
 END;
