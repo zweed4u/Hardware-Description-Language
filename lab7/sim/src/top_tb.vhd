@@ -41,7 +41,7 @@ uut: top
     execute         => execute,      
     seven_seg_hun   => seven_seg_hun,
     seven_seg_ten   => seven_seg_ten,
-    seven_seg_one   => seven_seg_one,
+    seven_seg_one   => seven_seg_one
   );
   
 -- clock process
