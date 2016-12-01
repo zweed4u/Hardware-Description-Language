@@ -21,6 +21,7 @@ component top is
         seven_seg_one   : out std_logic_vector(6 downto 0)
     ); 
 end component; 
+
 constant SEQUENTIAL_FLAG   : boolean := true;
 constant NUM_BITS          : integer := 3;
 signal output       : std_logic;
@@ -70,8 +71,8 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
         execute<=not(execute);
         wait for 50 ns;
     end loop;
-	wait for 150 ns;
-	for k in 0 to 1 loop
+    wait for 500 ns;
+    for k in 0 to 1 loop
         execute<=not(execute);
         wait for 50 ns;
     end loop;

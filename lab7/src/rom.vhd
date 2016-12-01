@@ -1,5 +1,5 @@
 --rom vhdl
---inferred when chdl is written as lut (case, array)
+--inferred when vhdl is written as lut (case, array)
 entity hex_to_ssd is
 
 port(

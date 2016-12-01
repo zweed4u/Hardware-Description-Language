@@ -72,7 +72,7 @@ BEGIN
 		ram_block_type => "M10K",
 		widthad_a => 4,
 		width_a => 12,
-		width_byteena_a => 1
+		width_byteena_a => 2
 	)
 	PORT MAP (
 		address_a => address,
@@ -105,7 +105,7 @@ END SYN;
 -- Retrieval info: PRIVATE: JTAG_ID STRING "BLNK"
 -- Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
 -- Retrieval info: PRIVATE: MIFfilename STRING "blink.mif"
--- Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "32"
+-- Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "16"
 -- Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "2"
 -- Retrieval info: PRIVATE: RegAddr NUMERIC "1"
 -- Retrieval info: PRIVATE: RegOutput NUMERIC "1"
@@ -113,7 +113,7 @@ END SYN;
 -- Retrieval info: PRIVATE: SingleClock NUMERIC "1"
 -- Retrieval info: PRIVATE: UseDQRAM NUMERIC "0"
 -- Retrieval info: PRIVATE: WidthAddr NUMERIC "5"
--- Retrieval info: PRIVATE: WidthData NUMERIC "4"
+-- Retrieval info: PRIVATE: WidthData NUMERIC "12"
 -- Retrieval info: PRIVATE: rden NUMERIC "0"
 -- Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 -- Retrieval info: CONSTANT: ADDRESS_ACLR_A STRING "NONE"
@@ -123,20 +123,20 @@ END SYN;
 -- Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
 -- Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=BLNK"
 -- Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
--- Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "32"
+-- Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "16"
 -- Retrieval info: CONSTANT: OPERATION_MODE STRING "ROM"
 -- Retrieval info: CONSTANT: OUTDATA_ACLR_A STRING "NONE"
 -- Retrieval info: CONSTANT: OUTDATA_REG_A STRING "CLOCK0"
 -- Retrieval info: CONSTANT: RAM_BLOCK_TYPE STRING "M10K"
 -- Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "5"
--- Retrieval info: CONSTANT: WIDTH_A NUMERIC "4"
+-- Retrieval info: CONSTANT: WIDTH_A NUMERIC "12"
 -- Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
 -- Retrieval info: USED_PORT: address 0 0 5 0 INPUT NODEFVAL "address[4..0]"
 -- Retrieval info: USED_PORT: clock 0 0 0 0 INPUT VCC "clock"
--- Retrieval info: USED_PORT: q 0 0 4 0 OUTPUT NODEFVAL "q[3..0]"
+-- Retrieval info: USED_PORT: q 0 0 12 0 OUTPUT NODEFVAL "q[12..0]"
 -- Retrieval info: CONNECT: @address_a 0 0 5 0 address 0 0 5 0
 -- Retrieval info: CONNECT: @clock0 0 0 0 0 clock 0 0 0 0
--- Retrieval info: CONNECT: q 0 0 4 0 @q_a 0 0 4 0
+-- Retrieval info: CONNECT: q 0 0 12 0 @q_a 0 0 12 0
 -- Retrieval info: GEN_FILE: TYPE_NORMAL blink_rom.vhd TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL blink_rom.inc FALSE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL blink_rom.cmp TRUE

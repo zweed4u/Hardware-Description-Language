@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 dC:/Users/zdw7287/Downloads/Hardware-Description-Language/lab7/supplementary/blink_block_mem/sim/script
 Eblink_block_mem
-Z1 w1480188281
+Z1 w1480607761
 Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
@@ -22,9 +22,9 @@ VnWZQRKmHNPaEYUBYNd]Z90
 !s100 7]8V4BTS8m6aG7Kzln`XX1
 Z7 OL;C;10.5b;63
 31
-Z8 !s110 1480196234
+Z8 !s110 1480612155
 !i10b 1
-Z9 !s108 1480196234.000000
+Z9 !s108 1480612155.000000
 Z10 !s90 -reportprogress|300|-93|-work|work|../../src/blink_block_mem.vhd|
 Z11 !s107 ../../src/blink_block_mem.vhd|
 !i113 0
@@ -104,7 +104,7 @@ R7
 31
 R8
 !i10b 1
-Z21 !s108 1480196233.000000
+Z21 !s108 1480612154.000000
 Z22 !s90 -reportprogress|300|-93|-work|work|../../src/rom/blink_rom.vhd|
 Z23 !s107 ../../src/rom/blink_rom.vhd|
 !i113 0
