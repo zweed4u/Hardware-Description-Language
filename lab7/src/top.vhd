@@ -111,11 +111,11 @@ signal output_logic_addr : std_logic_vector(3 downto 0);
 --rom signal eg. 00    00    00000000
 --               op   mr ms   number
 signal address_sig  : std_logic_vector(3 downto 0) := "0000"; --address into rom - execute increments
-signal concatenated_op_input : std_logic_vector(11 downto 0); --output of rom
-alias input: std_logic_vector(7 downto 0) is concatenated_op_input(7 downto 0);
-alias ms: std_logic is concatenated_op_input(8);
-alias mr: std_logic is concatenated_op_input(9);
-alias opCode: std_logic_vector(1 downto 0) is concatenated_op_input(11 downto 10);
+signal q_sig : std_logic_vector(11 downto 0); --output of rom
+alias input: std_logic_vector(7 downto 0) is q_sig(7 downto 0);
+alias ms: std_logic is q_sig(8);
+alias mr: std_logic is q_sig(9);
+alias opCode: std_logic_vector(1 downto 0) is q_sig(11 downto 10);
 --ADJUST MAPPINGS THAT ARE MODIFIED
 
 --COMPONENT INSTANTIATIONS
@@ -126,7 +126,7 @@ rom_inst : blink_rom
     port map (
         address     => address_sig,
         clock       => clk,
-        q           => concatenated_op_input
+        q           => q_sig
     );
 
 alu_comp: alu 
