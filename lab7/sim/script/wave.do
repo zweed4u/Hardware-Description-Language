@@ -30,27 +30,26 @@ radix define States {
     -default default
 }
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /top_tb/uut/switch
-add wave -noupdate -radix binary /top_tb/uut/op
 add wave -noupdate /top_tb/uut/clk
 add wave -noupdate /top_tb/uut/reset_n
-add wave -noupdate /top_tb/uut/mr
-add wave -noupdate /top_tb/uut/ms
 add wave -noupdate /top_tb/uut/execute
 add wave -noupdate -radix States /top_tb/uut/seven_seg_hun
 add wave -noupdate -radix States /top_tb/uut/seven_seg_ten
 add wave -noupdate -radix States /top_tb/uut/seven_seg_one
-add wave -noupdate -radix binary /top_tb/uut/led
 add wave -noupdate -radix States /top_tb/uut/stateReg
 add wave -noupdate -radix States /top_tb/uut/stateNext
-add wave -noupdate -radix binary /top_tb/uut/synced_sw
-add wave -noupdate -radix binary /top_tb/uut/synced_op
-add wave -noupdate /top_tb/uut/synced_mr
-add wave -noupdate /top_tb/uut/synced_ms
 add wave -noupdate /top_tb/uut/synced_execute
 add wave -noupdate -radix binary /top_tb/uut/save
 add wave -noupdate /top_tb/uut/result_sig
 add wave -noupdate /top_tb/uut/to_mem
+add wave -noupdate /top_tb/uut/q_sig
+add wave -noupdate /top_tb/uut/address_sig
+
+add wave -noupdate /top_tb/uut/input
+add wave -noupdate /top_tb/uut/ms
+add wave -noupdate /top_tb/uut/mr
+add wave -noupdate /top_tb/uut/opCode
+
 add wave -noupdate /top_tb/uut/preDD
 add wave -noupdate /top_tb/uut/ones
 add wave -noupdate /top_tb/uut/tens

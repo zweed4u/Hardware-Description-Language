@@ -157,7 +157,7 @@ convert_to_ssd_b: seven_seg
     port map(
         bcd           => tens, --tens from dd
         seven_seg_out => seven_seg_ten
-    ;
+    );
 
 convert_to_ssd_c: seven_seg 
     port map(

@@ -70,7 +70,11 @@ sequential_stimuli: if SEQUENTIAL_FLAG generate
         execute<=not(execute);
         wait for 50 ns;
     end loop;
-
+	wait for 150 ns;
+	for k in 0 to 1 loop
+        execute<=not(execute);
+        wait for 50 ns;
+    end loop;
 end process;
 end generate sequential_stimuli;
 end arch;
