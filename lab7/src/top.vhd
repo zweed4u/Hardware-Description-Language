@@ -213,13 +213,13 @@ begin
                 output_logic_addr <= "0000";
                 if (synced_execute='1') then
                     stateNext <= write_w_no_op;
-                elsif (ms='1') then --not synched
-                    stateNext <= write_r;
-                elsif (mr='1') then --not synched
-                    --preparing memory for mr (read_r state)
-                    output_logic_we <= '0';
-                    output_logic_addr <= "0001";
-                    stateNext <= read_r;
+                    elsif (ms='1') then --not synched
+                        stateNext <= write_r;
+                    elsif (mr='1') then --not synched
+                        --preparing memory for mr (read_r state)
+                        output_logic_we <= '0';
+                        output_logic_addr <= "0001";
+                        stateNext <= read_r;
                 else 
                     stateNext <= read_w;
                 end if;
