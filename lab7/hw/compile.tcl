@@ -18,42 +18,17 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY ../output_files
 # 2] include your relative path files here
 set_global_assignment -name QIP_FILE ../../src/rom/blink_rom.qip
 set_global_assignment -name VHDL_FILE ../../src/seven_seg.vhd
-set_global_assignment -name VHDL_FILE ../../src/synchronizer8.vhd
-set_global_assignment -name VHDL_FILE ../../src/synchronizer2.vhd
 set_global_assignment -name VHDL_FILE ../../src/rising_edge_synchronizer.vhd
 
-set_global_assignment -name VHDL_FILE ../../src/rom.vhd
+#set_global_assignment -name VHDL_FILE ../../src/rom.vhd
 
-# set_global_assignment -name VHDL_FILE ../../src/double_dabble.vhd
 set_global_assignment -name VHDL_FILE ../../src/memory.vhd
 set_global_assignment -name VHDL_FILE ../../src/alu.vhd
-# set_global_assignment -name VHDL_FILE ../../src/components.vhd
-# set_global_assignment -name VHDL_FILE ../../src/calculator.vhd
 set_global_assignment -name VHDL_FILE ../../src/top.vhd
 
 set_location_assignment PIN_AF14 -to clk
 set_location_assignment PIN_AA14 -to reset_n
-set_location_assignment PIN_AA15 -to mr
-set_location_assignment PIN_W15  -to ms
 set_location_assignment PIN_Y16  -to execute
-
-set_location_assignment PIN_V16  -to led[0]
-set_location_assignment PIN_W16  -to led[1]
-set_location_assignment PIN_V17  -to led[2]
-set_location_assignment PIN_V18  -to led[3]
-set_location_assignment PIN_W17  -to led[4]
-
-set_location_assignment PIN_AB12 -to switch[0]
-set_location_assignment PIN_AC12 -to switch[1]
-set_location_assignment PIN_AF9  -to switch[2]
-set_location_assignment PIN_AF10 -to switch[3]
-set_location_assignment PIN_AD11 -to switch[4]
-set_location_assignment PIN_AD12 -to switch[5]
-set_location_assignment PIN_AE11 -to switch[6]
-set_location_assignment PIN_AC9  -to switch[7]
-
-set_location_assignment PIN_AD10 -to op[0]
-set_location_assignment PIN_AE12 -to op[1]
 
 set_location_assignment PIN_AE26 -to seven_seg_one[0]
 set_location_assignment PIN_AE27 -to seven_seg_one[1]
