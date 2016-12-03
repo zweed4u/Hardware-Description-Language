@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for blink_block_mem
-Thu Dec 01 13:26:52 2016
+Sat Dec 03 13:25:38 2016
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -691,7 +691,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Thu Dec 01 13:26:42 2016
+    Info: Processing started: Sat Dec 03 13:25:28 2016
 Info: Command: quartus_sta blink_block_mem -c blink_block_mem
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -817,9 +817,9 @@ Info (332146): Worst-case minimum pulse width slack is 15.231
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 1214 megabytes
-    Info: Processing ended: Thu Dec 01 13:26:52 2016
+    Info: Peak virtual memory: 1212 megabytes
+    Info: Processing ended: Sat Dec 03 13:25:38 2016
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Total CPU time (on all processors): 00:00:11
 
 
