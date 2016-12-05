@@ -131,6 +131,7 @@ begin
                 if (synced_execute='1') then
                     stateNext <= fetch;
                 --else condition?
+                end if;
             when others =>
                 stateNext <= idle;
         end case;
