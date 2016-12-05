@@ -6,29 +6,28 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity audio_processor_3000 is 
-  port(
-    clk                 : in std_logic;
-    reset               : in std_logic;
-    execute_btn         : in std_logic; --difference between these two? 
-    sync                : in std_logic; --difference between these two?
-    audio_in            : in std_logic_vector(15 downto 0); --what is this input vector?
-    led                 : out std_logic_vector(9 downto 0);
-    audio_out           : out std_logic_vector(15 downto 0)
-  );
+    port(
+        clk                 : in std_logic;
+        reset               : in std_logic;
+        execute_btn         : in std_logic; --difference between these two? 
+        sync                : in std_logic; --difference between these two?
+        audio_in            : in std_logic_vector(15 downto 0); --what is this input vector?
+        led                 : out std_logic_vector(9 downto 0);
+        audio_out           : out std_logic_vector(15 downto 0)
+    );
 end audio_processor_3000;
 
 architecture beh of audio_processor_3000 is
-
 --COMPONENTS HERE
 component generic_counter is
-generic (
-  max_count        : integer := 3
-);
-port (
-  clk              : in  std_logic; 
-  reset            : in  std_logic;
-  output           : out std_logic
-); 
+    generic (
+        max_count        : integer := 3
+    );
+    port (
+        clk              : in  std_logic; 
+        reset            : in  std_logic;
+        output           : out std_logic
+    ); 
 end component;
 
 component rising_edge_synchronizer is 
@@ -40,9 +39,9 @@ component rising_edge_synchronizer is
     );
 end component;
 
-signal enable       	: std_logic;
-signal synced_execute 	: std_logic;
-signal data_address  	: std_logic_vector(15 downto 0);
+signal enable           : std_logic;
+signal synced_execute   : std_logic;
+signal data_address     : std_logic_vector(15 downto 0);
 --8bit mif needed - check depth of memory and its associated files
 --0   : 00000000; -- play once  
 --1   : 00100000; -- play repeating 
@@ -56,13 +55,13 @@ signal data_address  	: std_logic_vector(15 downto 0);
 --9   : 00000000; -- play once
 
 --States
-constant idle			: std_logic_vector(4 downto 0) :="00001";
-constant fetch			: std_logic_vector(4 downto 0) :="00010";
-constant decode			: std_logic_vector(4 downto 0) :="00100";
+constant idle           : std_logic_vector(4 downto 0) :="00001";
+constant fetch          : std_logic_vector(4 downto 0) :="00010";
+constant decode         : std_logic_vector(4 downto 0) :="00100";
 constant execute        : std_logic_vector(4 downto 0) :="01000";
-constant decode_error	: std_logic_vector(4 downto 0) :="10000";
-signal stateReg			: std_logic_vector(4 downto 0);
-signal stateNext		: std_logic_vector(4 downto 0);
+constant decode_error   : std_logic_vector(4 downto 0) :="10000";
+signal stateReg         : std_logic_vector(4 downto 0);
+signal stateNext        : std_logic_vector(4 downto 0);
 
 --example of aliases
 signal play : std_logic_vector(7 downto 0) := "00000000"; --0 0 RPT X X X X X
@@ -85,16 +84,16 @@ sync_execute: rising_edge_synchronizer
         input   => execute_btn,
         edge    => synced_execute
     );
-	
+
 generic_counter_inst: generic_counter  
-	generic map (
-	  max_count => update_rate
-	)
-	port map(
-	  clk       => clk,
-	  reset     => reset,
-	  output    => enable
-	);	
+    generic map (
+        max_count => update_rate
+    )
+    port map(
+        clk       => clk,
+        reset     => reset,
+        output    => enable
+    );
 
 --state register
 process(reset, clk)
@@ -121,16 +120,17 @@ begin
                     stateNext <= idle;
                 end if;
             when fetch =>
-				stateNext <= decode;
+                stateNext <= decode;
             when decode =>
-				--parse for decode_error - conditional for next state transitiion
+                --parse for decode_error - conditional for next state transitiion
                 stateNext <= decode_error;
-				stateNext <= execute;
-			when decode_error =>
-				stateNext <= idle;	
+                stateNext <= execute;
+            when decode_error =>
+                stateNext <= idle;	
             when execute =>
                 if (synced_execute='1') then
                     stateNext <= fetch;
+                --else condition?
             when others =>
                 stateNext <= idle;
         end case;
@@ -140,28 +140,27 @@ end process;
 
 --EXAMPLE PC increment - 'enable' is output of generic counter
 update_address: process(clk,reset,address_sig)
-  begin
+begin
     if reset = '1' then
-      address_sig <= (others => '0');
+        address_sig <= (others => '0');
     elsif clk'event and clk = '1' then
-      if enable = '1' then
-        address_sig <= std_logic_vector(unsigned(address_sig) + 1 );
-      end if;
+        if enable = '1' then
+            address_sig <= std_logic_vector(unsigned(address_sig) + 1 );
+        end if;
     end if;
-  end process;
-end beh;
-
+end process;
 
 -- feedthrough
 process(clk,reset)
-  begin 
-	if (reset = '1') then 
-	  audio_out <= (others => '0');
-	elsif (clk'event and clk = '1') then
-	  if (sync = '1') then    
-		audio_out <= audio_in;
-	  end if;
-	end if;
-  end process;
+begin
+    if (reset = '1') then 
+        audio_out <= (others => '0');
+    elsif (clk'event and clk = '1') then
+        if (sync = '1') then    
+            audio_out <= audio_in;
+        end if;
+    end if;
+end process;
 led <= "1010101010";
+
 end beh;
