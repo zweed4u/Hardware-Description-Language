@@ -20,14 +20,24 @@ entity top is
 end top;
 
 architecture beh of top is
+  component generic_counter is
+    generic (
+      max_count        : integer range 0 to 10000 := 3
+    );
+    port (
+      clk              : in  std_logic; 
+      reset            : in  std_logic;
+      output           : out std_logic
+    );  
+  end component;  
+  
   component audio_processor_3000 is 
     port(
       clk                 : in std_logic;
       reset               : in std_logic;
       execute_btn         : in std_logic;
       sync                : in std_logic;
-      audio_in            : in std_logic_vector(15 downto 0);
-      led                 : out std_logic_vector(9 downto 0);
+      led                 : out std_logic_vector(7 downto 0);
       audio_out           : out std_logic_vector(15 downto 0)
     );
   end component;
@@ -77,9 +87,12 @@ architecture beh of top is
   signal readdata_right   : std_logic_vector(23 DOWNTO 0);            
   signal writedata_left   : std_logic_vector(23 DOWNTO 0);
   signal writedata_right  : std_logic_vector(23 DOWNTO 0);             
-  signal write_data       : std_logic_vector(15 DOWNTO 0);                        
-  signal write_data_24    : std_logic_vector(23 DOWNTO 0);                        
-  signal led              : std_logic_vector(9 DOWNTO 0);           
+  signal write_data       : std_logic_vector(15 DOWNTO 0);             
+  signal write_data_24    : std_logic_vector(23 DOWNTO 0);             
+  signal data_address     : std_logic_vector(13 DOWNTO 0) := "00000000000000";           
+  signal pc               : std_logic_vector(4 DOWNTO 0) := "00000";           
+  signal instruction      : std_logic_vector(7 DOWNTO 0) := "00000000";           
+  signal led              : std_logic_vector(7 DOWNTO 0);           
   signal reset            : std_logic;
   signal enable           : std_logic;
   signal execute_btn      : std_logic;
@@ -93,13 +106,22 @@ begin
   read_s <= read_ready;
   write_s <= write_ready AND read_ready;
   
+  uut: generic_counter  
+    generic map (
+      max_count => 6249   -- 8000 Hz
+    )
+    port map(
+      clk       => CLOCK_50,
+      reset     => reset,
+      output    => enable
+    );
+  
   audio_processor : audio_processor_3000  
     port map(
       clk             => CLOCK_50,
       reset           => reset,
       execute_btn     => execute_btn,
-      sync            => write_s,
-      audio_in        => readdata_left(23 downto 8),
+      sync            => enable,
       led             => led,
       audio_out       => write_data
     );
@@ -139,5 +161,5 @@ begin
     );
     
     write_data_24 <= write_data & "00000000";
-    LEDR <= led;
+    LEDR <= "00" & led;
 end beh;

@@ -31,6 +31,8 @@ set_global_assignment -name VERILOG_FILE ../../src/audio_ip/Altera_UP_SYNC_FIFO.
 set_global_assignment -name VERILOG_FILE ../../src/audio_ip/audio_and_video_config.v
 set_global_assignment -name VERILOG_FILE ../../src/audio_ip/audio_codec.v
 set_global_assignment -name VERILOG_FILE ../../src/audio_ip/clock_generator.v
+set_global_assignment -name VHDL_FILE ../../src/rising_edge_synchronizer.vhd
+set_global_assignment -name VHDL_FILE ../../src/generic_counter.vhd
 set_global_assignment -name VHDL_FILE ../../src/audio_processor_3000.vhd
 set_global_assignment -name VHDL_FILE ../../src/top.vhd
 #============================================================
