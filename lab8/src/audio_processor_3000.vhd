@@ -45,11 +45,13 @@ component rising_edge_synchronizer is
     );
 end component;
 
-signal synced_execute   : std_logic;
-signal data_address  	: std_logic_vector(13 downto 0);
+signal synced_execute       : std_logic;
 
-signal rom_instruct_out : std_logic_vector(7 downto 0); --for other memory instantiation?
-signal other_da         : std_logic_vector(4 downto 0); --for other memory instantiation?
+signal data_address         : std_logic_vector(13 downto 0);
+signal data_out             : std_logic_vector(15 downto 0); --this is audio_out internal signal not needed
+
+signal other_da             : std_logic_vector(4 downto 0); --for other memory instantiation?
+signal rom_instruct_out     : std_logic_vector(7 downto 0); --for other memory instantiation?
 
 --States
 constant idle           : std_logic_vector(4 downto 0) :="00001";
@@ -74,19 +76,19 @@ alias sk	: std_logic_vector(4 downto 0) is rom_instruct_out(4 downto 0)
 begin
 -- data instantiation
 u_rom_data_inst : rom_data
-  port map (
-    address    => data_address,
-    clock      => clk,
-    q          => audio_out
-  );
+    port map (
+        address    => data_address,
+        clock      => clk,
+        q          => audio_out --data_out
+    );
 
 --other rom instantiaion needed?
-u_rom_inst : rom_instructions
+u_rom_instr_inst : rom_instructions
     port map (
-    address    => other_da,--5bits
-    clock      => clk,
-    q          => rom_instruct_out --8bits
-  );
+        address    => other_da,--5bits
+        clock      => clk,
+        q          => rom_instruct_out --8bits
+    );
 
 --sync_sync isn't needed
 sync_execute: rising_edge_synchronizer 
@@ -155,9 +157,9 @@ end process;
 --
 
 --Need another PC for u_rom_inst : rom_instructions?
-update_address: process(clk,synced_execute,reset,other_da) --name of this signal? (other_da)
+update_address: process(clk,reset) --name of this signal? (other_da) sensitivity list? (synced_execute,other_da)
 begin
-    if reset_n = '0' then
+    if reset = '1' then
         other_da <= (others => '0');
     elsif clk'event and clk = '1' then
         if synced_execute = '1' then
@@ -166,12 +168,7 @@ begin
     end if;
 end process;
 
-
 --Mux process - defined as follows
---play  := "00"
---pause := "01";
---seek  := "10";
---stop  := "11";
 process(op, rpt, data_address_play, data_address_play_repeat, stop, pause, seek) --sk alias/other signals in sensitivity list? 
 begin
     case op is
