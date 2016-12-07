@@ -157,7 +157,7 @@ end process;
 --
 
 --Need another PC for u_rom_inst : rom_instructions?
-update_address: process(clk,reset) --name of this signal? (other_da) sensitivity list? (synced_execute,other_da)
+update_address: process(clk,reset,synced_execute,other_da) --name of this signal? (other_da) sensitivity list?
 begin
     if reset = '1' then
         other_da <= (others => '0');
