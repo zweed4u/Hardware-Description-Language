@@ -1,4 +1,4 @@
--- Dr. Kaputa
+-- Zachary Weeden
 -- Lab 8: Audio Processor 3000 
 
 library ieee;
@@ -9,8 +9,8 @@ entity audio_processor_3000 is
   port(
     clk                 : in std_logic;
     reset               : in std_logic;
-    execute_btn         : in std_logic;
-    sync                : in std_logic;
+    execute_btn         : in std_logic; -- difference between these two
+    sync                : in std_logic; -- difference between these two
     led                 : out std_logic_vector(7 downto 0);
     audio_out           : out std_logic_vector(15 downto 0)
   );
@@ -45,11 +45,11 @@ component rising_edge_synchronizer is
     );
 end component;
 
-signal enable           : std_logic;
 signal synced_execute   : std_logic;
---signal synced_sync   	: std_logic;
 signal data_address  	: std_logic_vector(13 downto 0);
-signal rom_instruct_out : std_logic_vector(7 downto 0);
+
+signal rom_instruct_out : std_logic_vector(7 downto 0); --for other memory instantiation?
+signal other_da         : std_logic_vector(4 downto 0); --for other memory instantiation?
 
 --States
 constant idle           : std_logic_vector(4 downto 0) :="00001";
@@ -79,8 +79,16 @@ u_rom_data_inst : rom_data
     clock      => clk,
     q          => audio_out
   );
-  
-  
+
+--other rom instantiaion needed?
+u_rom_inst : rom_instructions
+    port map (
+    address    => other_da,--5bits
+    clock      => clk,
+    q          => rom_instruct_out --8bits
+  );
+
+--sync_sync isn't needed
 sync_execute: rising_edge_synchronizer 
     port map(
         clk     => clk,
@@ -137,28 +145,64 @@ begin
     end if;
 end process;
 
--- routing [asynchronous]
-process(reset, stateReg, clk)
+--
+--FU's here? (async)
+--data_address_play<=data_address+1
+--data_address_play_repeat<=data_address+1
+--stop<=(others => '0')
+--pause<=data_address
+--seek<=data_address --sk+"000000000"
+--
+
+--Need another PC for u_rom_inst : rom_instructions?
+update_address: process(clk,synced_execute,reset,other_da) --name of this signal? (other_da)
 begin
-    if (clk'event and clk ='1') then
-        if (stateReg=write_w_no_op) then
-            to_mem <= result_sig;
-        elsif (stateReg=read_r) then
-            to_mem <= save;
+    if reset_n = '0' then
+        other_da <= (others => '0');
+    elsif clk'event and clk = '1' then
+        if synced_execute = '1' then
+            other_da <= std_logic_vector(unsigned(other_da) + 1 );
         end if;
     end if;
-    preDD <= std_logic_vector(unsigned("0000" & to_mem));
 end process;
 
 
--- loop audio file
+--Mux process - defined as follows
+--play  := "00"
+--pause := "01";
+--seek  := "10";
+--stop  := "11";
+process(op, rpt, data_address_play, data_address_play_repeat, stop, pause, seek) --sk alias/other signals in sensitivity list? 
+begin
+    case op is
+        when play => --00
+            if rpt='1' then
+                data_address<=data_address_play_repeat; --is this assignment correct and where is the the signal being 'given'?
+            else
+                data_address<=data_address_play;        --is this assignment correct and where is the the signal being 'given'?
+            end if;
+
+        when pause => --01
+            data_address<=pause;                        --is this assignment correct and where is the the signal being 'given'?
+
+        when seek => --10
+            data_address<=seek;                         --is this assignment correct and where is the the signal being 'given'?
+
+        when stop => --11
+            data_address<=stop;                         --is this assignment correct and where is the the signal being 'given'?
+
+        when others =>
+            data_address<=data_address;                 --is this assignment correct and where is the the signal being 'given'?
+    end case;
+
+-- loop audio file (data register as mentioned in email?)
 process(clk,reset)
 begin 
 	if (reset = '1') then 
 		data_address <= (others => '0');
 	elsif (clk'event and clk = '1') then
 		if (sync = '1') then    
-			data_address <= std_logic_vector(unsigned(data_address) + 1 );
+			data_address <= std_logic_vector(unsigned(data_address) + 1 ); -- data_address vs. da_reg
 		end if;
 	end if;
 end process;
