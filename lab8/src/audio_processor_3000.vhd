@@ -153,12 +153,25 @@ begin
 end process;
 
 --
---FU's here? (async)
+--FU's here? (async) --14 bit signals?
 --data_address_play<=data_address+1
 --data_address_play_repeat<=data_address+1
 --stop<=(others => '0')
 --pause<=data_address
 --seek<=data_address --sk+"000000000"
+--
+--process(a,b,reset)
+--begin
+--  if reset = '1' then 
+--    idle_sig  <= "00";  
+--    add_sig   <= "00";
+--    sub_sig   <= "00";
+--  else 
+--    idle_sig  <= "00";  
+--    add_sig   <= std_logic_vector(unsigned(a) + unsigned(b));
+--    sub_sig   <= std_logic_vector(unsigned(a) - unsigned(b));
+--  end if;
+--end process;
 --
 
 --Need another PC for u_rom_inst : rom_instructions?
@@ -179,7 +192,7 @@ begin
     case op is
         when play => --00
             if rpt='1' then
-                data_address<=data_address_play_repeat; --is this assignment correct and where is the the signal being 'given'?
+                data_address<=data_address_play_repeat; --is this assignment correct and where is the the signal being 'given'? (14 bits)
             else
                 data_address<=data_address_play;        --is this assignment correct and where is the the signal being 'given'?
             end if;
