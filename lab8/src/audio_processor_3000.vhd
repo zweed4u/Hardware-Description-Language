@@ -77,7 +77,7 @@ constant stop           : std_logic_vector(1 downto 0) :="11";
 
 --Aliases for instruction signal
 alias opcode        : std_logic_vector(1 downto 0) is rom_instruct_out(7 downto 6);
-alias rpt           : std_logic is rom_instruct_out(5);
+alias repeat           : std_logic is rom_instruct_out(5);
 alias seek_address  : std_logic_vector(4 downto 0) is rom_instruct_out(4 downto 0);
 
 begin
@@ -192,11 +192,11 @@ begin
 end process;
 
 --Mux process - defined as follows
-process(opcode, rpt, data_address_play, data_address_play_repeat, data_address_stop, data_address_pause, data_address_seek, data_address) --seek_address alias/other signals in sensitivity list? 
+process(opcode, repeat, data_address_play, data_address_play_repeat, data_address_stop, data_address_pause, data_address_seek, data_address) --seek_address alias/other signals in sensitivity list? 
 begin
     case opcode is
         when play => --00
-            if rpt='1' then
+            if repeat='1' then
                 data_address<=data_address_play_repeat; --is this assignment correct and where is the the signal being 'given'? (14 bits)
             else
                 data_address<=data_address_play;
