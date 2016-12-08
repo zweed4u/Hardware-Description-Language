@@ -110,7 +110,7 @@ begin
 end process;
 
 --sensitivity list Next State Logic
-process(stateReg, reset, synced_execute) --NSL
+process(stateReg, reset, synced_execute, op, sk) --NSL
 begin
     if reset = '1' then 
         stateNext <= idle;
@@ -123,9 +123,11 @@ begin
                 else 
                     stateNext <= idle;
                 end if;
+
             when fetch =>
 				--get the instruction from mem
                 stateNext <= decode;
+
             when decode =>
 				if op="10" then --seeking
 					if sk="0000" then --seeking instruction going to 00000000000000
@@ -135,12 +137,15 @@ begin
                 else
 					stateNext <= execute;
 				end if;
+
             when decode_error =>
                 stateNext <= idle;	
+
             when execute =>
                 if (synced_execute='1') then
                     stateNext <= fetch;
                 end if;
+
             when others =>
                 stateNext <= idle;
         end case;
@@ -157,7 +162,7 @@ end process;
 --
 
 --Need another PC for u_rom_inst : rom_instructions?
-update_address: process(clk,reset,synced_execute,other_da) --name of this signal? (other_da) sensitivity list?
+update_address: process(clk, reset, synced_execute, other_da) --name of this signal? (other_da) sensitivity list?
 begin
     if reset = '1' then
         other_da <= (others => '0');
@@ -169,7 +174,7 @@ begin
 end process;
 
 --Mux process - defined as follows
-process(op, rpt, data_address_play, data_address_play_repeat, stop, pause, seek) --sk alias/other signals in sensitivity list? 
+process(op, rpt, data_address_play, data_address_play_repeat, stop, pause, seek, data_address) --sk alias/other signals in sensitivity list? 
 begin
     case op is
         when play => --00
@@ -193,7 +198,7 @@ begin
     end case;
 
 -- loop audio file (data register as mentioned in email?)
-process(clk,reset)
+process(clk,reset) --sync needed in sensitivity list?
 begin 
 	if (reset = '1') then 
 		data_address <= (others => '0');
