@@ -166,7 +166,12 @@ end process;
 process(data_address_reg,seek_address,reset)--data_address? (sensitivity list)
 begin
     data_address_play_repeat  <= std_logic_vector(unsigned(data_address_reg)+1);
-    data_address_play<= std_logic_vector(unsigned(data_address_reg)+1); --need something like <="00000000000000" when data_address_reg = "11111111111111" else std_logic_vector(unsigned(data_address_reg)+1);
+    case data_address_reg is
+        when "11111111111111" => --end of mem - no repeat stop
+            data_address_play<= "00000000000000";
+        when others =>
+            data_address_play<=std_logic_vector(unsigned(data_address_reg)+1); --need something like <="00000000000000" when data_address_reg = "11111111111111" else std_logic_vector(unsigned(data_address_reg)+1);
+    end case;
     data_address_pause<=data_address_reg;
     data_address_stop<=(others => '0');
     data_address_seek<=seek_address&"000000000";
@@ -195,7 +200,7 @@ begin
 end process;
 
 --Mux process - defined as follows
-process(opcode, repeat, data_address_play, data_address_play_repeat, data_address_stop, data_address_pause, data_address_seek, data_address) --seek_address alias/other signals in sensitivity list? 
+process(opcode, reset, repeat, data_address_play, data_address_play_repeat, data_address_stop, data_address_pause, data_address_seek, data_address) --seek_address alias/other signals in sensitivity list? 
 begin
     if reset = '1' then
         data_address<=(others => '0');
