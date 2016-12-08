@@ -140,7 +140,7 @@ begin
 
             when decode =>
                 if opcode="10" then --seeking
-                    if seek_address="0000" then --seeking instruction going to 00000000000000
+                    if seek_address="00000" then --seeking instruction going to 00000000000000
                         --not allowed to seek to the beginning go to decode_error
                         state_next <= decode_error;
                     end if;
