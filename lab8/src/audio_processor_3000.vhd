@@ -9,8 +9,8 @@ entity audio_processor_3000 is
   port(
     clk                 : in std_logic;
     reset               : in std_logic;
-    execute_btn         : in std_logic; -- difference between these two
-    sync                : in std_logic; -- difference between these two
+    execute_btn         : in std_logic;
+    sync                : in std_logic;
     led                 : out std_logic_vector(7 downto 0);
     audio_out           : out std_logic_vector(15 downto 0)
   );
@@ -45,7 +45,7 @@ component rising_edge_synchronizer is
     );
 end component;
 
-signal edge       : std_logic;
+signal edge       : std_logic; --synced_execute
 
 signal data_address             : std_logic_vector(13 downto 0);
 signal data_address_reg         : std_logic_vector(13 downto 0); --after state reg
@@ -162,8 +162,8 @@ end process;
 --FU's here (async) --14 bit signals?
 process(data_address_reg,seek_address,reset)--data_address? (sensitivity list)
 begin
-    data_address_play_repeat  <= std_logic_vector(unsigned(data_address_reg)+1); 
-    data_address_play<= std_logic_vector(unsigned(data_address_reg)+1);
+    data_address_play_repeat  <= std_logic_vector(unsigned(data_address_reg)+1);
+    data_address_play<= "00000000000000" when data_address_reg = "11111111111111" else std_logic_vector(unsigned(data_address_reg)+1);
     data_address_pause<=data_address_reg;
     data_address_stop<=(others => '0');
     data_address_seek<=seek_address&"000000000";
@@ -194,39 +194,43 @@ end process;
 --Mux process - defined as follows
 process(opcode, repeat, data_address_play, data_address_play_repeat, data_address_stop, data_address_pause, data_address_seek, data_address) --seek_address alias/other signals in sensitivity list? 
 begin
-    case opcode is
-        when play => --00
-            if repeat='1' then
-                data_address<=data_address_play_repeat; --is this assignment correct and where is the the signal being 'given'? (14 bits)
-            else
-                data_address<=data_address_play;
-            end if;
-
-        when pause => --01
-            data_address<=data_address_pause;
-
-        when seek => --10
-            data_address<=data_address_seek;
-
-        when stop => --11
-            data_address<=data_address_stop;
-
-        when others =>
-            data_address<=data_address;
-    end case;
-end process;
-
--- loop audio file (data register as mentioned in email?)
-process(clk,reset) --sync needed in sensitivity list?
-begin 
-    if (reset = '1') then 
-        data_address <= (others => '0');
-    elsif (clk'event and clk = '1') then
-        if (sync = '1') then    
-            data_address <= std_logic_vector(unsigned(data_address) + 1 ); -- data_address vs. data_address_reg
-        end if;
+    if reset = '1' then
+        data_address<=(others => '0');
+    else
+        case opcode is -- rest needed
+            when play => --00
+                if repeat='1' then
+                    data_address<=data_address_play_repeat; --signal assignment? (14 bits)
+                else
+                    data_address<=data_address_play;
+                end if;
+        
+            when pause => --01
+                data_address<=data_address_pause;
+        
+            when seek => --10
+                data_address<=data_address_seek;
+        
+            when stop => --11
+                data_address<=data_address_stop;
+        
+            when others =>
+                data_address<=data_address;
+        end case;
     end if;
 end process;
+
+-- loop audio file
+--process(clk,reset) --sync in sensitivity list?
+--begin 
+--    if (reset = '1') then 
+--        data_address <= (others => '0');
+--    elsif (clk'event and clk = '1') then
+--        if (sync = '1') then    
+--            data_address <= std_logic_vector(unsigned(data_address) + 1 ); -- data_address vs. data_address_reg
+--        end if;
+--    end if;
+--end process;
 instruction<=rom_instruct_out;
 led <= "10101010";
 end beh;
