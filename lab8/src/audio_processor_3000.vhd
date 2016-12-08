@@ -1,6 +1,9 @@
 -- Zachary Weeden
 -- Lab 8: Audio Processor 3000 
-
+-- 7 states? I have 5
+-- state register jumps to state 8 quickly. Mine starts in 1
+-- same with audio_out
+-- data address doesnt start count quick. 01011000 da_* by .05 us
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
