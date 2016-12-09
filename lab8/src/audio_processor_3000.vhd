@@ -183,7 +183,9 @@ begin
   if (reset = '1') then 
     data_address_reg <= (others => '0');
   elsif (clk'event and clk = '1') then
-    data_address_reg <= data_address;
+    if sync = '1' then --added
+        data_address_reg <= data_address;
+    end if;
   end if;
 end process;
 
