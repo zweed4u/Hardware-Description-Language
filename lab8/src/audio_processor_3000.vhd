@@ -168,7 +168,7 @@ begin
     data_address_play_repeat  <= std_logic_vector(unsigned(data_address_reg)+1);
     case data_address_reg is
         when "11111111111111" => --end of mem - no repeat stop
-            data_address_play<= "00000000000000";
+            data_address_play<= data_address_reg --"00000000000000";
         when others =>
             data_address_play<=std_logic_vector(unsigned(data_address_reg)+1); --need something like <="00000000000000" when data_address_reg = "11111111111111" else std_logic_vector(unsigned(data_address_reg)+1);
     end case;
