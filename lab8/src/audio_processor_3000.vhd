@@ -178,7 +178,7 @@ begin
 end process;
 
 -- data register [synchronous]
-process(clk,reset)
+process(clk,reset,sync)
 begin 
   if (reset = '1') then 
     data_address_reg <= (others => '0');
