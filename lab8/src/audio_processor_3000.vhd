@@ -1,9 +1,7 @@
 -- Zachary Weeden
 -- Lab 8: Audio Processor 3000 
--- 7 states? I have 5
--- state register jumps to state 8 quickly. Mine starts in 1
--- same with audio_out
--- data address doesnt start count quick. 01011000 da_* by .05 us
+
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -92,15 +90,13 @@ u_rom_data_inst : rom_data
         q          => audio_out --data_out
     );
 
---other rom instantiaion needed?
 u_rom_instr_inst : rom_instructions
     port map (
-        address    => pc,--5bits
+        address    => pc,
         clock      => clk,
-        q          => rom_instruct_out --8bits
+        q          => rom_instruct_out
     );
 
---sync_sync isn't needed
 sync_execute: rising_edge_synchronizer 
     port map(
         clk     => clk,
@@ -119,6 +115,7 @@ begin
     end if;
 end process;
 
+
 --sensitivity list Next State Logic
 process(state_reg, reset, edge, opcode, seek_address) --NSL
 begin
@@ -135,13 +132,11 @@ begin
                 end if;
 
             when fetch =>
-                --get the instruction from mem
                 state_next <= decode;
 
             when decode =>
                 if opcode="10" then --seeking
-                    if seek_address="00000" then --seeking instruction going to 00000000000000
-                        --not allowed to seek to the beginning go to decode_error
+                    if seek_address="00000" then
                         state_next <= decode_error;
                     end if;
                 else
@@ -162,20 +157,22 @@ begin
     end if;
 end process;
 
---FU's here (async) --14 bit signals?
-process(data_address_reg,seek_address,reset)--data_address? (sensitivity list)
+
+--FU's here (async) --14 bit signals
+process(data_address_reg,seek_address,reset)
 begin
     data_address_play_repeat  <= std_logic_vector(unsigned(data_address_reg)+1);
     case data_address_reg is
         when "11111111111111" => --end of mem - no repeat stop
-            data_address_play<= data_address_reg --"00000000000000";
+            data_address_play<= data_address_reg;
         when others =>
-            data_address_play<=std_logic_vector(unsigned(data_address_reg)+1); --need something like <="00000000000000" when data_address_reg = "11111111111111" else std_logic_vector(unsigned(data_address_reg)+1);
+            data_address_play<=std_logic_vector(unsigned(data_address_reg)+1);
     end case;
     data_address_pause<=data_address_reg;
     data_address_stop<=(others => '0');
     data_address_seek<=seek_address&"000000000";
 end process;
+
 
 -- data register [synchronous]
 process(clk,reset,sync)
@@ -183,14 +180,14 @@ begin
   if (reset = '1') then 
     data_address_reg <= (others => '0');
   elsif (clk'event and clk = '1') then
-    if sync = '1' then --added
+    if sync = '1' then
         data_address_reg <= data_address;
     end if;
   end if;
 end process;
 
---Need another PC for u_rom_inst : rom_instructions?
-update_address: process(clk, reset, edge, pc) --name of this signal? (pc) sensitivity list?
+
+update_address: process(clk, reset, edge, pc) 
 begin
     if reset = '1' then
         pc <= (others => '0');
@@ -201,16 +198,17 @@ begin
     end if;
 end process;
 
+
 --Mux process - defined as follows
-process(opcode, reset, repeat, data_address_play, data_address_play_repeat, data_address_stop, data_address_pause, data_address_seek, data_address) --seek_address alias/other signals in sensitivity list? 
+process(opcode, reset, repeat, data_address_play, data_address_play_repeat, data_address_stop, data_address_pause, data_address_seek, data_address,data_address_reg)
 begin
     if reset = '1' then
         data_address<=(others => '0');
     else
-        case opcode is -- rest needed
+        case opcode is
             when play => --00
                 if repeat='1' then
-                    data_address<=data_address_play_repeat; --signal assignment? (14 bits)
+                    data_address<=data_address_play_repeat;
                 else
                     data_address<=data_address_play;
                 end if;
@@ -225,7 +223,7 @@ begin
                 data_address<=data_address_stop;
         
             when others =>
-                data_address<=data_address;
+                data_address<=data_address_reg;
         end case;
     end if;
 end process;
